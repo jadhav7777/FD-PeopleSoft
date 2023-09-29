@@ -1,0 +1,62 @@
+--
+--
+--                                                                 
+-- This software and related documentation are provided under a    
+-- license agreement containing restrictions on use and            
+-- disclosure and are protected by intellectual property           
+-- laws. Except as expressly permitted in your license agreement   
+-- or allowed by law, you may not use, copy, reproduce,            
+-- translate, broadcast, modify, license, transmit, distribute,    
+-- exhibit, perform, publish or display any part, in any form or   
+-- by any means. Reverse engineering, disassembly, or              
+-- decompilation of this software, unless required by law for      
+-- interoperability, is prohibited.                                
+-- The information contained herein is subject to change without   
+-- notice and is not warranted to be error-free. If you find any   
+-- errors, please report them to us in writing.                    
+--                                                                 
+--
+-- Copyright (C) 1988, 2013, Oracle and/or its affiliates.         
+-- All Rights Reserved.                                            
+-- ******************************************************************
+--
+--     $Release:  HRMS880
+--    $Revision:  
+--  $Version-ID:  
+--
+-- ******************************************************************
+--
+--   ClearCase Information:
+--
+--    10/04/2002  Created as install script for Federal Demo
+--                and SYS databases.
+--
+-- ******************************************************************
+--
+SET LOG FGINSTALLIMP.LOG;
+SET INPUT FGINSTALL.DAT;
+
+--Add Federal values to table.
+IMPORT COMPANY_TBL IGNORE_DUPS;
+
+--Replaces values that overlap with Core.
+DELETE FROM PS_COVRG_CD_TBL WHERE COVRG_CD IN ('1','2','4','5');
+IMPORT COVRG_CD_TBL;
+
+--Imports Core demo and Federal values.
+IMPORT BAS_EVT_CLASS IGNORE_DUPS;
+
+--Removes all values that are not 'USA'.
+REPLACE_DATA CITIZEN_STS_TBL;
+
+--Imports rows for Federal setids.
+IMPORT SAL_PLAN_TBL IGNORE_DUPS;
+IMPORT SAL_GRADE_TBL IGNORE_DUPS;
+IMPORT SAL_STEP_TBL IGNORE_DUPS;
+IMPORT BUS_UNIT_TBL_HR IGNORE_DUPS;
+IMPORT SETID_TBL IGNORE_DUPS;
+IMPORT SET_CNTRL_TBL IGNORE_DUPS;
+IMPORT SET_CNTRL_REC IGNORE_DUPS;
+IMPORT SET_CNTRL_GROUP IGNORE_DUPS;
+IMPORT ERN_PROGRAM_TBL IGNORE_DUPS;
+IMPORT ERN_PROGRAM_DEF IGNORE_DUPS;

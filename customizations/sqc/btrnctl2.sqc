@@ -1,0 +1,66 @@
+!***********************************************************************
+! BTRNCTL2.SQC:  Retrieve Run Control for the parameters of the        *
+!                Department Budget Reports                             *
+!***********************************************************************
+!***********************************************************************
+!                                                                      *
+!                                                                      *
+!                                                                      *
+!   This software and related documentation are provided under a       *
+!   license agreement containing restrictions on use and               *
+!   disclosure and are protected by intellectual property              *
+!   laws. Except as expressly permitted in your license agreement      *
+!   or allowed by law, you may not use, copy, reproduce,               *
+!   translate, broadcast, modify, license, transmit, distribute,       *
+!   exhibit, perform, publish or display any part, in any form or      *
+!   by any means. Reverse engineering, disassembly, or                 *
+!   decompilation of this software, unless required by law for         *
+!   interoperability, is prohibited.                                   *
+!   The information contained herein is subject to change without      *
+!   notice and is not warranted to be error-free. If you find any      *
+!   errors, please report them to us in writing.                       *
+!                                                                      *
+!   Copyright (C) 1988, 2013, Oracle and/or its affiliates.            *
+!   All Rights Reserved.                                               *
+!***********************************************************************
+!                                                                      *
+!                                                                      *
+!***********************************************************************
+!                                                                      *
+!          $Date:  2013/01/17:13:22:29                                 
+!       $Release:  HR92                                                
+!      $Revision:  101                                                 
+!                                                                      *
+!***********************************************************************
+! This program is specific to HRMS for Public Sector.                  *
+!***********************************************************************
+
+
+begin-procedure select-parameters
+
+BEGIN-SELECT
+
+RC_BUD011.OPRID
+RC_BUD011.RUN_CNTL_ID
+RC_BUD011.ASOFDATE
+RC_BUD011.SETID
+RC_BUD011.DEPTID
+RC_BUD011.FISCAL_YEAR
+RC_BUD011.FUND_SUM_RPT_TYPE
+RC_BUD011.FUND_SUM_RPT_OPT
+RC_BUD011.EMPLID
+RC_BUD011.EMPL_RCD
+RC_BUD011.POSITION_NBR
+RC_BUD011.ACTIVE_DATA
+RC_BUD011.OUTPUT_CSV
+
+  do Get-Values
+
+FROM PS_RC_BUD011 RC_BUD011
+
+WHERE RC_BUD011.OPRID       = $prcs_oprid
+  AND RC_BUD011.RUN_CNTL_ID = $prcs_run_cntl_id
+end-SELECT
+
+end-procedure
+

@@ -1,0 +1,133 @@
+-- ****************************************************************
+--                                                                      
+--                                                                      
+--  This software and related documentation are provided under a        
+--  license agreement containing restrictions on use and                
+--  disclosure and are protected by intellectual property               
+--  laws. Except as expressly permitted in your license agreement       
+--  or allowed by law, you may not use, copy, reproduce,                
+--  translate, broadcast, modify, license, transmit, distribute,        
+--  exhibit, perform, publish or display any part, in any form or       
+--  by any means. Reverse engineering, disassembly, or                  
+--  decompilation of this software, unless required by law for          
+--  interoperability, is prohibited.                                    
+--  The information contained herein is subject to change without       
+--  notice and is not warranted to be error-free. If you find any       
+--  errors, please report them to us in writing.                        
+--                                                                      
+--  Copyright (C) 1988, 2014, Oracle and/or its affiliates.             
+--  All Rights Reserved.                                                
+-- ****************************************************************
+--
+--  Use: 
+--     Use this script in conjunction with the dlupx16i.dms script.
+--     This script exports the application specific setup data.
+--     The data objects include the following:
+--
+--     1) Verity Based Indexes
+--     2) Setup Manager Data
+--     3) Optimization Model
+--     4) XML Publisher Report Categories
+--     5) Integration Broker
+--     6) Credit Card Encryptions
+--     7) Maintenance Log
+--
+--  Instructions:
+--     Run this script during the Inital pass only.
+--
+-- ******************************************************************
+
+-- Export Verity Based Index, Setup Manager, Optimization Model and XML Publisher Report Category tables
+-- These will be imported with REPLACE_DATA option
+
+SET LOG DLUPX16E.LOG;
+SET OUTPUT DLUPX16.DAT;
+
+-- Export Verity Based Index Tables
+
+EXPORT PSRGWFLDOPT; 
+EXPORT PSRGWIDX;
+EXPORT PSSIDXDEFN;
+EXPORT PSSIDXLANGUAGE;
+EXPORT PS_ARCH_SECURITY;
+EXPORT PSBUSPITEMIMG;
+EXPORT PSDIAGREG;
+EXPORT PSMSFTABLES;
+EXPORT PSNODECONPROP;
+EXPORT PSNODEPROP;
+EXPORT PSRECXL;
+
+-- Export Setup Manager Tables
+
+EXPORT PTLT_ASSGN_FEAT;
+EXPORT PTLT_ASSGN_PRFT;
+EXPORT PTLT_ASSGN_PROD;
+EXPORT PTLT_ASSGN_TASK;
+EXPORT PTLT_BP_SELECT;
+EXPORT PTLT_BUSPRC;
+EXPORT PTLT_BUSPRC_DTL;
+EXPORT PTLT_COMP_NAV;
+EXPORT PTLT_COMP_R_STG;
+EXPORT PTLT_EXCI_LIST;
+EXPORT PTLT_EXCI_RUN;
+EXPORT PTLT_EXCI_STG;
+EXPORT PTLT_FEATURE;
+EXPORT PTLT_FEAT_LANG;
+EXPORT PTLT_FILE_ATT;
+EXPORT PTLT_INSTALL;
+EXPORT PTLT_NAV_STG1;
+EXPORT PTLT_NAV_STG2;
+EXPORT PTLT_PF_SELECT;
+EXPORT PTLT_PORTAL_STG;
+EXPORT PTLT_PORTAL_TMP;
+EXPORT PTLT_PRODUCT;
+EXPORT PTLT_PROD_LANG;
+EXPORT PTLT_PROD_SUITE;
+EXPORT PTLT_PROJ_DEFN;
+EXPORT PTLT_PROJ_RECS;
+EXPORT PTLT_PROJ_RUN;
+EXPORT PTLT_PROJ_TASK;
+EXPORT PTLT_PROJ_UPG;
+EXPORT PTLT_PSUIT_LANG;
+EXPORT PTLT_SEQ_STG;
+EXPORT PTLT_TASK;
+EXPORT PTLT_TASK_LANG;
+EXPORT PTLT_TASK_LOAD;
+EXPORT PTLT_TASK_SEQ;
+EXPORT PTLT_TASK_SEQ_U;
+EXPORT PTLT_TASK_STG;
+EXPORT PTLT_TLOAD_LANG;
+EXPORT PTLT_TSEQ_LANG;
+EXPORT PTLT_VIEW_STG;
+
+-- Export Optimization Model tables
+
+EXPORT PSANALYTICREG;
+EXPORT PSOPTMDLSLVR;
+EXPORT PSOPTPTMODEL;
+EXPORT PSOPTSOLVERPARA;
+EXPORT PSOPTSOLVERCODE WHERE PROBTYPE = 'SSO';
+
+-- Export XML Publisher Report Category tables
+EXPORT PSXPRPTCAT;
+EXPORT PSXPRPTCATAUTH;
+
+-- Export Credit Card Encryption and Integration Broker tables
+-- These will be imported with the IGNORE_DUPS option
+
+SET LOG DLUPX16E_C.LOG;
+SET OUTPUT DLUPX16C.DAT;
+
+-- Export Credit Card Encryption Tables
+
+EXPORT PSCRYPTPRFL;
+EXPORT PSCRYPTPRFLPRM;
+EXPORT PSCRYPTKEYSET;
+
+-- Export Integration Broker tables
+
+EXPORT PSIBMSGSCHEMA;
+EXPORT PSIBWSDL;
+-- Export Maintenance Log table
+
+EXPORT MAINTENANCE_LOG;

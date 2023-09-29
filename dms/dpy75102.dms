@@ -1,0 +1,81 @@
+--
+--
+--                                                                  
+-- This software and related documentation are provided under a     
+-- license agreement containing restrictions on use and             
+-- disclosure and are protected by intellectual property            
+-- laws. Except as expressly permitted in your license agreement    
+-- or allowed by law, you may not use, copy, reproduce,             
+-- translate, broadcast, modify, license, transmit, distribute,     
+-- exhibit, perform, publish or display any part, in any form or    
+-- by any means. Reverse engineering, disassembly, or               
+-- decompilation of this software, unless required by law for       
+-- interoperability, is prohibited.                                 
+-- The information contained herein is subject to change without    
+-- notice and is not warranted to be error-free. If you find any    
+-- errors, please report them to us in writing.                     
+--                                                                  
+--
+-- Copyright (C) 1988, 2013, Oracle and/or its affiliates.          
+-- All Rights Reserved.                                             
+-- ******************************************************************
+--
+--     $Release:  HRMS830 
+--    $Revision:  1 
+--  $Version-ID:  1
+--
+-- ******************************************************************
+SET LOG DPY75102.LOG;
+DELETE FROM PS_SWT_MARSTAT_TBL
+ WHERE STATE = 'AK' AND SWT_MAR_STATUS IN ('M','S');
+DELETE FROM PS_SWT_MARSTAT_TBL
+ WHERE STATE = 'AZ' AND SWT_MAR_STATUS IN ('M','S');
+DELETE FROM PS_SWT_MARSTAT_TBL
+ WHERE STATE = 'CT' AND SWT_MAR_STATUS IN ('N');
+DELETE FROM PS_SWT_MARSTAT_TBL
+ WHERE STATE = 'FL' AND SWT_MAR_STATUS IN ('M','S');
+DELETE FROM PS_SWT_MARSTAT_TBL
+ WHERE STATE = 'IL' AND SWT_MAR_STATUS IN ('M','S');
+DELETE FROM PS_SWT_MARSTAT_TBL
+ WHERE STATE = 'IN' AND SWT_MAR_STATUS IN ('M','S');
+DELETE FROM PS_SWT_MARSTAT_TBL
+ WHERE STATE = 'KY' AND SWT_MAR_STATUS IN ('M','S');
+DELETE FROM PS_SWT_MARSTAT_TBL
+ WHERE STATE = 'MD' AND SWT_MAR_STATUS IN ('M','S');
+DELETE FROM PS_SWT_MARSTAT_TBL
+ WHERE STATE = 'MI' AND SWT_MAR_STATUS IN ('M','S');
+DELETE FROM PS_SWT_MARSTAT_TBL
+ WHERE STATE = 'MT' AND SWT_MAR_STATUS IN ('N');
+DELETE FROM PS_SWT_MARSTAT_TBL
+ WHERE STATE = 'ND' AND SWT_MAR_STATUS IN ('M','S');
+DELETE FROM PS_SWT_MARSTAT_TBL
+ WHERE STATE = 'NH' AND SWT_MAR_STATUS IN ('M','S');
+DELETE FROM PS_SWT_MARSTAT_TBL
+ WHERE STATE = 'NJ' AND SWT_MAR_STATUS IN ('N');
+DELETE FROM PS_SWT_MARSTAT_TBL
+ WHERE STATE = 'NV' AND SWT_MAR_STATUS IN ('M','S');
+DELETE FROM PS_SWT_MARSTAT_TBL
+ WHERE STATE = 'OH' AND SWT_MAR_STATUS IN ('M','S');
+DELETE FROM PS_SWT_MARSTAT_TBL
+ WHERE STATE = 'PA' AND SWT_MAR_STATUS IN ('M','S');
+DELETE FROM PS_SWT_MARSTAT_TBL
+ WHERE STATE = 'RI' AND SWT_MAR_STATUS IN ('M','S');
+DELETE FROM PS_SWT_MARSTAT_TBL
+ WHERE STATE = 'SC' AND SWT_MAR_STATUS IN ('M','S');
+DELETE FROM PS_SWT_MARSTAT_TBL
+ WHERE STATE = 'SD' AND SWT_MAR_STATUS IN ('M','S');
+DELETE FROM PS_SWT_MARSTAT_TBL
+ WHERE STATE = 'TN' AND SWT_MAR_STATUS IN ('M','S');
+DELETE FROM PS_SWT_MARSTAT_TBL
+ WHERE STATE = 'TX' AND SWT_MAR_STATUS IN ('M','S');
+DELETE FROM PS_SWT_MARSTAT_TBL
+ WHERE STATE = 'VA' AND SWT_MAR_STATUS IN ('M','S');
+DELETE FROM PS_SWT_MARSTAT_TBL
+ WHERE STATE = 'VT' AND SWT_MAR_STATUS IN ('M','S');
+DELETE FROM PS_SWT_MARSTAT_TBL
+ WHERE STATE = 'WA' AND SWT_MAR_STATUS IN ('M','S');
+DELETE FROM PS_SWT_MARSTAT_TBL
+ WHERE STATE = 'WV' AND SWT_MAR_STATUS IN ('M','S');
+DELETE FROM PS_SWT_MARSTAT_TBL
+ WHERE STATE = 'WY' AND SWT_MAR_STATUS IN ('M','S');
+

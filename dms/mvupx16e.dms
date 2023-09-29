@@ -1,0 +1,69 @@
+-- ****************************************************************
+--                                                                      
+--                                                                      
+--  This software and related documentation are provided under a        
+--  license agreement containing restrictions on use and                
+--  disclosure and are protected by intellectual property               
+--  laws. Except as expressly permitted in your license agreement       
+--  or allowed by law, you may not use, copy, reproduce,                
+--  translate, broadcast, modify, license, transmit, distribute,        
+--  exhibit, perform, publish or display any part, in any form or       
+--  by any means. Reverse engineering, disassembly, or                  
+--  decompilation of this software, unless required by law for          
+--  interoperability, is prohibited.                                    
+--  The information contained herein is subject to change without       
+--  notice and is not warranted to be error-free. If you find any       
+--  errors, please report them to us in writing.                        
+--                                                                      
+--  Copyright (C) 1988, 2013, Oracle and/or its affiliates.             
+--  All Rights Reserved.                                                
+-- ****************************************************************
+--
+--  Use: 
+--     Use this script in conjunction with the mvupx16i.dms script.
+--     This script exports all of the Pagelet Wizard data. 
+--
+--  Instructions:
+--     1) Run this script during the Move to Production pass.
+--     2) Run this script BEFORE the data conversion program is run.
+--
+-- ******************************************************************
+SET LOG MVUPX16E.LOG;
+SET OUTPUT MVUPX16.DAT;
+
+--  Export Pagelet Wizard data.
+
+EXPORT PS_PTPP_OPTIONS   ;
+EXPORT PS_PTPP_PUB_OPT   ;
+EXPORT PS_PTPP_SITE_OPT  ;
+EXPORT PS_PTPPB_DATADISP ;
+EXPORT PS_PTPPB_DATATYPE ;
+EXPORT PS_PTPPB_DFMT_LANG;
+EXPORT PS_PTPPB_DISP_FRMT;
+EXPORT PS_PTPPB_DISP_PRMS;
+EXPORT PS_PTPPB_DISP_VALS;
+EXPORT PS_PTPPB_DS_SETTGS;
+EXPORT PS_PTPPB_DTYP_LANG;
+EXPORT PS_PTPPB_FOOTER   ;
+EXPORT PS_PTPPB_FTR_LANG ;
+EXPORT PS_PTPPB_HDR_LANG ;
+EXPORT PS_PTPPB_HEADER   ;
+EXPORT PS_PTPPB_HTML_LANG;
+EXPORT PS_PTPPB_LINKPARMS;
+EXPORT PS_PTPPB_LINKPATHS;
+EXPORT PS_PTPPB_PAGELET  ;
+EXPORT PS_PTPPB_PARM_VALS;
+EXPORT PS_PTPPB_PGLT_CATG;
+EXPORT PS_PTPPB_PGLT_CLNG;
+EXPORT PS_PTPPB_PGLT_HTML;
+EXPORT PS_PTPPB_PGLT_LANG;
+EXPORT PS_PTPPB_PGLT_PRMS;
+EXPORT PS_PTPPB_PRMS_LANG;
+EXPORT PS_PTPPB_PVAL_LANG;
+EXPORT PS_PTPPB_SECURITY ;
+EXPORT PS_PTPPB_SYSVAR   ;
+EXPORT PS_PTPPB_TXFM_LANG;
+EXPORT PS_PTPPB_TXFRMTYPE;
+EXPORT PS_PTPPB_USER_PRMS;
+EXPORT PS_PTPPB_XSLT_PROT;
+EXPORT PS_PTPPB_XSL_LANG ;

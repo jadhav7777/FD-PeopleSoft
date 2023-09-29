@@ -1,0 +1,194 @@
+-- ************************************************************  
+-- This software and related documentation are provided under a  
+-- license agreement containing restrictions on use and          
+-- disclosure and are protected by intellectual property         
+-- laws. Except as expressly permitted in your license agreement 
+-- or allowed by law, you may not use, copy, reproduce,          
+-- translate, broadcast, modify, license, transmit, distribute,  
+-- exhibit, perform, publish or display any part, in any form or 
+-- by any means. Reverse engineering, disassembly, or            
+-- decompilation of this software, unless required by law for    
+-- interoperability, is prohibited.                              
+-- The information contained herein is subject to change without 
+-- notice and is not warranted to be error-free. If you find any 
+-- errors, please report them to us in writing.                  
+--                                                               
+-- Copyright (C) 1988, 2015, Oracle and/or its affiliates.       
+-- All Rights Reserved.                                          
+-- ************************************************************  
+SET LOG HCINSSYS.LOG;
+
+UPDATE PS_EP_INSTALLATION SET 
+     EPO_LAST_OBJITM_ID=0,
+     EPO_LAST_PAGE_ID=0,
+     EP_LAST_APPR_ID=0;
+UPDATE PS_GPSINSTALLATION SET 
+     GPS_INBEHALF_LAST=0,
+     GPS_POSTID_LAST=0,
+     GPS_REMARK_LAST=0;
+UPDATE PS_GP_INSTALLATION SET 
+     LAST_TXN_NUM=0,
+     PIN_NUM_LAST=250000,
+     PMT_MSG_ID_LAST=1;
+UPDATE PS_HRS_HRAM_COUNT SET 
+     HRS_APP_ACMP_ID=0,
+     HRS_APP_CMP_ID=0,
+     HRS_CRSP_ID_LAST=0,
+     HRS_DUPE_PRCS_ID=0,
+     HRS_PERSON_ID_LAST=0,
+     HRS_PL_ID_LAST=0,
+     HRS_RES_ID_LAST=0,
+     HRS_RES_NBR_LAST=0,
+     HRS_RES_TMPL_ID=2000;
+UPDATE PS_HRS_HRAT_COUNT SET 
+     HRS_ANSWER_ID=0,
+     HRS_APP_WC_DEC_ID=0,
+     HRS_CHKLST_ID=0,
+     HRS_EVAL_ID=0,
+     HRS_INT_EVL_CTG_ID=1000,
+     HRS_INT_EVL_RTG_ID=1000,
+     HRS_INT_ID=0,
+     HRS_INT_LTR_ID=0,
+     HRS_INT_VENUE_ID=0,
+     HRS_OFF_ID=0,
+     HRS_OFF_LTR_ID=0,
+     HRS_QSTN_ID=0,
+     HRS_QSTN_SET_ID=0,
+     HRS_RCMNT_ID=0,
+     HRS_RCMNT_LTR_ID=0,
+     HRS_RCM_INT_ID=0,
+     HRS_RTE_ID=0;
+UPDATE PS_HRS_HROI_COUNT SET 
+     HRS_AL_LOG_EXTR_ID=0,
+     HRS_AL_LOG_ID=0,
+     HRS_AL_LOG_NOTI_ID=0,
+     HRS_AL_LOG_RES_ID=0,
+     HRS_AL_LOG_SRC_SEQ=0,
+     HRS_AUTOSCREEN_ID=0,
+     HRS_CONTACT_ID=0,
+     HRS_DM_CAT_ID=1000,
+     HRS_DM_KEY_ID=0,
+     HRS_DM_MAP_ID=0,
+     HRS_DM_VAL_ID=0,
+     HRS_EMAIL_SETUP_ID=0,
+     HRS_EXT_POST_ID=0,
+     HRS_LOG_ID=0,
+     HRS_PREMPL_PERS_ID=0,
+     HRS_RESLOAD_ID=0,
+     HRS_RESLOAD_RES_ID=0,
+     HRS_SOURCE_ID=0,
+     HRS_SUBSOURCE_ID=1000,
+     HRS_TG_ID=1000,
+     HRS_VALUE_ID=0,
+     HRS_VENDOR_ID=0,
+     HRS_VNDR_TRANS_ID=0,
+     HRS_XML_ID=0,
+     HRS_XSLT_ID=0;
+UPDATE PS_HRS_HRS_COUNTER SET 
+     HRS_LETTER_ID=0,
+     HRS_SEARCH_ID=0;
+UPDATE PS_HRS_HRTR_COUNT SET 
+     HRS_CNTCT_MTHD_ID=1000,
+     HRS_CRSP_ID=0,
+     HRS_LST_ID=0,
+     HRS_NOTES_ID=0,
+     HRS_PACKAGE_ID=1000,
+     HRS_PARM_ID=0,
+     HRS_TOKEN_ID=0;
+UPDATE PS_HRS_JO_COUNTER SET 
+     HRS_FLXTGRP_ID=0,
+     HRS_FLXTMPL_ID=0,
+     HRS_JCP_ID=0,
+     HRS_JOB_OPENING_ID=0,
+     HRS_JO_SCR_SUMM_ID=0,
+     HRS_JO_TMPL_ID=2000,
+     HRS_LOCATION_ID=0,
+     HRS_PST_TMPL_ID=1000,
+     HRS_RCRT_TMPL_ID=0,
+     HRS_RP_ID=0,
+     HRS_SCREENING_ID=0,
+     HRS_SCR_TMPL_ID=2000,
+     HRS_TEAM_ID=0;
+UPDATE PS_HR_DR_CONTROL SET 
+     HR_DR_READY_2='N',
+     HR_DR_READY_3='N',
+     HR_DR_READY_4='N',
+     HR_DR_READY_5='N',
+     HR_DR_READY_6='N';
+UPDATE PS_HR_RQSTCNTR_TBL SET 
+     HIRE_REQUEST_ID=0;
+UPDATE PS_INSTALLATION SET 
+     APS_AUS='N',
+     ARG='N',
+     AUS='N',
+     AUTO_EE_TAX='N',
+     AV='N',
+     BEL='N',
+     BRA='N',
+     CAN='N',
+     CAN_CMA='99',
+     CAN_IND_SECTOR='999',
+     CHE='N',
+     CHN='N',
+     ENC_TRIGGER='N',
+     ESP='N',
+     FRA='N',
+     FSA_CLAIMS='N',
+     GER='N',
+     GL='N',
+     HKG='N',
+     IND='N',
+     ITA='N',
+     JPN='N',
+     LRM='N',
+     MEX='N',
+     MULTI_STEP_GRADE='N',
+     MYS='N',
+     NLD='N',
+     NZL='N',
+     ORCL_ELOC_OPT='N',
+     SA='N',
+     SG='N',
+     SGP='N',
+     THA='N',
+     TL_MOBILE='N',
+     UK='N',
+     US='N',
+     USE_POINTS_SW='N',
+     USE_RTCD_GROUP_SW='N';
+UPDATE PS_INSTALLATION_BN SET 
+     COBRA_EMPLID_LAST=0,
+     FSA_CLAIM_NBR_LAST=0,
+     FSA_CRY_CLAIM_LAST=0,
+     RETRODED_SEQ_LAST=0;
+UPDATE PS_INSTALLATION_HR SET 
+     CAR_LAST=0,
+     CLAIM_NBR_LAST=0,
+     DEMAND_ID_LAST=0,
+     EMPLID_LAST_EMPL=0,
+     GRIEVANCE_NBR_LAST=0,
+     ILL_NBR_LAST_GER=0,
+     ILL_NBR_LAST_NLD=0,
+     INCIDENT_NBR_LAST=0,
+     LAST_OSHA_CASE_NBR=0,
+     LAST_SP_ID_ASSIGN=0,
+     NON_EMPLOYEE_LAST=0,
+     OWS_SEQ_LAST=0,
+     POSN_NBR_LAST=0,
+     TBH_SEQ_LAST=0,
+     TEMP_ASSGN_ID_LAST=0;
+UPDATE PS_INSTALLATION_PY SET 
+     ACCT_CD_LAST=0,
+     RETROPAY_SEQ_LAST=0,
+     ROE_NBR_LAST=0;
+UPDATE PS_INSTALL_INTEGR SET 
+     INSTALLED_FLAG='N';
+UPDATE PS_INSTALL_PERSON SET 
+     USE_ADD_CWR='N',
+     USE_ADD_POI='N',
+     USE_PER_CHECKLIST='N';
+UPDATE PS_TL_INSTALLATION SET 
+     LAST_SEQ_PAY_TIME=0,
+     LAST_ST_INSTANCE=0;
+UPDATE PS_US_INSTALLATION SET 
+     GPUS_LAST_CORRID=0;

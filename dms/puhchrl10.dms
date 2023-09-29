@@ -1,0 +1,51 @@
+--
+--
+--                                                                  
+-- This software and related documentation are provided under a     
+-- license agreement containing restrictions on use and             
+-- disclosure and are protected by intellectual property            
+-- laws. Except as expressly permitted in your license agreement    
+-- or allowed by law, you may not use, copy, reproduce,             
+-- translate, broadcast, modify, license, transmit, distribute,     
+-- exhibit, perform, publish or display any part, in any form or    
+-- by any means. Reverse engineering, disassembly, or               
+-- decompilation of this software, unless required by law for       
+-- interoperability, is prohibited.                                 
+-- The information contained herein is subject to change without    
+-- notice and is not warranted to be error-free. If you find any    
+-- errors, please report them to us in writing.                     
+--                                                                  
+--
+-- Copyright (C) 1988, 2013, Oracle and/or its affiliates.          
+-- All Rights Reserved.                                             
+-- ******************************************************************
+--
+--     $Release:  HCM9.1 
+--    $Revision:  1 
+--  $Version-ID:  1
+--
+-- ******************************************************************
+-- PUHCHRL10.DMS
+--
+-- SCRIPT APPLIES TO UPGRADES STARTING AT HRMS 9
+--
+-- This script creates a temporary table for translate values that are 
+-- moving into setup tables
+-- ******************************************************************
+
+-- DB2/OS390 customers need to uncomment and modify the statements below
+-- set execute_sql set current sqlid = 'OwnerId In Upper Case';
+
+SET LOG PUHCHRL10E.log;
+SET OUTPUT PUHCHRL10.dat;
+
+export PSXLATITEM
+WHERE FIELDNAME IN ('EP_SUB_LEVEL', 'EP_ITEM_STATUS');
+
+export PSXLATITEMLANG
+WHERE FIELDNAME IN ('EP_SUB_LEVEL', 'EP_ITEM_STATUS');
+
+SET LOG PUHCHRL10I.log;
+SET INPUT PUHCHRL10.DAT;
+IMPORT PSXLATITEM AS PS_UPG_XLAT_TMP;
+IMPORT PSXLATITEMLANG AS PS_UPG_XLATLNG_TMP;

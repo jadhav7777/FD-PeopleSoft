@@ -1,0 +1,66 @@
+--  ******************************************************************
+--
+--
+--  This software and related documentation are provided under a  
+--  license agreement containing restrictions on use and          
+--  disclosure and are protected by intellectual property         
+--  laws. Except as expressly permitted in your license agreement 
+--  or allowed by law, you may not use, copy, reproduce,          
+--  translate, broadcast, modify, license, transmit, distribute,  
+--  exhibit, perform, publish or display any part, in any form or 
+--  by any means. Reverse engineering, disassembly, or            
+--  decompilation of this software, unless required by law for    
+--  interoperability, is prohibited.                              
+--  The information contained herein is subject to change without 
+--  notice and is not warranted to be error-free. If you find any 
+--  errors, please report them to us in writing.                  
+--                                                                
+--  Copyright (C) 1988, 2013, Oracle and/or its affiliates.       
+--  All Rights Reserved.                                          
+--  ******************************************************************
+--  Exports Payroll Interface Definitions used during the move to
+--  production upgrade step
+--  ******************************************************************
+/
+SET OUTPUT mvhcpix01e.dat;
+/
+SET LOG mvhcpix01e.log;
+/
+
+EXPORT PS_PI_SYSTEM_TBL;
+EXPORT PS_PI_SYSTEM_LANG;
+EXPORT PS_PI_SYSTEM_STAT;
+
+EXPORT PS_PI_PS_RECORD;
+EXPORT PS_PI_PS_REC_LANG;
+EXPORT PS_PI_PSREC_FLD;
+
+EXPORT PS_PI_FIELD_TBL;
+EXPORT PS_PI_FIELD_LANG;
+EXPORT PS_PI_FIELD_XLAT;
+
+EXPORT PS_PI_INSTANCE_TBL;
+EXPORT PS_PI_INSTANC_LANG;
+EXPORT PS_PI_INST_VALUE;
+
+EXPORT PS_PI_DEFN_FILE;
+EXPORT PS_PI_DEFN_F_LANG;
+EXPORT PS_PI_DEFN_RECORD;
+EXPORT PS_PI_DEFN_R_LANG;
+EXPORT PS_PI_DEFN_FIELD;
+
+EXPORT PS_PI_CONFIG_TBL;
+EXPORT PS_PI_CONFIG_LANG;
+EXPORT PS_PI_CONFIG_FILE;
+
+EXPORT PS_PI_PROCESS_TBL;
+EXPORT PS_PI_PROC_TB_LANG;
+EXPORT PS_PI_PROCESS_VAL;
+EXPORT PS_PI_PROC_VA_LANG;
+
+EXPORT PS_PI_GROUP_TBL;
+EXPORT PS_PI_GROUP_LANG;
+
+EXPORT PS_FILE_HANDLE_TBL;
+EXPORT PS_FILE_HANDLE_LNG;
+/

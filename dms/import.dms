@@ -1,0 +1,70 @@
+--
+--
+--                                                                  
+-- This software and related documentation are provided under a     
+-- license agreement containing restrictions on use and             
+-- disclosure and are protected by intellectual property            
+-- laws. Except as expressly permitted in your license agreement    
+-- or allowed by law, you may not use, copy, reproduce,             
+-- translate, broadcast, modify, license, transmit, distribute,     
+-- exhibit, perform, publish or display any part, in any form or    
+-- by any means. Reverse engineering, disassembly, or               
+-- decompilation of this software, unless required by law for       
+-- interoperability, is prohibited.                                 
+-- The information contained herein is subject to change without    
+-- notice and is not warranted to be error-free. If you find any    
+-- errors, please report them to us in writing.                     
+--                                                                  
+--
+-- Copyright (C) 1988, 2013, Oracle and/or its affiliates.          
+-- All Rights Reserved.                                             
+-- ******************************************************************
+--
+--     $Release:  HRMS830 
+--    $Revision:  1 
+--  $Version-ID:  1
+--
+-- ******************************************************************
+REM - GP600D01.DMS from HRDMOORA.DMS
+REM - Created by DBSETUP 6.0.23 RC8  11/21/96 2:22:49 AM
+/
+REM - Common HRMS  CHDMO US English Database import
+/
+set log f:\globpay\BetaDelivery\IMPORA.LOG;
+set input f:\globpay\BetaDelivery\EXPBETA.DB;
+set no view;
+set no space;
+set no trace;
+set space * as GP600D01;
+set ddl index   *  input indexspc  as GP600D01I;
+set ddl unique index * input indexspc  as GP600D01I;
+REM set start after GP_PAYSLIP_MAP;
+import *;
+
+REM - Final Database cleanup for Oracle installations.
+/
+REM - insert into PS.PSDBOWNER values('GP600D01','GP600D01');
+update PSLOCK set OWNERID = 'GP600D01';
+update PSOPRDEFN set ACCESSID = 'GP600D01', ACCESSPSWD = 'GP600D01', OPERPSWD = '0000000000000000' where OPRTYPE = 0;
+
+create view syskeys
+    (ixcreator, ixname, colname, colno,
+     colseq, ordering, function)
+    as select
+     a.ownerid, substr(b.index_name,1,18), substr(b.column_name,1,18),
+     b.column_position, b.column_position, 'a', ' '
+     from pslock a, user_ind_columns b
+/
+
+create view sysindexes
+ (tbcreator, name, tbname, creator,
+  uniquerule, colcount, ixtype, clusterrule, ixsize, percentfree)
+ as select
+ a.ownerid, substr(b.index_name,1,18), substr(b.table_name,1,18),
+ a.ownerid, substr(b.uniqueness,1,1), 1, 'b', 'n', 1, b.pct_free
+ from pslock a, user_indexes b
+/                                
+ set log c:\data\grant.log;
+grant_user *;
+encrypt_password *;
+REM replace_view *;

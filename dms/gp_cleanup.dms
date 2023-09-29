@@ -1,0 +1,88 @@
+-- **************************************************************
+--                                                               
+--                                                               
+-- This software and related documentation are provided under a  
+-- license agreement containing restrictions on use and          
+-- disclosure and are protected by intellectual property         
+-- laws. Except as expressly permitted in your license agreement 
+-- or allowed by law, you may not use, copy, reproduce,          
+-- translate, broadcast, modify, license, transmit, distribute,  
+-- exhibit, perform, publish or display any part, in any form or 
+-- by any means. Reverse engineering, disassembly, or            
+-- decompilation of this software, unless required by law for    
+-- interoperability, is prohibited.                              
+-- The information contained herein is subject to change without 
+-- notice and is not warranted to be error-free. If you find any 
+-- errors, please report them to us in writing.                  
+--                                                               
+-- Copyright (C) 1988, 2013, Oracle and/or its affiliates.       
+-- All Rights Reserved.                                          
+-- **************************************************************
+-- *************************************************************************
+-- ATTENTION: This script will delete all 50,000,000+ pin numbers that      
+--            exist on Element Definition tables.                           
+--                                                                          
+--            You should ONLY run this if you need to clean-up 50,000,000+  
+--            pin numbers.                           
+--                                                                          
+--            You should NOT run this if you are in the MIDDLE of applying  
+--            a Rule Package (unless you want to back out what you have     
+--            just imported). Do NOT run this script and then try to run    
+--            a Package Compare or Upgrade (as you will have deleted the    
+--            elements that the package is trying to compare/upgrade and    
+--            this could also cause the original element definitions to be  
+--            deleted).                                                     
+-- ************************************************************************
+set log gp_cleanup.log;
+DELETE FROM PS_GP_ABS_ENTL WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_ABS_TAKE WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_ABS_TAKE_CFG WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_ABS_TAKE_DAY WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_ABS_TAKE_ELM WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_ABS_TAKE_ENT WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_ABS_TK_FCST WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_ACCUMULATOR WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_ACM_MBR WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_ARRAY WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_ARRAY_FLD WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_ARRAY_KEY WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_ARRAY_PRC WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_AUTOGEN_DFLT WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_BRACKET WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_BRACKET_DTL WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_COUNT WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_DATE WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_DURATION WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_DUR_GNRN WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_ELEM_GRP WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_ELEM_GRP_MBR WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_ELM_DFN_SOVR WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_ERN_DED WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_FC_IN WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_FC_OUT WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_FC_OUT_DTL WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_FC_SEG WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_FC_TBL WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_FORMULA WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_FORMULA_CLUE WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_FORMULA_DTL WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_FORMULA_VAR WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_GCTL WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_GCTL_DTL WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_HIST_ELEM WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_HIST_RULE WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_PIN WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_PIN_CMPNT WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_PROCESS WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_PROCESS_DTL WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_PRORATION WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_RATE_CODE WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_ROUND_RULE WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_SECTION WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_SECTION_DTL WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_SYSTEM_PIN WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_VARIABLE WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_WA_ARRAY WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_WA_FLD WHERE PIN_NUM > 50000000;
+DELETE FROM PS_GP_PIN_LANG WHERE PIN_NUM > 50000000;
+UPDATE PS_GP_PKG_DFN SET PKG_IMPORT_DTTM = %DateTimeNull, PKG_COMPARE_DTTM = %DateTimeNull WHERE PKG_UPGRADE_DTTM IS NULL;

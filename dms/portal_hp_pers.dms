@@ -1,0 +1,44 @@
+-- ****************************************************************** 
+--                                                                    
+--                                                                    
+--   This software and related documentation are provided under a     
+--   license agreement containing restrictions on use and             
+--   disclosure and are protected by intellectual property            
+--   laws. Except as expressly permitted in your license agreement    
+--   or allowed by law, you may not use, copy, reproduce,             
+--   translate, broadcast, modify, license, transmit, distribute,     
+--   exhibit, perform, publish or display any part, in any form or    
+--   by any means. Reverse engineering, disassembly, or               
+--   decompilation of this software, unless required by law for       
+--   interoperability, is prohibited.                                 
+--   The information contained herein is subject to change without    
+--   notice and is not warranted to be error-free. If you find any    
+--   errors, please report them to us in writing.                     
+--                                                                    
+--   Copyright (C)  2013, Oracle and/or its affiliates.               
+--   All Rights Reserved.                                             
+-- ****************************************************************** 
+--                                                                    
+--   PORTAL_HP_PERS.DMS   Portal Solutions 8.4x   02/18/04
+--
+-- ******************************************************************
+--  Target:  Content Provider database on PeopleTools 8.4x
+--
+--  Use:  This script will load the homepage personalizations into 
+--        the PAPP0002 permission list, and add the PAPP0002 permission
+--        list to the Homepage Personalization content references.
+--
+SET LOG PORTAL_HP_PERS.LOG;
+SET INPUT PORTAL_HP_PERS.DAT;
+
+DELETE FROM PSAUTHITEM 
+       WHERE CLASSID = 'PAPP0002' 
+       AND MENUNAME = 'PORTAL_PERS_HOMEPAGE';
+
+DELETE FROM PSPRSMPERM 
+       WHERE PORTAL_NAME IN ('EMPLOYEE','CUSTOMER','SUPPLIER','PS_SITETEMPLATE','MOBILE')
+       AND PORTAL_REFTYPE = 'C'
+       AND PORTAL_OBJNAME IN ('PT_PORTAL_HOMEPAGE_GBL', 'PT_PORTAL_HP_REMOVE_GBL')
+       AND PORTAL_PERMNAME = 'PAPP0002';
+
+IMPORT *;

@@ -1,0 +1,39 @@
+--
+--
+--
+-- This software and related documentation are provided under a  
+-- license agreement containing restrictions on use and          
+-- disclosure and are protected by intellectual property         
+-- laws. Except as expressly permitted in your license agreement 
+-- or allowed by law, you may not use, copy, reproduce,          
+-- translate, broadcast, modify, license, transmit, distribute,  
+-- exhibit, perform, publish or display any part, in any form or 
+-- by any means. Reverse engineering, disassembly, or            
+-- decompilation of this software, unless required by law for    
+-- interoperability, is prohibited.                              
+-- The information contained herein is subject to change without 
+-- notice and is not warranted to be error-free. If you find any 
+-- errors, please report them to us in writing.                  
+--                                                               
+--
+-- Copyright (C) 1988, 2013, Oracle and/or its affiliates.       
+-- All Rights Reserved.                                          
+-- ******************************************************************
+--
+--     $Release:  HRMS830
+--    $Revision:  1
+--  $Version-ID:  1
+--
+-- ******************************************************************
+SET LOG C:\TEMP\HRJG.LOG;
+SET OUTPUT C:\TEMP\HRJG.DAT;
+EXPORT CAL_DEFN_TBL;
+EXPORT CAL_DETP_TBL;
+EXPORT DEPARTMENT_TBL WHERE SETID='MFG';
+EXPORT GL_ACCOUNT_TBL WHERE SETID='MFG';
+EXPORT LED_DEFN_TBL WHERE SETID='MFG' AND LEDGER='ACTUALS';
+EXPORT LED_FLDS_TBL WHERE SETID='MFG' AND LEDGER='ACTUALS';
+EXPORT PRODUCT_TBL WHERE SETID='MFG';
+EXPORT PROJECT_FS WHERE SETID='MFG';
+EXPORT STAT_TBL WHERE SETID='MFG';
+EXPORT UNITS_TBL;

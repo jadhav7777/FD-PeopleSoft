@@ -1,0 +1,7 @@
+Measureupdate "HEADCOUNT" Label "HEADCOUNT" Association "HEADCOUNT" Storage Default
+Scale 0 Decimals 0 Sign True Format "#,##0" TimeStateRollup Last MeasureInfo "HEADCOUNT"
+DrillThrough True "C:\TEMP\TC_COMP.MDC""" EndList
+Measureupdate "FTE" Label "FTE" Association "FTE" Storage Float64 
+Scale 0 Decimals 2 Sign True Format "#,##0~2" TimeStateRollup Last MeasureInfo "FTE"
+DrillThrough True "C:\TEMP\TC_COMP.MDC""" EndList
+OpenMDL "c:\hr751\script\Time_M.mdl"

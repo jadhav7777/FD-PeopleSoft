@@ -1,0 +1,66 @@
+--
+--
+--                                                                  
+--  This software and related documentation are provided under a    
+--  license agreement containing restrictions on use and            
+--  disclosure and are protected by intellectual property           
+--  laws. Except as expressly permitted in your license agreement   
+--  or allowed by law, you may not use, copy, reproduce,            
+--  translate, broadcast, modify, license, transmit, distribute,    
+--  exhibit, perform, publish or display any part, in any form or   
+--  by any means. Reverse engineering, disassembly, or              
+--  decompilation of this software, unless required by law for      
+--  interoperability, is prohibited.                                
+--  The information contained herein is subject to change without   
+--  notice and is not warranted to be error-free. If you find any   
+--  errors, please report them to us in writing.                    
+--                                                                  
+--
+--  Copyright (C) 1988, 2013, Oracle and/or its affiliates.         
+--  All Rights Reserved.                                            
+-- ******************************************************************
+--
+--     $Release:  HRMS830 
+--    $Revision:  1 
+--  $Version-ID:  1
+--
+-- ******************************************************************
+-- This script reloads Pension Administration related Table data.
+-- This is system data normally delivered and maintained by
+-- PeopleSoft. Use this script to load or re-load reload Pension
+-- delivered data.
+-- ******************************************************************
+/
+SET LOG PASYSDAT.LOG
+/
+SET INPUT PASYSTBL.DAT
+/
+IMPORT PA_ALIAS_USE    IGNORE_DUPS;
+IMPORT PA_AUDIT        IGNORE_DUPS;
+IMPORT PA_CPI_PCT_TBL  IGNORE_DUPS;
+IMPORT PA_CUSTOM       IGNORE_DUPS;
+IMPORT PA_CUSTOM2      IGNORE_DUPS;
+IMPORT PA_CUSTOM3      IGNORE_DUPS;
+IMPORT PA_CUSTOM_TEMP  IGNORE_DUPS;
+IMPORT PA_DFN_FORM_CD  IGNORE_DUPS;
+IMPORT PA_DLAY_CRD_PCT IGNORE_DUPS;
+IMPORT PA_FUNCTN       IGNORE_DUPS;
+IMPORT PA_FUNCTN_FLD_1 IGNORE_DUPS;
+IMPORT PA_MORT_RATES   IGNORE_DUPS;
+IMPORT PA_MORT_TABLES  IGNORE_DUPS;
+IMPORT PA_PEN_VAL_MTX  IGNORE_DUPS;
+IMPORT PA_SS_DROP_TBL  IGNORE_DUPS;
+IMPORT PA_TBL_LOOKUP   IGNORE_DUPS;
+IMPORT PA_TL_120AFR_TB IGNORE_DUPS;
+IMPORT PA_TL_30YR_TBIL IGNORE_DUPS;
+IMPORT PA_TL_415_LIMDC IGNORE_DUPS;
+IMPORT PA_TL_415_LIMIT IGNORE_DUPS;
+IMPORT PA_TL_MAX_WAGE  IGNORE_DUPS;
+IMPORT PA_TL_OBRA93_TB IGNORE_DUPS;
+IMPORT PA_TL_PBGC_TBL  IGNORE_DUPS;
+IMPORT PA_TL_TRA86_TBL IGNORE_DUPS;
+IMPORT PA_TWB_AMT_TBL  IGNORE_DUPS;
+IMPORT PA_USAW_AMT_TBL IGNORE_DUPS;
+/
+COMMIT
+/

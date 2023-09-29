@@ -1,0 +1,3036 @@
+-- ***********************************************************************
+--                                                                       *
+--                                                                       *
+--                                                                       *
+--  This software and related documentation are provided under a         *
+--  license agreement containing restrictions on use and                 *
+--  disclosure and are protected by intellectual property                *
+--  laws. Except as expressly permitted in your license agreement        *
+--  or allowed by law, you may not use, copy, reproduce,                 *
+--  translate, broadcast, modify, license, transmit, distribute,         *
+--  exhibit, perform, publish or display any part, in any form or        *
+--  by any means. Reverse engineering, disassembly, or                   *
+--  decompilation of this software, unless required by law for           *
+--  interoperability, is prohibited.                                     *
+--  The information contained herein is subject to change without        *
+--  notice and is not warranted to be error-free. If you find any        *
+--  errors, please report them to us in writing.                         *
+--                                                                       *
+--  Copyright (C) 1988, 2015, Oracle and/or its affiliates.              *
+--  All Rights Reserved.                                                 *
+--                                                                       *
+-- ***********************************************************************
+-- For use in upgrades to HC
+-- ***********************************************************************
+
+
+
+-- Export tables that will be imported with the IGNORE_DUPS option
+set log DLHCSYSE_I.LOG;
+set output DLHCSYS_I.DAT;
+export ABBR_TYPE_TBL where
+   BN_ANNL_BENBASE_CD = 'PRIM';
+export ABSENCE_CAL;
+export ABS_CLASS_TBL;
+export ABS_CODE_TBL;
+export ABS_TYPE_TBL;
+export ACCDT_INS_HAZ;
+export ACCDT_INS_TBL;
+export ACTN_REASON_TBL where
+   SYSTEM_DATA_FLG = 'Y';
+export ACT_RSN_TBL_AUS;
+export ACT_RSN_TBL_GER;
+export ACT_RSN_TBL_MEX;
+export ACT_RSN_TBL_NA;
+export APE_INDSTRY_FRA where
+   APE_INDSTRY_CD_FRA = '33.2';
+export APE_INDSTRY_FRA where
+   APE_INDSTRY_CD_FRA = '55.3';
+export ASSGN_TYPE_TBL;
+export BA_CD_TBL where
+   EFFDT = %DateIn('1900-01-01');
+export BN_834_MAP_EDIT where
+   DATA_TYPE_CD = 'Y';
+export BOND_TBL;
+export BSE_SCH_FRA_TBL;
+export CALC_RULES_TBL where
+   CALC_RULES_ID = 'PSX';
+export CAN_NOC_TBL;
+export CAN_TAX_CITLUMP;
+export CAN_TAX_CITRATE;
+export CAN_TAX_PROV;
+export CAN_TAX_PROVNCT;
+export CAN_TAX_PROVTHR;
+export CAN_TAX_QITLUMP;
+export CAN_TAX_QITRATE;
+export CAN_TAX_TBL;
+export CHECKLIST_ITEM where
+   CHECKLIST_CD like 'HC%';
+export CHECKLIST_TBL where
+   CHECKLIST_CD like 'HC%';
+export CITIZEN_STS_TBL;
+export CLS_BY_TMPL_ESP;
+export CMP_DFLT_OPT;
+export CMP_OPT_REQ_FLD;
+export CNTRCT_TYPE_DEF;
+export CNTRCT_TYPE_GRP;
+export COMP_RATECD_TBL where
+   COMP_RATECD = 'NAANNL';
+export COMP_RATECD_TBL where
+   COMP_RATECD = 'NAHRLY';
+export COMP_RATECD_TBL where
+   COMP_RATECD = 'KRTRAI';
+export COUNTRY_DEF;
+export COUNTRY_GRP;
+export COUNTRY_TBL_FRA;
+export COUNTRY_TBL_NLD;
+export COVRG_CD_TBL where
+   COVRG_CD = '1';
+export COVRG_CD_TBL where
+   COVRG_CD = '2';
+export COVRG_CD_TBL where
+   COVRG_CD = '3';
+export COVRG_CD_TBL where
+   COVRG_CD = '4';
+export COVRG_CD_TBL where
+   COVRG_CD = '5';
+export COVRG_CD_TBL where
+   COVRG_CD = '6';
+export COVRG_CD_TBL where
+   COVRG_CD = '7';
+export COVRG_CD_TBL where
+   COVRG_CD = '12';
+export COVRG_CD_TBL where
+   COVRG_CD = '14';
+export COVRG_RULE_TBL where
+   COVRG_CD = '1';
+export COVRG_RULE_TBL where
+   COVRG_CD = '2';
+export COVRG_RULE_TBL where
+   COVRG_CD = '3';
+export COVRG_RULE_TBL where
+   COVRG_CD = '4';
+export COVRG_RULE_TBL where
+   COVRG_CD = '5';
+export COVRG_RULE_TBL where
+   COVRG_CD = '6';
+export COVRG_RULE_TBL where
+   COVRG_CD = '7';
+export COVRG_RULE_TBL where
+   COVRG_CD = '12';
+export COVRG_RULE_TBL where
+   COVRG_CD = '14';
+export CO_DFLTRTN_TBL;
+export CTC_KND_FRA_TBL;
+export CTG_STS_FRA_TBL;
+export DB2_NULL_FLDS;
+export DEPBEN_TYPE_TBL where
+   EFFDT = %DateIn('1900-01-01');
+export EFT_NAME where
+   COUNTRY_CD = 'THA';
+export ENGINE_TYPE_UK;
+export EOAW_EML_CFG_DT;
+export EOAW_EML_CFG_LN;
+export EOAW_EML_TMPL;
+export EOAW_EML_TMPL_L where 1=0;
+export EOAW_IDS;
+export EOCF_ACTION_SET;
+export EOCF_ACT_VALEVT;
+export EOCF_AL_DTL_TRM;
+export EOCF_BUS_DOMAIN;
+export EOCF_CONTEXT;
+export EOCF_CTX_TMPSEQ;
+export EOCF_CTX_VARSNW;
+export EOCF_DE_LOG;
+export EOCF_DE_LOG_DTL;
+export EOCF_DE_NATIVE;
+export EOCF_DL_LOG;
+export EOCF_DSP_ALERT;
+export EOCF_DSP_AL_DTL;
+export EOCF_DS_ALT_TRM;
+export EOCF_ELEM_SUBJ;
+export EOCF_EVENT_DEFN;
+export EOCF_EVENT_SEQ;
+export EOCF_EVENT_TYPE;
+export EOCF_FILTER_DFN;
+export EOCF_FILTER_FLD;
+export EOCF_FILTER_USR;
+export EOCF_FLTR_SAVED;
+export EOCF_IACATEGORY;
+export EOCF_IMPL_BINDS;
+export EOCF_IMPL_DEFN;
+export EOCF_IMPL_PARMS;
+export EOCF_PHRASE_DFN;
+export EOCF_PHRASE_XPR;
+export EOCF_PHR_TERMS;
+export EOCF_RSET_SEQ;
+export EOCF_RULESET;
+export EOCF_RULE_DEFN;
+export EOCF_SA_TREE;
+export EOCF_SUBJECT;
+export EOCF_TBIND_MAP;
+export EOCF_TERM_ATTRS;
+export EOCF_TERM_BINDS;
+export EOCF_TERM_CFG;
+export EOCF_TERM_CTX;
+export EOCF_TERM_DEFN;
+export EODI_APT_REG where
+   EODI_APT_PROC_ID = 'REQUESTABSENCE';
+export EODI_APT_REG where
+   EODI_APT_PROC_ID = 'HRS_INTERVIEW';
+export EODI_APT_REG_SE where
+   EODI_APT_PROC_ID = 'REQUESTABSENCE';
+export EODI_APT_REG_SE where
+   EODI_APT_PROC_ID = 'HRS_INTERVIEW';
+export EODI_APT_REG_TG where
+   EODI_APT_PROC_ID = 'REQUESTABSENCE';
+export EODI_DYN;
+export EODI_DYN_FIELDS;
+export EODI_DYN_REG_SE;
+export EODI_TSK_REG;
+export EODI_TSK_REG_SE;
+export EOEC_CCI_TYPE;
+export EOEC_MP_METAPAR;
+export EOEW_CVT_DFN;
+export EOIU_SOBATPGM;
+export EOIU_SOLANGUAGE where
+   language_cd = 'ENG' or language_cd = ' ';
+export EOIU_SOPUBDEFN;
+export EOIU_SORECMAP;
+export EO_ADDR_FMT_TBL;
+export EO_CHUNKEFFDT;
+export EO_CHUNKRULE;
+export EO_DSEXTATTSNTX;
+export EO_FLOINDEFN;
+export EO_FLOMSGMAP;
+export EO_TRAN_CAT where
+   SYSTEM_DATA_FLG = 'Y';
+export EP_REVW_TYP_TBL where
+   EP_REVIEW_TYPE = 'PERFORM';
+export EP_REVW_TYP_TBL where
+   EP_REVIEW_TYPE = 'SALARY';
+export EP_REVW_TYP_TBL where
+   EP_REVIEW_TYPE = 'PERF&SAL';
+export EP_REVW_TYP_TBL where
+   EP_REVIEW_TYPE = 'PERF-USF';
+export EP_REVW_TYP_TBL where
+   EP_REVIEW_TYPE = 'PIP-USF';
+export EP_ROLE_TBL where
+   SYSTEM_DATA_FLG = 'Y';
+export EP_SECTION_DEFN where
+   EP_SECTION_TYPE = 'COMPETCY' AND
+   EFFDT = %DateIn('1900-01-01');
+export EP_SECTION_DEFN where
+   EP_SECTION_TYPE = 'EMPLOYEE' AND
+   EFFDT = %DateIn('1900-01-01');
+export EP_SECTION_DEFN where
+   EP_SECTION_TYPE = 'GOALS' AND
+   EFFDT = %DateIn('1900-01-01');
+export EP_SECTION_DEFN where
+   EP_SECTION_TYPE = 'INIT' AND
+   EFFDT = %DateIn('1900-01-01');
+export EP_SECTION_DEFN where
+   EP_SECTION_TYPE = 'MANAGER' AND
+   EFFDT = %DateIn('1900-01-01');
+export EP_SECTION_DEFN where
+   EP_SECTION_TYPE = 'MISSION' AND
+   EFFDT = %DateIn('1900-01-01');
+export EP_SECTION_DEFN where
+   EP_SECTION_TYPE = 'RESP' AND
+   EFFDT = %DateIn('1900-01-01');
+export EP_SECTION_DEFN where
+   EP_SECTION_TYPE = 'SIGN' AND
+   EFFDT = %DateIn('1900-01-01');
+export EP_SECTION_DEFN where
+   EP_SECTION_TYPE = 'ESIGN' AND
+   EFFDT = %DateIn('1900-01-01');
+export EP_SECTION_DEFN where
+   EP_SECTION_TYPE = 'LEARNING' AND
+   EFFDT = %DateIn('1900-01-01');
+export EP_SECTION_DEFN where
+   EP_SECTION_TYPE = 'SUMMARY' AND
+   EFFDT = %DateIn('1900-01-01');
+export EP_SECTION_DEFN where
+   EP_SECTION_TYPE = 'CP' AND
+   EFFDT = %DateIn('1900-01-01');
+export EP_TMPL_DEFN where
+   EP_TEMPLATE_ID = 'BASIC';
+export EP_TMPL_DEFN where
+   EP_TEMPLATE_ID = 'PERF-USF';
+export EP_TMPL_DEFN where
+   EP_TEMPLATE_ID = 'PIP-USF';
+export EP_TMPL_PARTIC where
+   EP_TEMPLATE_ID = 'BASIC';
+export EP_TMPL_PARTIC where
+   EP_TEMPLATE_ID = 'PERF-USF';
+export EP_TMPL_PARTIC where
+   EP_TEMPLATE_ID = 'PIP-USF';
+export EP_TMPL_ROLE where
+   EP_TEMPLATE_ID = 'BASIC';
+export EP_TMPL_ROLE where
+   EP_TEMPLATE_ID = 'PERF-USF';
+export EP_TMPL_ROLE where
+   EP_TEMPLATE_ID = 'PIP-USF';
+export EP_TMPL_SECTION where
+   EP_TEMPLATE_ID = 'BASIC';
+export EP_TMPL_SECTION where
+   EP_TEMPLATE_ID = 'PERF-USF';
+export EP_TMPL_SECTION where
+   EP_TEMPLATE_ID = 'PIP-USF';
+export ESTID_TYPE_BRA;
+export ETHNIC_GRP_TBL where
+   SETID = 'BRA';
+export ETHNIC_GRP_TBL where
+   SETID = 'ARG';
+export ETHNIC_GRP_TBL where
+   SETID = 'MEX';
+export ETHNIC_GRP_TBL where
+   SETID = 'USA';
+export FIN_MBL_OPTION;
+export FPMACTION_TBL;
+export FPMGROSSIND0_TB;
+export FPMGROSSIND_TBL;
+export FSFB_FLTRDEFN;
+export FSFB_FLTRFLDS;
+export FSFB_FLTRSEC;
+export FS_CF_TEMPLATE;
+export FS_CF_TMPLT_IMG;
+export FS_SD_COMP;
+export FS_SD_PG;
+export FS_SD_STORE;
+export GB_PNLGRDFT_TBL where
+   SYSTEM_DATA_FLG = 'Y';
+export GB_PRE_REQ_FLD;
+export GB_REC_FIELD;
+export GPAU_FRNTYP_TBL where
+   GPAU_FRGN_TYPE = 'F';
+export GPAU_FRNTYP_TBL where
+   GPAU_FRGN_TYPE = 'J';
+export GPAU_SPT_FREQ where
+   PAYROLL_STATE_AUS = 'ACT';
+export GPAU_SPT_FREQ where
+   PAYROLL_STATE_AUS = 'NSW';
+export GPAU_SPT_FREQ where
+   PAYROLL_STATE_AUS = 'NT';
+export GPAU_SPT_FREQ where
+   PAYROLL_STATE_AUS = 'QLD';
+export GPAU_SPT_FREQ where
+   PAYROLL_STATE_AUS = 'SA';
+export GPAU_SPT_FREQ where
+   PAYROLL_STATE_AUS = 'TAS';
+export GPAU_SPT_FREQ where
+   PAYROLL_STATE_AUS = 'VIC';
+export GPAU_SPT_FREQ where
+   PAYROLL_STATE_AUS = 'WA';
+export GPAU_SPT_RT_HDR where
+   PAYROLL_STATE_AUS = 'ACT';
+export GPAU_SPT_RT_HDR where
+   PAYROLL_STATE_AUS = 'NSW';
+export GPAU_SPT_RT_HDR where
+   PAYROLL_STATE_AUS = 'NT';
+export GPAU_SPT_RT_HDR where
+   PAYROLL_STATE_AUS = 'QLD';
+export GPAU_SPT_RT_HDR where
+   PAYROLL_STATE_AUS = 'SA';
+export GPAU_SPT_RT_HDR where
+   PAYROLL_STATE_AUS = 'TAS';
+export GPAU_SPT_RT_HDR where
+   PAYROLL_STATE_AUS = 'VIC';
+export GPAU_SPT_RT_HDR where
+   PAYROLL_STATE_AUS = 'WA';
+export GPAU_SPT_SCHED where
+   PAYROLL_STATE_AUS = 'ACT';
+export GPAU_SPT_SCHED where
+   PAYROLL_STATE_AUS = 'NSW';
+export GPAU_SPT_SCHED where
+   PAYROLL_STATE_AUS = 'NT';
+export GPAU_SPT_SCHED where
+   PAYROLL_STATE_AUS = 'QLD';
+export GPAU_SPT_SCHED where
+   PAYROLL_STATE_AUS = 'SA';
+export GPAU_SPT_SCHED where
+   PAYROLL_STATE_AUS = 'TAS';
+export GPAU_SPT_SCHED where
+   PAYROLL_STATE_AUS = 'VIC';
+export GPAU_SPT_SCHED where
+   PAYROLL_STATE_AUS = 'WA';
+export GPAU_TAX_SCALES where
+   GPAU_TAX_SCALE = '1';
+export GPAU_TAX_SCALES where
+   GPAU_TAX_SCALE = '2';
+export GPAU_TAX_SCALES where
+   GPAU_TAX_SCALE = '3';
+export GPAU_TAX_SCALES where
+   GPAU_TAX_SCALE = '4N';
+export GPAU_TAX_SCALES where
+   GPAU_TAX_SCALE = '4R';
+export GPAU_TAX_SCALES where
+   GPAU_TAX_SCALE = '5';
+export GPAU_TAX_SCALES where
+   GPAU_TAX_SCALE = '6';
+export GPAU_TAX_SCALES where
+   GPAU_TAX_SCALE = '7';
+export GPAU_TAX_SCALES where
+   GPAU_TAX_SCALE = '8';
+export GPAU_TAX_SCALES where
+   GPAU_TAX_SCALE = '9';
+export GPAU_TAX_SCALES where
+   GPAU_TAX_SCALE = '10';
+export GPAU_TX_SCL_DTL where
+   GPAU_TAX_SCALE = '1';
+export GPAU_TX_SCL_DTL where
+   GPAU_TAX_SCALE = '2';
+export GPAU_TX_SCL_DTL where
+   GPAU_TAX_SCALE = '3';
+export GPAU_TX_SCL_DTL where
+   GPAU_TAX_SCALE = '4N';
+export GPAU_TX_SCL_DTL where
+   GPAU_TAX_SCALE = '4R';
+export GPAU_TX_SCL_DTL where
+   GPAU_TAX_SCALE = '5';
+export GPAU_TX_SCL_DTL where
+   GPAU_TAX_SCALE = '6';
+export GPAU_TX_SCL_DTL where
+   GPAU_TAX_SCALE = '7';
+export GPAU_TX_SCL_DTL where
+   GPAU_TAX_SCALE = '8';
+export GPAU_TX_SCL_DTL where
+   GPAU_TAX_SCALE = '9';
+export GPAU_TX_SCL_DTL where
+   GPAU_TAX_SCALE = '10';
+export GPAU_WGEA_SECTN;
+export GPCH_AL_MSG_SET;
+export GPCH_CA_STAT_S1;
+export GPCH_CA_STAT_S2;
+export GPCH_EO_DATA;
+export GPCH_EO_TBL;
+export GPCH_FM_DEF;
+export GPCH_FM_FLD;
+export GPCH_FM_FORM;
+export GPCH_FM_FORMOPT;
+export GPCH_SI_SC1_SCK;
+export GPCH_SI_SC2_SCK;
+export GPCH_SI_SCL_CD;
+export GPCH_SI_SCL_CT;
+export GPCH_SI_SYS;
+export GPCH_TX_FAK_PCT;
+export GPCH_TX_FAK_TBL;
+export GPDE_BS_DEFN;
+export GPDE_BS_DETL;
+export GPFR_DUCS_CONTS;
+export GPGB_CO_AUTHRTY;
+export GPGB_CO_EW_TBL;
+export GPGB_CO_NI_TBL;
+export GPGB_CO_SC_TBL;
+export GPHK_PSLP;
+export GPHK_PSLP_SECT;
+export GPIN_DISTRT_TBL;
+export GPIN_PR_FIELD;
+export GPIN_PR_FLD_TBL;
+export GPIN_PT_DED_PD where
+   STATE = 'AP';
+export GPIN_PT_DED_PD where
+   STATE = 'GJ';
+export GPIN_PT_DED_PD where
+   STATE = 'KA';
+export GPIN_PT_DED_PD where
+   STATE = 'KL';
+export GPIN_PT_DED_PD where
+   STATE = 'MH';
+export GPIN_PT_DED_PD where
+   STATE = 'MP';
+export GPIN_PT_DED_PD where
+   STATE = 'OR';
+export GPIN_PT_DED_PD where
+   STATE = 'TN';
+export GPIN_PT_DED_PD where
+   STATE = 'WB';
+export GPIN_PT_DIS_EXM where
+   STATE = 'AP';
+export GPIN_PT_DIS_EXM where
+   STATE = 'GJ';
+export GPIN_PT_DIS_EXM where
+   STATE = 'KA';
+export GPIN_PT_DIS_EXM where
+   STATE = 'KL';
+export GPIN_PT_DIS_EXM where
+   STATE = 'MH';
+export GPIN_PT_DIS_EXM where
+   STATE = 'MP';
+export GPIN_PT_DIS_EXM where
+   STATE = 'OR';
+export GPIN_PT_DIS_EXM where
+   STATE = 'TN';
+export GPIN_PT_DIS_EXM where
+   STATE = 'WB';
+export GPIN_PT_SLABS where
+   STATE = 'AP';
+export GPIN_PT_SLABS where
+   STATE = 'GJ';
+export GPIN_PT_SLABS where
+   STATE = 'KA';
+export GPIN_PT_SLABS where
+   STATE = 'KL';
+export GPIN_PT_SLABS where
+   STATE = 'MH';
+export GPIN_PT_SLABS where
+   STATE = 'MP';
+export GPIN_PT_SLABS where
+   STATE = 'OR';
+export GPIN_PT_SLABS where
+   STATE = 'TN';
+export GPIN_PT_SLABS where
+   STATE = 'WB';
+export GPIN_PT_SLABS_A where
+   STATE = 'AP';
+export GPIN_PT_SLABS_A where
+   STATE = 'GJ';
+export GPIN_PT_SLABS_A where
+   STATE = 'KA';
+export GPIN_PT_SLABS_A where
+   STATE = 'KL';
+export GPIN_PT_SLABS_A where
+   STATE = 'MH';
+export GPIN_PT_SLABS_A where
+   STATE = 'MP';
+export GPIN_PT_SLABS_A where
+   STATE = 'OR';
+export GPIN_PT_SLABS_A where
+   STATE = 'TN';
+export GPIN_PT_SLABS_A where
+   STATE = 'WB';
+export GPIN_PT_TBL where
+   STATE = 'AP';
+export GPIN_PT_TBL where
+   STATE = 'GJ';
+export GPIN_PT_TBL where
+   STATE = 'KA';
+export GPIN_PT_TBL where
+   STATE = 'KL';
+export GPIN_PT_TBL where
+   STATE = 'MH';
+export GPIN_PT_TBL where
+   STATE = 'MP';
+export GPIN_PT_TBL where
+   STATE = 'OR';
+export GPIN_PT_TBL where
+   STATE = 'TN';
+export GPIN_PT_TBL where
+   STATE = 'WB';
+export GPJP_IT_KOU_BON;
+export GPJP_IT_OTS_SAL;
+export GPJP_PP_EFFDT;
+export GPJP_PP_TMPL;
+export GPMX_COMP where
+   COUNTRY = 'MEX';
+export GPMX_COMP_VARS where
+   COUNTRY = 'MEX';
+export GPMX_ELEM_MAP where
+   COUNTRY = 'MEX';
+export GPMX_ELEM_MAP_D where
+   COUNTRY = 'MEX';
+export GPMY_PR_FLD_TBL;
+export GPMY_PR_SETUP;
+export GPMY_TAX_RANGE;
+export GPMY_TAX_SCALE;
+export GPNL_INS_PREMM;
+export GPNZ_WT_RATE;
+export GPSG_CPF_RATES;
+export GPSG_CPF_RT_AGE;
+export GPSG_CPF_RT_HDR;
+export GPS_ADP_ACT_TBL;
+export GPS_CAR_MAP_DTL;
+export GPS_WFS_MAP_DTL;
+export GPS_WFS_MAP_VLD;
+export GPS_WFS_MET_MAP;
+export GPTH_HOSP_TBL;
+export GPTH_NATION_TBL;
+export GPTH_SPO_IND;
+export GPUS_AZWHLD_PCT;
+export GPUS_RPT_SETUP;
+export GPUS_TAX_ST_ALL;
+export GPUS_TAX_ST_BRK;
+export GPUS_TAX_ST_CRD;
+export GPUS_TAX_ST_DED;
+export GPUS_TAX_ST_TBL;
+export GPUS_YE_PRT_BOX;
+export GPUS_YE_PRT_FRM;
+export GPUS_YE_TXBOX;
+export GPUS_YE_TXFRM;
+export GP_ABS_ENTL where
+   PIN_NUM < 2001;
+export GP_ABS_TAKE where
+   PIN_NUM < 2001;
+export GP_ABS_TAKE_CFG where
+   PIN_NUM < 2001;
+export GP_ABS_TAKE_DAY where
+   PIN_NUM < 2001;
+export GP_ABS_TAKE_ELM where
+   PIN_NUM < 2001;
+export GP_ABS_TAKE_ENT where
+   PIN_NUM < 2001;
+export GP_ABS_TK_FCST where
+   PIN_NUM < 2001;
+export GP_ACCUMULATOR where
+   PIN_NUM < 2001;
+export GP_ACM_MBR where
+   PIN_NUM < 2001;
+export GP_APP_PKG_DEFN;
+export GP_ARRAY where
+   PIN_NUM < 2001;
+export GP_ARRAY_FLD where
+   PIN_NUM < 2001;
+export GP_ARRAY_KEY where
+   PIN_NUM < 2001;
+export GP_ARRAY_PRC where
+   PIN_NUM < 2001;
+export GP_AUTOGEN_DFLT where
+   PIN_NUM < 2001;
+export GP_BRACKET where
+   PIN_NUM < 2001;
+export GP_BRACKET_DTL where
+   PIN_NUM < 2001;
+export GP_COUNT where
+   PIN_NUM < 2001;
+export GP_COUNTRY where
+   COUNTRY = 'ALL';
+export GP_DATE where
+   PIN_NUM < 2001;
+export GP_DURATION where
+   PIN_NUM < 2001;
+export GP_DUR_GNRN where
+   PIN_NUM < 2001;
+export GP_ED_SETUP where
+   COUNTRY = 'ALL';
+export GP_ED_SETUP_CAT where
+   COUNTRY = 'ALL';
+export GP_ED_SET_DTL where
+   COUNTRY = 'ALL';
+export GP_ED_SET_DTL_C where
+   COUNTRY = 'ALL';
+export GP_ELEM_GRP where
+   PIN_NUM < 2001;
+export GP_ELEM_GRP_MBR where
+   PIN_NUM < 2001;
+export GP_ELM_DFN_SOVR where
+   PIN_NUM < 2001;
+export GP_ELN_APP where
+   COUNTRY = 'ALL' AND
+   DATA_TYPE_CD = 'Y';
+export GP_ELN_ATTR_LST where
+   COUNTRY = 'ALL' AND
+   DATA_TYPE_CD = 'Y';
+export GP_ELN_ATTR_PIN where
+   COUNTRY = 'ALL' AND
+   DATA_TYPE_CD = 'Y';
+export GP_ELN_ATTR_SET where
+   COUNTRY = 'ALL' AND
+   DATA_TYPE_CD = 'Y';
+export GP_ELN_LIST_LST where
+   COUNTRY = 'ALL' AND
+   DATA_TYPE_CD = 'Y';
+export GP_ELN_LIST_PIN where
+   COUNTRY = 'ALL' AND
+   DATA_TYPE_CD = 'Y';
+export GP_ELN_LIST_SET where
+   COUNTRY = 'ALL' AND
+   DATA_TYPE_CD = 'Y';
+export GP_ELN_PIN_ATTR where
+   COUNTRY = 'ALL' AND
+   DATA_TYPE_CD = 'Y';
+export GP_ELN_SET where
+   COUNTRY = 'ALL' AND
+   DATA_TYPE_CD = 'Y';
+export GP_ELN_SET_ATTR where
+   COUNTRY = 'ALL' AND
+   DATA_TYPE_CD = 'Y';
+export GP_ELN_SET_LST where
+   COUNTRY = 'ALL' AND
+   DATA_TYPE_CD = 'Y';
+export GP_ENTRY_PRMPT1 where
+   ENTRY_PRMPT_ID > 'GP_ENT';
+export GP_ENTRY_PRMPT1 where
+   ENTRY_PRMPT_ID = 'GPIN_ENT_PT1_VW';
+export GP_ENTRY_PRMPT2 where
+   ENTRY_PRMPT_ID > 'GP_ENT';
+export GP_ENTRY_PRMPT2 where
+   ENTRY_PRMPT_ID = 'GPIN_ENT_PT1_VW';
+export GP_ENTRY_TYPE;
+export GP_ERN_DED where
+   PIN_NUM < 2001;
+export GP_FC_IN where
+   PIN_NUM < 2001;
+export GP_FC_OUT where
+   PIN_NUM < 2001;
+export GP_FC_OUT_DTL where
+   PIN_NUM < 2001;
+export GP_FC_SEG where
+   PIN_NUM < 2001;
+export GP_FC_TBL where
+   PIN_NUM < 2001;
+export GP_FORMULA where
+   PIN_NUM < 2001;
+export GP_FORMULA_CLUE where
+   PIN_NUM < 2001;
+export GP_FORMULA_DTL where
+   PIN_NUM < 2001;
+export GP_FORMULA_VAR where
+   PIN_NUM < 2001;
+export GP_GCTL where
+   PIN_NUM < 2001;
+export GP_GCTL_DTL where
+   PIN_NUM < 2001;
+export GP_GCTL_FREQ where
+   FREQUENCY_TAG = '1ST MONTH';
+export GP_GCTL_FREQ where
+   FREQUENCY_TAG = 'ANNUAL';
+export GP_GCTL_FREQ where
+   FREQUENCY_TAG = 'JANUARY';
+export GP_GCTL_FREQ where
+   FREQUENCY_TAG = 'QUARTER';
+export GP_GENRPT_BKLVL where
+   GP_GENRPT_BRK_LVL not like 'GX%';
+export GP_GENRPT_PIN where
+   GP_GENRPT_ID not like 'GX%';
+export GP_GENRPT_ROW where
+   GP_GENRPT_ID not like 'GX%';
+export GP_GENRPT_TBL where
+   GP_GENRPT_ID not like 'GX%';
+export GP_HIST_ELEM where
+   PIN_NUM < 2001;
+export GP_HIST_RULE where
+   PIN_NUM < 2001;
+export GP_OPR_RULE_PRF where
+   OPRID = 'PS';
+export GP_OPR_RULE_PRF where
+   OPRID = 'HGP';
+export GP_PIN where
+   PIN_NUM < 2001;
+export GP_PIN_CATEGORY where
+   COUNTRY = 'ALL';
+export GP_PIN_CMPNT where
+   PIN_NUM < 2001;
+export GP_PIN_INDUSTRY where
+   COUNTRY = 'ALL';
+export GP_PIN_TYPE;
+export GP_PRINT_PARAM where
+   DATA_TYPE_CD = 'Y' AND
+   COUNTRY = 'ALL' AND
+   PIN_NUM < 2001;
+export GP_PROCESS where
+   PIN_NUM < 2001;
+export GP_PROCESS_DTL where
+   PIN_NUM < 2001;
+export GP_PRORATION where
+   PIN_NUM < 2001;
+export GP_PSLP_ASGN where
+   GP_CNTRY_PSLP_ASGN = 'ALL';
+export GP_PSLP_ASGN_DL where
+   GP_CNTRY_PSLP_ASET = 'ALL';
+export GP_PSLP_ASGN_PM where
+   GP_CNTRY_PSLP_ASGN = 'ALL';
+export GP_PSLP_ASGN_ST where
+   GP_CNTRY_PSLP_ASET = 'ALL';
+export GP_PSLP_ID_FMT;
+export GP_PSLP_MSG where
+   GP_CNTRY_PSLP_MSG = 'ALL';
+export GP_PSLP_SCT where
+   GP_CNTRY_PSLP_SCT = 'ALL';
+export GP_PSLP_SORT where
+   GP_CNTRY_PSLP_SORT = 'ALL';
+export GP_PSLP_TMPL where
+   GP_CNTRY_PSLP_TMPL = 'ALL';
+export GP_PSLP_TMPLBLK where
+   GP_CNTRY_PSLP_TMPL = 'ALL';
+export GP_PSLP_TMPLDTL where
+   GP_CNTRY_PSLP_TMPL = 'ALL';
+export GP_PSLP_TMPLSCT where
+   GP_CNTRY_PSLP_TMPL = 'ALL';
+export GP_RATE_CODE where
+   PIN_NUM < 2001;
+export GP_ROUND_RULE where
+   PIN_NUM < 2001;
+export GP_RPT_ADD where
+   COUNTRY = 'ALL' AND
+   DATA_TYPE_CD = 'Y';
+export GP_RPT_DTL where
+   COUNTRY = 'ALL' AND
+   DATA_TYPE_CD = 'Y';
+export GP_RPT_FILTER where
+   COUNTRY = 'ALL' AND
+   DATA_TYPE_CD = 'Y';
+export GP_RPT_FLD where
+   COUNTRY = 'ALL' AND
+   DATA_TYPE_CD = 'Y';
+export GP_RPT_KEY where
+   COUNTRY = 'ALL' AND
+   DATA_TYPE_CD = 'Y';
+export GP_RPT_TBL where
+   COUNTRY = 'ALL' AND
+   DATA_TYPE_CD = 'Y';
+export GP_RSLT_ADM_DTL where
+   COUNTRY = 'ALL';
+export GP_RSLT_ADM_ROL where
+   COUNTRY = 'ALL';
+export GP_RSLT_ADM_SET where
+   COUNTRY = 'ALL';
+export GP_RTO_OVR_SET where
+   COUNTRY <> 'CYM' AND
+   COUNTRY not like 'GX%';
+export GP_RUN_TYPE;
+export GP_RUN_TYPE_DTL;
+export GP_SECTION where
+   PIN_NUM < 2001;
+export GP_SECTION_DTL where
+   PIN_NUM < 2001;
+export GP_SEG_EVT;
+export GP_SEG_EVT_DTL;
+export GP_SQL_DTLS;
+export GP_SQL_HDR;
+export GP_SQL_HDR_LNG where 1=0;
+export GP_SS_NPD_CONF;
+export GP_SUFFIX where
+   COUNTRY = 'ALL';
+export GP_SUMM_PG_DSP;
+export GP_SYSTEM_PIN where
+   PIN_NUM < 2001;
+export GP_TRGR_REC;
+export GP_TRGR_RECFLD;
+export GP_TRGR_VALUE;
+export GP_VARIABLE where
+   PIN_NUM < 2001;
+export GP_WA_ARRAY where
+   PIN_NUM < 2001;
+export GP_WA_FLD where
+   PIN_NUM < 2001;
+export GP_WC_ACT_DTL where
+   COUNTRY = 'ALL';
+export GP_WC_CNTRY_ACT where
+   COUNTRY = 'ALL';
+export GROUP_2483_FRA;
+export GROUP_SHEET_FRA;
+export GVT_AUTH_VAL_1;
+export GVT_GEOLOC_TBL;
+export GVT_LEGAL_AUTH;
+export GVT_LOCAREA_TBL;
+export GVT_NOAC_TBL;
+export GVT_OCCUPATION;
+export GVT_SF50_RK_TBL;
+export GVT_SUBAGCY_TBL;
+export HCDL_TXN;
+export HCDL_TXN_HDR;
+export HCMD_BASE_TBL;
+export HCMD_FORM_TBL;
+export HCMD_FPAR_TBL;
+export HCMD_MDIS_TBL;
+export HCMD_OBJS_TBL;
+export HCMD_ORAT_TBL;
+export HCMD_OREL_TBL;
+export HCMD_SEQ_TBL;
+export HCMD_XATT_TBL;
+export HCMD_XMET_TBL;
+export HCM_EO_TXN;
+export HCR_SM_CRIT_TBL where
+   SM_RULE_CD like 'PS%';
+export HCR_SM_ORDR_TBL where
+   SM_PARM_CD like 'PS%';
+export HCR_SM_PARM_CHG where
+   SM_PARM_CD like 'PS%';
+export HCR_SM_PARM_TBL where
+   SM_PARM_CD like 'PS%';
+export HCR_SM_PROP_TBL;
+export HCR_SM_PRST_TBL where
+   SM_PARM_CD like 'PS%';
+export HCR_SM_PSEC_TBL where
+   SM_PARM_CD like 'PS%';
+export HCR_SM_RDTL_PG where
+   SM_RSLT_CD like 'PS%';
+export HCR_SM_RRST_TBL where
+   SM_RSLT_CD like 'PS%';
+export HCR_SM_RSEC_TBL where
+   SM_RSLT_CD like 'PS%';
+export HCR_SM_RSLT_CRT where
+   SM_RSLT_CD like 'PS%';
+export HCR_SM_RSLT_EXC where
+   SM_RSLT_CD like 'PS%';
+export HCR_SM_RSLT_TBL where
+   SM_RSLT_CD like 'PS%';
+export HCR_SM_RULE_TBL where
+   SM_RULE_CD like 'PS%';
+export HCSC_ANN_ROLE;
+export HCSC_APPCLS_REG;
+export HCSC_APPCLS_USE;
+export HCSC_NOTIF_PGLT;
+export HCSC_RCPNT_LOOK;
+export HCSC_RCPNT_ROLE;
+export HCSC_RECIPIENT;
+export HCSC_SS_RPT_CON;
+export HCSC_SS_RPT_CTL;
+export HCSC_SS_RPT_FLT;
+export HCSC_SS_RPT_FVL;
+export HCSC_SS_RPT_FVT;
+export HCSC_SS_RPT_GRP;
+export HCSC_SS_RPT_TLS;
+export HCSC_TAB_PAGE;
+export HCSC_TAB_SET;
+export HCSC_TAB_SUBTAB;
+export HCTS_PERF_RATE;
+export HCTS_PTNTL_RATE;
+export HCTS_RATE_MODEL;
+export HCTS_SETUP_COL1;
+export HCTS_SETUP_COL2;
+export HCTS_SETUP_EVAL;
+export HP_DED_ACC_RULE where
+   EFFDT = %DateIn('1900-01-01');
+export HP_DED_ACC_TMPL where
+   EFFDT = %DateIn('1900-01-01');
+export HP_ERN_ACC_RULE where
+   EFFDT = %DateIn('1900-01-01');
+export HP_ERN_ACC_TMPL where
+   EFFDT = %DateIn('1900-01-01');
+export HP_STATS_SUBJ;
+export HRCD_FLDMAP_ORG;
+export HRCD_SETUP_CNTC where
+   SYSTEM_DATA_FLG = 'Y';
+export HRCD_SETUP_FLDR;
+export HRCD_SETUP_NDAT;
+export HRCD_SETUP_PRCD;
+export HRCD_SETUP_PRCN;
+export HRCD_SETUP_TBL;
+export HRS_ACTYPE;
+export HRS_APPCLASS;
+export HRS_ATCH_SETUP;
+export HRS_ATT_TYP_TBL where
+   ATTACH_TYPE_CD < '1000';
+export HRS_CNTCT_METHD where
+   HRS_CNTCT_MTHD_ID < 1000;
+export HRS_CRSPTMP_VAR;
+export HRS_DM_CAT where
+   HRS_DM_CAT_ID < 1000;
+export HRS_G_OCC_SF;
+export HRS_INT_CTG_TBL where
+   DATA_TYPE_CD = 'Y';
+export HRS_INT_EVL_CTG where
+   HRS_INTVW_EVL_ID >= '1000';
+export HRS_INT_EVL_DFN where
+   HRS_INTVW_EVL_ID = '1000';
+export HRS_INT_EVL_RMD where
+   HRS_INTVW_EVL_ID = '1000';
+export HRS_INT_EVL_RSN where
+   HRS_INTVW_EVL_ID >= '1000';
+export HRS_INT_EVL_RTG where
+   HRS_INTVW_EVL_ID = '1000';
+export HRS_INT_LVL_TBL where
+   DATA_TYPE_CD = 'Y';
+export HRS_INT_RTG_TBL where
+   DATA_TYPE_CD = 'Y';
+export HRS_JOBCAT_TBL;
+export HRS_JO_DSC_TYP where
+   DATA_TYPE_CD = 'Y';
+export HRS_JO_PST_SCTN where
+   HRS_PST_TMPL_ID >= 1000 AND
+   HRS_PST_TMPL_ID <= 1002;
+export HRS_JO_PST_TMPL where
+   HRS_PST_TMPL_ID >= 1000 AND
+   HRS_PST_TMPL_ID <= 1002;
+export HRS_JO_TMPL where
+   HRS_JO_TMPL_ID >= 1000 AND
+   HRS_JO_TMPL_ID < 1100;
+export HRS_JO_TMPL_PG where
+   HRS_JO_TMPL_ID >= 1000 AND
+   HRS_JO_TMPL_ID < 1100;
+export HRS_JO_TMPL_SCT where
+   HRS_JO_TMPL_ID >= 1000 AND
+   HRS_JO_TMPL_ID < 1100;
+export HRS_MNG_HIR_STP;
+export HRS_ROLE_DEFN;
+export HRS_SCREEN_TBL where
+   HRS_SCREENING_ID <= 2;
+export HRS_SCREEN_TBL where
+   HRS_SCREENING_ID >= 1000 AND
+   HRS_SCREENING_ID < 1100;
+export HRS_SCR_TMPL where
+   HRS_SCR_TMPL_ID >= 1000 AND
+   HRS_SCR_TMPL_ID < 1100;
+export HRS_SCT_CFG;
+export HRS_SITE_ID where
+   HRS_SITE_ID = 1;
+export HRS_SOURCE where
+   HRS_SOURCE_ID = 1;
+export HRS_STSRSN_TBL;
+export HRS_STS_CHG_TBL;
+export HRS_STS_EFF_TBL;
+export HRS_STS_SCC_TBL;
+export HRS_SUBSOURCE where
+   HRS_SOURCE_ID = 0;
+export HRS_TGROUP where
+   HRS_TG_ID < 1000;
+export HRS_TG_SERVICE where
+   HRS_TG_ID < 1000;
+export HR_ACTN_DEF_NLD where
+   DATA_TYPE_CD = 'Y';
+export HR_DR_UI_CFG;
+export HR_MO_COMPONENT;
+export HR_MO_OWN_TBL;
+export HR_MO_TBL;
+export HR_MSS_CT_CFG;
+export HR_MSS_CT_FLDS;
+export HR_MSS_CT_SEQ;
+export HR_NP_CFG_KEYS;
+export HR_PRCS_VAL_BEL;
+export HR_PSS_CONFIG;
+export HR_TBH_RECDEFN;
+export HR_TBH_RECDTL;
+export HR_TBH_SECDEFN;
+export HR_VT_DISP_OPTN;
+export HR_VT_SRCHSETUP;
+export HR_WF_STATUS where
+   SYSTEM_DATA_FLG = 'Y';
+export INDIC_2483_FRA;
+export INPS_SITE_ITA;
+export INSEE_TBL_FRA where
+   EFFDT = %DateIn('2004-01-01');
+export JOBFUNCTION_TBL;
+export JPM_CAT_ITEMS where
+   JPM_CAT_TYPE = 'LOCATION';
+export JPM_CAT_ITEMS where
+   JPM_CAT_TYPE = 'LOCATN_PREF';
+export JPM_CAT_ITEMS where
+   JPM_CAT_TYPE = 'TRAVEL';
+export JPM_CAT_ITEMS where
+   JPM_CAT_TYPE = 'DEG';
+export JPM_CAT_ITEMS where
+   JPM_CAT_TYPE = 'INTL_PREF';
+export JPM_CAT_ITEMS where
+   JPM_CAT_TYPE = 'GEOG_PREF';
+export JPM_JP_ACTIONS;
+export JPM_JP_PROPS where
+   SYSTEM_DATA_FLG = 'Y';
+export JPM_JP_ROLES where
+   JPM_JP_TYPE = 'PERSON';
+export JPM_JP_ROLES where
+   JPM_JP_TYPE = 'ROLE';
+export JPM_JP_ROLES where
+   JPM_JP_TYPE = 'CLUSTER';
+export JPM_JP_ROLES where
+   JPM_JP_TYPE = 'JOB';
+export JPM_JP_SECTION where
+   SYSTEM_DATA_FLG = 'Y';
+export JPM_JP_TAB where
+   SYSTEM_DATA_FLG = 'Y';
+export JPM_RLAT_CFG where
+   SYSTEM_DATA_FLG = 'Y';
+export JPM_RLAT_SEL where
+   SYSTEM_DATA_FLG = 'Y';
+export JPM_SRCH_PROPS where
+   SYSTEM_DATA_FLG = 'Y';
+export LCLWK_TXRCP_TBL;
+export LMS_CAT_TBL;
+export LMS_PRIORITY;
+export LOCTX_RECIP_TBL;
+export NAME_PREFIX_TBL;
+export NATIONS_DUEVO;
+export NID_TYPE_TBL;
+export NM_ROYPREF_TBL;
+export NM_ROYSUFF_TBL;
+export PAY_FORM_TBL where
+   FORM_ID = '******';
+export PA_ACTIVE_JOB where
+   ACTIVE_DEFINITION not like 'R%';
+export PA_ACT_JOBLIST where
+   ACTIVE_DEFINITION not like 'R%';
+export PA_AUDIT;
+export PA_CPI_PCT_TBL;
+export PA_DFN_FORM_CD;
+export PA_DLAY_CRD_PCT;
+export PA_HR_ACT where
+   CATEGORY not like 'R%';
+export PA_HR_ACTION where
+   CATEGORY not like 'R%';
+export PA_HR_ACT_EFFDT where
+   CATEGORY not like 'R%';
+export PA_MORT_RATES where
+   MORT_TABLE_NAME = 'GA71F';
+export PA_MORT_RATES where
+   MORT_TABLE_NAME = 'GA71M';
+export PA_MORT_RATES where
+   MORT_TABLE_NAME = 'GA83F';
+export PA_MORT_RATES where
+   MORT_TABLE_NAME = 'GA83M';
+export PA_MORT_RATES where
+   MORT_TABLE_NAME = 'GATT-GAM83';
+export PA_MORT_RATES where
+   MORT_TABLE_NAME = 'UP1984';
+export PA_MORT_RATES where
+   MORT_TABLE_NAME = 'GAR94';
+export PA_MORT_RATES where
+   MORT_TABLE_NAME = 'PPAMORT';
+export PA_MORT_TABLES where
+   MORT_TABLE_NAME = 'GA71F';
+export PA_MORT_TABLES where
+   MORT_TABLE_NAME = 'GA71M';
+export PA_MORT_TABLES where
+   MORT_TABLE_NAME = 'GA83F';
+export PA_MORT_TABLES where
+   MORT_TABLE_NAME = 'GA83M';
+export PA_MORT_TABLES where
+   MORT_TABLE_NAME = 'GATT-GAM83';
+export PA_MORT_TABLES where
+   MORT_TABLE_NAME = 'UP1984';
+export PA_MORT_TABLES where
+   MORT_TABLE_NAME = 'GAR94';
+export PA_MORT_TABLES where
+   MORT_TABLE_NAME = 'PPAMORT';
+export PA_PEN_VAL_MTX;
+export PA_SEG_RATE_TBL;
+export PA_SP_STATUS;
+export PA_SP_STAT_MAP;
+export PA_SP_TYPE_DEFN where
+   SVC_PURCHASE_TYPE = 'WDC';
+export PA_SSV_DEFAULTS;
+export PA_SS_DROP_TBL;
+export PA_TL_120AFR_TB;
+export PA_TL_30YR_TBIL;
+export PA_TL_415_LIMDC;
+export PA_TL_415_LIMIT;
+export PA_TL_MAX_WAGE;
+export PA_TL_OBRA93_TB;
+export PA_TL_PBGC_TBL;
+export PA_TL_TRA86_TBL;
+export PA_TWB_AMT_TBL;
+export PA_USAW_AMT_TBL;
+export PA_VALID_NUMS;
+export PI_PROCESS_TBL;
+export PI_PROCESS_VAL;
+export PKG_FBT_INT_TBL where
+   COUNTRY = 'AUS';
+export POP_CTG_FRA_TBL where
+   POPULATION_CTG_FRA = '100';
+export POP_CTG_FRA_TBL where
+   POPULATION_CTG_FRA = '200';
+export POP_CTG_FRA_TBL where
+   POPULATION_CTG_FRA = '261';
+export POP_CTG_FRA_TBL where
+   POPULATION_CTG_FRA = '270';
+export POP_CTG_FRA_TBL where
+   POPULATION_CTG_FRA = '271';
+export POP_CTG_FRA_TBL where
+   POPULATION_CTG_FRA = '272';
+export POP_CTG_FRA_TBL where
+   POPULATION_CTG_FRA = '280';
+export POP_CTG_FRA_TBL where
+   POPULATION_CTG_FRA = '281';
+export POP_CTG_FRA_TBL where
+   POPULATION_CTG_FRA = '282';
+export POP_CTG_FRA_TBL where
+   POPULATION_CTG_FRA = '300';
+export POP_CTG_FRA_TBL where
+   POPULATION_CTG_FRA = '311';
+export POP_CTG_FRA_TBL where
+   POPULATION_CTG_FRA = '330';
+export POP_CTG_FRA_TBL where
+   POPULATION_CTG_FRA = '331';
+export POP_CTG_FRA_TBL where
+   POPULATION_CTG_FRA = '332';
+export POP_CTG_FRA_TBL where
+   POPULATION_CTG_FRA = '333';
+export POP_CTG_FRA_TBL where
+   POPULATION_CTG_FRA = '334';
+export POP_CTG_FRA_TBL where
+   POPULATION_CTG_FRA = '339';
+export POP_CTG_FRA_TBL where
+   POPULATION_CTG_FRA = '400';
+export POP_CTG_FRA_TBL where
+   POPULATION_CTG_FRA = '410';
+export POP_CTG_FRA_TBL where
+   POPULATION_CTG_FRA = '430';
+export POP_CTG_FRA_TBL where
+   POPULATION_CTG_FRA = '450';
+export POP_CTG_FRA_TBL where
+   POPULATION_CTG_FRA = '500';
+export POP_CTG_FRA_TBL where
+   POPULATION_CTG_FRA = '900';
+export POP_CTG_FRA_TBL where
+   POPULATION_CTG_FRA = '999';
+export PRF_STS_FRA_TBL;
+export PY_SSP_OPTN_HDR;
+export RATECD_CLS_TBL where
+   RATE_CODE_CLASS = 'DFRPAY';
+export RATECD_CLS_TBL where
+   RATE_CODE_CLASS = 'SENPAY';
+export RATECD_CLS_TBL where
+   RATE_CODE_CLASS = 'REGBON';
+export RATECD_CLS_TBL where
+   RATE_CODE_CLASS = 'BASSAL';
+export RATING_MDL_TBL where
+   RATING_MODEL = 'PSCM';
+export RATING_MDL_TBL where
+   RATING_MODEL = 'INT';
+export RATING_MDL_TBL where
+   RATING_MODEL = 'NVQ';
+export RATING_MDL_TBL where
+   RATING_MODEL = 'LANG' AND
+   EFFDT = %DateIn('1900-01-01');
+export REG_REGION_TBL where
+   REG_REGION = 'AUS';
+export REG_REGION_TBL where
+   REG_REGION = 'ARG';
+export REG_REGION_TBL where
+   REG_REGION = 'BEL';
+export REG_REGION_TBL where
+   REG_REGION = 'BRA';
+export REG_REGION_TBL where
+   REG_REGION = 'CAN';
+export REG_REGION_TBL where
+   REG_REGION = 'CANAB';
+export REG_REGION_TBL where
+   REG_REGION = 'CANBC';
+export REG_REGION_TBL where
+   REG_REGION = 'CANMB';
+export REG_REGION_TBL where
+   REG_REGION = 'CANNB';
+export REG_REGION_TBL where
+   REG_REGION = 'CANNF';
+export REG_REGION_TBL where
+   REG_REGION = 'CANNS';
+export REG_REGION_TBL where
+   REG_REGION = 'CANON';
+export REG_REGION_TBL where
+   REG_REGION = 'CANPE';
+export REG_REGION_TBL where
+   REG_REGION = 'CANQC';
+export REG_REGION_TBL where
+   REG_REGION = 'CANSK';
+export REG_REGION_TBL where
+   REG_REGION = 'CHE';
+export REG_REGION_TBL where
+   REG_REGION = 'DEU';
+export REG_REGION_TBL where
+   REG_REGION = 'ESP';
+export REG_REGION_TBL where
+   REG_REGION = 'FRA';
+export REG_REGION_TBL where
+   REG_REGION = 'GBR';
+export REG_REGION_TBL where
+   REG_REGION = 'HKG';
+export REG_REGION_TBL where
+   REG_REGION = 'IND';
+export REG_REGION_TBL where
+   REG_REGION = 'ITA';
+export REG_REGION_TBL where
+   REG_REGION = 'JPN';
+export REG_REGION_TBL where
+   REG_REGION = 'MEX';
+export REG_REGION_TBL where
+   REG_REGION = 'MYS';
+export REG_REGION_TBL where
+   REG_REGION = 'NLD';
+export REG_REGION_TBL where
+   REG_REGION = 'NZL';
+export REG_REGION_TBL where
+   REG_REGION = 'SGP';
+export REG_REGION_TBL where
+   REG_REGION = 'USA';
+export REG_REGION_TBL where
+   COUNTRY = 'CHN';
+export REG_TRX_TBL where
+   REG_TRX = 'HANDS';
+export REG_TRX_TBL where
+   REG_TRX = 'STANDARD';
+export REMIT_STATE_TBL;
+export REVW_SCALE_TBL;
+export SCHOOL_TYPE_TBL;
+export SCRTY_TBL_GBL where
+   OPRCLASS = 'HCPPALL';
+export SOCS_DATA_ESP;
+export SOC_SEC_RSK_TBL;
+export SP_BUD_TYPE_TBL;
+export SS_ADM_RULESTP where
+   SYSTEM_DATA_FLG = 'Y';
+export SS_BIND_GRP where
+   SYSTEM_DATA_FLG = 'Y';
+export SS_BP_COMPS where
+   SYSTEM_DATA_FLG = 'Y';
+export SS_EMAIL_TEXT where
+   SYSTEM_DATA_FLG = 'Y';
+export SS_KEYFIELDS;
+export SS_PAGE_BUFFER where
+   SYSTEM_DATA_FLG = 'Y';
+export SS_PAGE_TEXT where
+   SYSTEM_DATA_FLG = 'Y';
+export SS_PROC_RULES where
+   SYSTEM_DATA_FLG = 'Y';
+export SS_SECTION_VSBL where
+   SYSTEM_DATA_FLG = 'Y';
+export SS_TRANS_CI_DTL;
+export SS_TRANS_NBR where
+   TRANSACTION_NAME = 'EP_APPRAISAL';
+export SS_TRANS_NBR where
+   TRANSACTION_NAME = 'HR_SALCHANGE';
+export SS_TRANS_NBR where
+   TRANSACTION_NAME = 'HR_TRAIN_ENROLL';
+export SS_TRANS_NBR where
+   TRANSACTION_NAME = 'HR_TRAIN_ENROLL_MGR';
+export SS_TRANS_NBR where
+   TRANSACTION_NAME = 'HR_REPORT_CHG';
+export STANDRD_LTR_TBL;
+export STATE_ADDL_A;
+export STATE_ADDL_B;
+export STATE_ADDL_D;
+export STATE_ADDL_E;
+export STATE_NRA_ADJ;
+export STATE_TAXRT_TBL;
+export STATE_TAX_TBL;
+export STOCK_ACTN_TBL;
+export STTAX_RECIP_TBL;
+export ST_ACTN_RSN_TBL;
+export ST_ESPP_MSG_TBL;
+export ST_OTH_TAX_TBL;
+export SWT_MARSTAT_TBL;
+export TARIFF_AREA_GER where
+   TARIFF_GER = '01';
+export TAXGR_BASE_TBL;
+export TAXGR_CMPNT_TBL;
+export TAXGR_DEFN_TBL;
+export TC_COMPID_MAPS;
+export TC_COMP_DEFN;
+export TC_COMP_SOURCE;
+export TC_PLAN;
+export TL_APP_ITEM;
+export TL_APP_SUITE;
+export TL_APP_SUITEDTL;
+export TL_CALENDAR where
+   PERIOD_ID like 'PS%';
+export TL_DATES_TBL;
+export TL_EXCEPT_DEFN where
+   EXCEPTION_ID like 'TLX%';
+export TL_INSTL_PUNCH;
+export TL_MSS_INST_CNK;
+export TL_MSS_INST_DFT;
+export TL_RECFIELD_TBL;
+export TL_REC_ONLY_ADJ;
+export TL_RLTNSHP_DEFN;
+export TL_START_MENU;
+export TL_TASKELE_TBL;
+export TL_WORK_TABLES;
+export TRN_ALL_COST where
+   COURSE = 'NA1' AND
+   EFFDT = %DateIn('1900-01-01');
+export TRN_ALL_COURSE where
+   COURSE = 'NA1' AND
+   INC_COURSE_CD = 1;
+export TRN_CATALOG_TBL where
+   CATEGORY_CD = 'UNKNOWN' AND
+   SUB_CATEGORY_CD = 'UNKNOWN' AND
+   COURSE = 'NA1';
+export TRN_CAT_TBL where
+   CATEGORY_CD = 'UNKNOWN';
+export TRN_CST_ELEMENT where
+   COURSE = 'NA1' AND
+   EFFDT = %DateIn('1900-01-01');
+export TRN_IMAGE_LINK;
+export TRN_IMAGE_LNK2;
+export TRN_SUBCAT_TBL where
+   CATEGORY_CD = 'UNKNOWN' AND
+   SUB_CATEGORY_CD = 'UNKNOWN';
+export TRN_VENDOR_TBL;
+export TRV_ACTRSN_ITA;
+export TRW_DATASRC_EXF;
+export TRW_DATASRC_EXT;
+export TRW_DATASRC_RIC;
+export TRW_DATASRC_RIF;
+export TRW_DATASRC_RIO;
+export TRW_DATASRC_TBL;
+export TRW_DSRC_RIO_LN where 1=0;
+export TRW_DSRC_TBL_LN where 1=0;
+export URSSAF_TBL_FRA;
+export UX_ALERT_DEF;
+export W3EB_CNTRL_ELE where
+   LIFE_EVENT_TYPE = 'A';
+export W3EB_CNTRL_ELE where
+   LIFE_EVENT_TYPE = 'B';
+export W3EB_CNTRL_ELE where
+   LIFE_EVENT_TYPE = 'D';
+export W3EB_CNTRL_ELE where
+   LIFE_EVENT_TYPE = 'M';
+export W3EB_LE_DEPEND where
+   DATA_TYPE_CD = 'Y';
+export W3EB_LE_EVT_CAT where
+   LE_EVENTS_CATEGORY = 'EMPL';
+export W3EB_LE_EVT_ELE where
+   LE_EVENTS_CATEGORY = 'EMPL';
+export W3EB_LE_HIER where
+   DATA_TYPE_CD = 'Y';
+export W3EB_LE_ITEM where
+   OPRID = 'PS' AND
+   DATA_TYPE_CD = 'Y';
+export W3EB_LE_LIST where
+   DATA_TYPE_CD = 'Y';
+export W3EB_LE_RULES where
+   LIFE_EVENT_TYPE = 'A';
+export W3EB_LE_RULES where
+   LIFE_EVENT_TYPE = 'B';
+export W3EB_LE_RULES where
+   LIFE_EVENT_TYPE = 'D';
+export W3EB_LE_RULES where
+   LIFE_EVENT_TYPE = 'M';
+export W3EB_SMRY_CNTRL where
+   LIFE_EVENT_TYPE = 'A';
+export W3EB_SMRY_CNTRL where
+   LIFE_EVENT_TYPE = 'B';
+export W3EB_SMRY_CNTRL where
+   LIFE_EVENT_TYPE = 'D';
+export W3EB_SMRY_CNTRL where
+   LIFE_EVENT_TYPE = 'M';
+export WCS_ALERT_TBL;
+export WCS_EVENT_TBL;
+export WCS_ITER_A_LU;
+export WCS_ITER_A_SCH;
+export WCS_ITER_A_TBL;
+export WCS_ITER_D_TBL;
+export WCS_ITER_L_TBL;
+export WCS_ITER_N_TBL;
+export WCS_ITER_TBL;
+export WCS_POP_GRP_NME;
+export WCS_POP_GRP_OPR;
+export WCS_POP_GRP_PNL;
+export WCS_SO_BASE where
+   SOURCE_ID = 'ANNUAL_RATE';
+export WCS_SO_BASE where
+   SOURCE_ID = 'APPOINTMENT_TYPE';
+export WCS_SO_BASE where
+   SOURCE_ID = 'BARGAINING_UNIT';
+export WCS_SO_BASE where
+   SOURCE_ID = 'BEN_STATUS';
+export WCS_SO_BASE where
+   SOURCE_ID = 'BENEFIT_SYSTEM';
+export WCS_SO_BASE where
+   SOURCE_ID = 'BUSINESS_UNIT';
+export WCS_SO_BASE where
+   SOURCE_ID = 'COMPANY';
+export WCS_SO_BASE where
+   SOURCE_ID = 'COMPA-RATIO';
+export WCS_SO_BASE where
+   SOURCE_ID = 'COMPCODE';
+export WCS_SO_BASE where
+   SOURCE_ID = 'GRD1STEP1_HRLY';
+export WCS_SO_BASE where
+   SOURCE_ID = 'COMPRATE';
+export WCS_SO_BASE where
+   SOURCE_ID = 'COUNTRY';
+export WCS_SO_BASE where
+   SOURCE_ID = 'CURRENCY';
+export WCS_SO_BASE where
+   SOURCE_ID = 'DEPARTMENT';
+export WCS_SO_BASE where
+   SOURCE_ID = 'EEO_CLASS';
+export WCS_SO_BASE where
+   SOURCE_ID = 'EMPL_CLASSIFICATION';
+export WCS_SO_BASE where
+   SOURCE_ID = 'EMPL_CTG';
+export WCS_SO_BASE where
+   SOURCE_ID = 'EMPL_STATUS';
+export WCS_SO_BASE where
+   SOURCE_ID = 'EMPL_GRD_MAXHRLY';
+export WCS_SO_BASE where
+   SOURCE_ID = 'EMPL_TYPE';
+export WCS_SO_BASE where
+   SOURCE_ID = 'EMPLID';
+export WCS_SO_BASE where
+   SOURCE_ID = 'FLSA_STATUS';
+export WCS_SO_BASE where
+   SOURCE_ID = 'GEOGAREA';
+export WCS_SO_BASE where
+   SOURCE_ID = 'GRADE';
+export WCS_SO_BASE where
+   SOURCE_ID = 'JOBCODE';
+export WCS_SO_BASE where
+   SOURCE_ID = 'JOB-RATIO';
+export WCS_SO_BASE where
+   SOURCE_ID = 'LOCATION';
+export WCS_SO_BASE where
+   SOURCE_ID = 'MANAGER_LEVEL';
+export WCS_SO_BASE where
+   SOURCE_ID = 'MONTHS_IN_COMPANY';
+export WCS_SO_BASE where
+   SOURCE_ID = 'PERFRATING';
+export WCS_SO_BASE where
+   SOURCE_ID = 'PERSON_NAME';
+export WCS_SO_BASE where
+   SOURCE_ID = 'PERCENT-IN-RANGE';
+export WCS_SO_BASE where
+   SOURCE_ID = 'POS_SUPV_LVL';
+export WCS_SO_BASE where
+   SOURCE_ID = 'SAL_ADMIN_PLAN';
+export WCS_SO_BASE where
+   SOURCE_ID = 'SENIORITY_DATE';
+export WCS_SO_BASE where
+   SOURCE_ID = 'STEP';
+export WCS_SO_BASE where
+   SOURCE_ID = 'SURVEY_JOB_CODE';
+export WCS_SO_BASE where
+   SOURCE_ID = 'SURVEY_PROVIDER';
+export WCS_SO_BASE where
+   SOURCE_ID = 'UNION_CODE';
+export WCS_SO_BASE where
+   SOURCE_ID = 'TRW_RW_ITEM_ID';
+export WCS_SO_BASE where
+   SOURCE_ID = 'STOCK_ID';
+export WCS_SO_EMPL_REL where
+   SOURCE_ID = 'EMPL_GRD_MAXHRLY';
+export WCS_SO_EMPL_REL where
+   SOURCE_ID = 'MANAGER_LEVEL';
+export WCS_SO_GRD_STEP where
+   SOURCE_ID = 'GRD1STEP1_HRLY';
+export WCS_SO_PERFORM where
+   SOURCE_ID = 'PERFRATING';
+export WCS_SO_TIME where
+   SOURCE_ID = 'MONTHS_IN_COMPANY';
+export WC_ACTNAREA_TBL where
+   DATA_TYPE_CD = 'Y';
+export WC_ACTNROLE_TBL where
+   DATA_TYPE_CD = 'Y';
+export WC_ACTN_RSN_TBL where
+   DATA_TYPE_CD = 'Y';
+export WF_HR_TRANS;
+export WF_HR_TRANS_NOT;
+export WP_FORMULA_DEF where
+   SYSTEM_DATA_FLG = 'Y';
+export WP_FORMULA_TBL where
+   SYSTEM_DATA_FLG = 'Y';
+export WP_VARIABLE_DET where
+   SYSTEM_DATA_FLG = 'Y';
+export WP_VARIABLE_TBL where
+   SYSTEM_DATA_FLG = 'Y';
+
+
+-- Export tables that will be imported with the Import option
+set log DLHCSYSE_N.LOG;
+set output DLHCSYS_N.DAT;
+export BN_RATE_KEYS where
+   DATA_TYPE_CD = 'Y';
+export BN_RATE_TYPE where
+   DATA_TYPE_CD = 'Y';
+export BN_RTTYP_KEY where
+   RATE_TYPE = '1';
+export BN_RTTYP_KEY where
+   RATE_TYPE = '4';
+export BN_RTTYP_KEY where
+   RATE_TYPE = '5';
+export BN_RTTYP_KEY where
+   RATE_TYPE = '6';
+export BN_RTTYP_KEY where
+   RATE_TYPE = '7';
+export CODE_CITY_BRA;
+export CTZ_DTA_ESP_TBL where
+   SCHEME_ID_ESP = '0111' AND
+   EFFDT >= %DateIn('2000-01-01');
+export EARNINGS_TBL where
+   ERNCD = '$AC';
+export EARNINGS_TBL where
+   ERNCD = '$NA';
+export EOEN_REGISTRY where
+   SYSTEM_DATA_FLG = 'Y';
+export EOEN_REG_EVNT where
+   SYSTEM_DATA_FLG = 'Y';
+export EOTL_BTN_DEFN;
+export EOTL_BTN_LNG where 1=0;
+export EOTL_TB_BTNS;
+export EOTL_TB_BTNSLNG where 1=0;
+export EOTL_TB_DEFN;
+export EOTL_TB_DEFNLNG where 1=0;
+export EOTL_TB_DISP;
+export EOTL_TB_DISPLNG where 1=0;
+export EOTL_TB_FFLD;
+export FLSA_PERIOD_TBL where
+   FLSA_PERIOD_TYPE = '00';
+export FLSA_PERIOD_TBL where
+   FLSA_PERIOD_TYPE = '01';
+export FLSA_PERIOD_TBL where
+   FLSA_PERIOD_TYPE = '02';
+export FLSA_PERIOD_TYP where
+   FLSA_PERIOD_TYPE = '00';
+export FLSA_PERIOD_TYP where
+   FLSA_PERIOD_TYPE = '01';
+export FLSA_PERIOD_TYP where
+   FLSA_PERIOD_TYPE = '02';
+export FREQUENCY_TBL where
+   FREQUENCY_ID = 'A';
+export FREQUENCY_TBL where
+   FREQUENCY_ID = 'B';
+export FREQUENCY_TBL where
+   FREQUENCY_ID = 'C';
+export FREQUENCY_TBL where
+   FREQUENCY_ID = 'D';
+export FREQUENCY_TBL where
+   FREQUENCY_ID = 'F';
+export FREQUENCY_TBL where
+   FREQUENCY_ID = 'H';
+export FREQUENCY_TBL where
+   FREQUENCY_ID = 'M';
+export FREQUENCY_TBL where
+   FREQUENCY_ID = 'Q';
+export FREQUENCY_TBL where
+   FREQUENCY_ID = 'S';
+export FREQUENCY_TBL where
+   FREQUENCY_ID = 'W';
+export FREQUENCY_TBL where
+   FREQUENCY_ID = 'BMX30';
+export FREQUENCY_TBL where
+   FREQUENCY_ID = 'BMX34';
+export FREQUENCY_TBL where
+   FREQUENCY_ID = 'DMX30';
+export FREQUENCY_TBL where
+   FREQUENCY_ID = 'DMX34';
+export FREQUENCY_TBL where
+   FREQUENCY_ID = 'WMX30';
+export FREQUENCY_TBL where
+   FREQUENCY_ID = 'WMX34';
+export FREQUENCY_TBL where
+   FREQUENCY_ID = 'DBRA';
+export FREQUENCY_TBL where
+   FREQUENCY_ID = 'DBRA2';
+export FSPC_SYS_MYWORK;
+export GPBR_ELEM_MAP where
+   COUNTRY = 'BRA';
+export GPBR_ELEM_MAP_D where
+   COUNTRY = 'BRA';
+export GPFR_AF_PAYGRP where
+   GPFR_AF_PAYGRP = 'AEDEMAT_TEMPLATE';
+export GPFR_AF_RUN_DFN where
+   GPFR_AF_EXTRACT_ID = 'AEDEMAT_TEMPLATE';
+export GPFR_AF_RUN_PRM where
+   GPFR_AF_EXTRACT_ID = 'AEDEMAT_TEMPLATE';
+export GPS_ACTION_TBL where
+   SYSTEM_DATA_FLG = 'Y';
+export GP_PIN_FLD_MAP1 where
+   DATA_TYPE_CD <> 'N';
+export GP_PIN_FLD_MAP2 where
+   DATA_TYPE_CD <> 'N';
+export GP_PIN_FLD_MAP4 where
+   DATA_TYPE_CD <> 'N';
+export GP_VER_REC_CHLD where
+   DATA_TYPE_CD <> 'N' AND
+   RECNAME_CHILD > 'GP_' AND
+   RECNAME_CHILD not like 'GP%GP%' AND
+   RECNAME_RULE_DFN > 'GP_' AND
+   RECNAME_RULE_DFN not like 'GP%GP%';
+export GP_VER_REC_PRNT where
+   DATA_TYPE_CD <> 'N' AND
+   RECNAME_RULE_DFN > 'GP_' AND
+   RECNAME_RULE_DFN not like 'GP%GP%';
+export HR_ATT_KEYS_C where
+   SYSTEM_DATA_FLG = 'Y' AND
+   OBJECTOWNERID = 'HEB';
+export HR_ATT_KEYS_S where
+   SYSTEM_DATA_FLG = 'Y' AND
+   OBJECTOWNERID = 'HEB';
+export HR_ATT_KEYS_TBL where
+   SYSTEM_DATA_FLG = 'Y' AND
+   OBJECTOWNERID = 'HEB';
+export HR_EERCDDEL_CTL where
+   SYSTEM_DATA_FLG = 'Y';
+export HR_EERCDDEL_EXC where
+   SYSTEM_DATA_FLG = 'Y';
+export HR_EERCDDEL_FL1 where
+   SYSTEM_DATA_FLG = 'Y';
+export HR_EERCDDEL_FL2 where
+   SYSTEM_DATA_FLG = 'Y';
+export HR_RFWPRW_CONF where
+   DATA_TYPE_CD = 'Y';
+export HR_RFW_DSOCHLD where
+   EFFDT = %DateIn('2004-01-01');
+export HR_RFW_DSODEFN where
+   EFFDT = %DateIn('2004-01-01');
+export HR_RFW_DSODSEL where
+   EFFDT = %DateIn('2004-01-01');
+export HR_RFW_DSOPCODE where
+   EFFDT = %DateIn('2004-01-01');
+export HR_RFW_DSOREL where
+   EFFDT = %DateIn('2004-01-01');
+export HR_RFW_RECDEFN where
+   DATA_TYPE_CD = 'Y';
+export HR_RFW_RECDTL where
+   HRRFW_ORDBY_IND = 'A';
+export HR_RFW_RPTCOLS;
+export HR_RFW_RPTDEFN;
+export HR_RFW_RPTVARS;
+export HR_RQSTRFER_TBL where
+   SRC_SYSTEM = 'RS';
+export HR_RQSTRFER_TBL where
+   SRC_SYSTEM = 'TBH';
+export HS_DISABL_IND where
+   HS_DISABL_CD_IND like 'KP%';
+export ID_DEL_PRVN_TBL where
+   REQD_INDICATOR = 'Y';
+export JPM_CAT_GTYPE where
+   SYSTEM_DATA_FLG = 'Y';
+export JPM_CAT_PROPS where
+   SYSTEM_DATA_FLG = 'Y';
+export JPM_CAT_TYPES where
+   SYSTEM_DATA_FLG = 'Y';
+export JPM_CAT_T_RLAT where
+   SYSTEM_DATA_FLG = 'Y';
+export JPM_JP_QUAL_INS where
+   SYSTEM_DATA_FLG = 'Y';
+export JPM_JP_QUAL_SET where
+   SYSTEM_DATA_FLG = 'Y';
+export JPM_JP_TYPES where
+   SYSTEM_DATA_FLG = 'Y';
+export JPM_JP_TYP_PAOS where
+   SYSTEM_DATA_FLG = 'Y';
+export JPM_JP_TYP_PIDS where
+   SYSTEM_DATA_FLG = 'Y';
+export JPM_PKG_TYPES where
+   SYSTEM_DATA_FLG = 'Y';
+export MU_TP_SETUP_DTL where
+   DATA_TYPE_CD = 'Y';
+export MU_TP_SETUP_PRE where
+   DATA_TYPE_CD = 'Y';
+export MU_TP_SETUP_TBL where
+   DATA_TYPE_CD = 'Y';
+export PA_ALIAS_USE where
+   ALIAS_NAME = 'ACTION';
+export PA_ALIAS_USE where
+   ALIAS_NAME = 'ACTION_DT';
+export PA_ALIAS_USE where
+   ALIAS_NAME = 'ACTION_RE';
+export PA_ALIAS_USE where
+   ALIAS_NAME = 'BENCOM_DT';
+export PA_ALIAS_USE where
+   ALIAS_NAME = 'BENEF_DOB';
+export PA_ALIAS_USE where
+   ALIAS_NAME = 'BENEF_REL';
+export PA_ALIAS_USE where
+   ALIAS_NAME = 'BENEF_SEX';
+export PA_ALIAS_USE where
+   ALIAS_NAME = 'BIRTH_DT';
+export PA_ALIAS_USE where
+   ALIAS_NAME = 'COMPANY';
+export PA_ALIAS_USE where
+   ALIAS_NAME = 'CHG_PCT';
+export PA_ALIAS_USE where
+   ALIAS_NAME = 'DB_LIMIT';
+export PA_ALIAS_USE where
+   ALIAS_NAME = 'DC_FRACTN';
+export PA_ALIAS_USE where
+   ALIAS_NAME = 'DEATH_DT';
+export PA_ALIAS_USE where
+   ALIAS_NAME = 'DEPT_ID';
+export PA_ALIAS_USE where
+   ALIAS_NAME = 'EMPL_CLASS';
+export PA_ALIAS_USE where
+   ALIAS_NAME = 'EMPL_ID';
+export PA_ALIAS_USE where
+   ALIAS_NAME = 'EMPL_NAME';
+export PA_ALIAS_USE where
+   ALIAS_NAME = 'EMPL_STAT';
+export PA_ALIAS_USE where
+   ALIAS_NAME = 'EMPL_TYPE';
+export PA_ALIAS_USE where
+   ALIAS_NAME = 'EVENT_DT';
+export PA_ALIAS_USE where
+   ALIAS_NAME = 'EVENT_RSN';
+export PA_ALIAS_USE where
+   ALIAS_NAME = 'FORP_TIME';
+export PA_ALIAS_USE where
+   ALIAS_NAME = 'HIRE_DT';
+export PA_ALIAS_USE where
+   ALIAS_NAME = 'JOBCODE';
+export PA_ALIAS_USE where
+   ALIAS_NAME = 'LUMPS_DT';
+export PA_ALIAS_USE where
+   ALIAS_NAME = 'MARSTAT';
+export PA_ALIAS_USE where
+   ALIAS_NAME = 'MARSTAT_DT';
+export PA_ALIAS_USE where
+   ALIAS_NAME = 'OBRA93';
+export PA_ALIAS_USE where
+   ALIAS_NAME = 'OFFICER_CD';
+export PA_ALIAS_USE where
+   ALIAS_NAME = 'OHIRE_DT';
+export PA_ALIAS_USE where
+   ALIAS_NAME = 'PA_ELIG';
+export PA_ALIAS_USE where
+   ALIAS_NAME = 'PA_INELIG';
+export PA_ALIAS_USE where
+   ALIAS_NAME = 'PLAN_ELIG';
+export PA_ALIAS_USE where
+   ALIAS_NAME = 'QDRO_AMT';
+export PA_ALIAS_USE where
+   ALIAS_NAME = 'QDRO_EE_BD';
+export PA_ALIAS_USE where
+   ALIAS_NAME = 'QDRO_FLAG';
+export PA_ALIAS_USE where
+   ALIAS_NAME = 'REG_TEMP';
+export PA_ALIAS_USE where
+   ALIAS_NAME = 'REG_REGION';
+export PA_ALIAS_USE where
+   ALIAS_NAME = 'SBIRTH_DT';
+export PA_ALIAS_USE where
+   ALIAS_NAME = 'SEX';
+export PA_ALIAS_USE where
+   ALIAS_NAME = 'SSR_DT';
+export PA_ALIAS_USE where
+   ALIAS_NAME = 'STD_HOURS';
+export PA_ALIAS_USE where
+   ALIAS_NAME = 'TRA86';
+export PA_ALIAS_USE where
+   ALIAS_NAME = 'UNION_CD';
+export PA_CUSTOM where
+   CUSTOM_STMT_NAME = 'PA_ELIG';
+export PA_CUSTOM where
+   CUSTOM_STMT_NAME = 'PA_INELIG';
+export PA_CUSTOM2 where
+   CUSTOM_STMT_NAME = 'PA_ELIG';
+export PA_CUSTOM2 where
+   CUSTOM_STMT_NAME = 'PA_INELIG';
+export PA_TBL_LOOKUP where
+   ALIAS_NAME = 'OBRA93';
+export PA_TBL_LOOKUP where
+   ALIAS_NAME = 'TRA86';
+export POI_TYPE_TBL;
+export PY_RETROCNL_TBL where
+   RETRO_CANC_REASON = 'SC';
+export PY_RETROCNL_TBL where
+   RETRO_CANC_REASON = 'UC';
+export PY_RETROCNL_TBL where
+   RETRO_CANC_REASON = 'ZR';
+export RGM_BSE_ESP_TBL where
+   SCHEME_ID_ESP = '0111' AND
+   EFFDT >= %DateIn('2000-01-01');
+export RGM_CTZ_ESP_TBL where
+   SCHEME_ID_ESP = '0111' AND
+   EFFDT >= %DateIn('2000-01-01');
+export SCRTY_TYPE_TBL where
+   SYSTEM_DATA_FLG = 'Y';
+export SOC_SEC_RGM_TBL where
+   SCHEME_ID_ESP = '0111' AND
+   EFFDT >= %DateIn('2000-01-01');
+export SS_LINK_TBL where
+   PNLGRPNAME = 'CO_PE_MGRRPTS_COMP';
+export SS_LINK_TBL where
+   PNLGRPNAME = 'CO_PE_MGRRPTS_EN';
+export SS_LINK_TBL where
+   PNLGRPNAME = 'CO_PE_MGR_BIRTHDAY';
+export SS_LINK_TBL where
+   PNLGRPNAME = 'CO_PE_MGR_BIRTH_EN';
+export SS_LINK_TBL where
+   PNLGRPNAME = 'CO_PE_MGR_HIREDT';
+export SS_LINK_TBL where
+   PNLGRPNAME = 'CO_PE_MGR_HIRE_EN';
+export SS_LINK_TBL where
+   PNLGRPNAME = 'CO_PE_MSOVRCMPT';
+export SS_LINK_TBL where
+   PNLGRPNAME = 'EP_APPRAISAL_ORG';
+export SS_LINK_TBL where
+   PNLGRPNAME = 'GPCH_ABS_ADD_MGR_L';
+export SS_LINK_TBL where
+   PNLGRPNAME = 'GPCH_ABS_REQ_MGR_L';
+export SS_LINK_TBL where
+   PNLGRPNAME = 'GPCH_ABS_VW_MGR_L';
+export SS_LINK_TBL where
+   PNLGRPNAME = 'GPCH_OT_STA_MGR_L';
+export SS_LINK_TBL where
+   PNLGRPNAME = 'GPCH_OT_VW_MGR_L';
+export SS_LINK_TBL where
+   PNLGRPNAME = 'GPCH_OT_VW_PA_L';
+export SS_LINK_TBL where
+   PNLGRPNAME = 'GP_SS_MGR_ABS_L';
+export SS_LINK_TBL where
+   PNLGRPNAME = 'HD_360_COMPONENT';
+export SS_LINK_TBL where
+   PNLGRPNAME = 'HR_DR_TRN_SUMMARY';
+export SS_LINK_TBL where
+   PNLGRPNAME = 'HR_PCMP_MGR_DEVREC';
+export SS_LINK_TBL where
+   PNLGRPNAME = 'HR_PCMP_MGR_DEVREV';
+export SS_LINK_TBL where
+   PNLGRPNAME = 'HR_PCMP_MGR_RIKPI';
+export SS_LINK_TBL where
+   PNLGRPNAME = 'HR_PCMP_MGR_RIOBS';
+export SS_LINK_TBL where
+   PNLGRPNAME = 'HR_PCMP_T_DEVREV';
+export SS_LINK_TBL where
+   PNLGRPNAME = 'HR_PCMP_T_RIKPI';
+export SS_LINK_TBL where
+   PNLGRPNAME = 'HR_PCMP_T_RIOBS';
+export SS_LINK_TBL where
+   PNLGRPNAME = 'HR_SALCHANGE_LNK';
+export SS_LINK_TBL where
+   PNLGRPNAME = 'HR_SS_MG_COMP_LINK';
+export SS_LINK_TBL where
+   PNLGRPNAME = 'HR_SS_TC_MGREV_LNK';
+export SS_LINK_TBL where
+   PNLGRPNAME = 'SS_DR_EEP';
+export SS_LINK_TBL where
+   PNLGRPNAME = 'ST_MGR_GRNT_LAUNCH';
+export SS_LINK_TBL where
+   PNLGRPNAME = 'TRN_REQUEST_LNK';
+export SS_LINK_TBL where
+   PNLGRPNAME = 'TRN_REQUEST_ORG';
+export SS_LINK_TBL where
+   PNLGRPNAME = 'WC_JCR_LAUNCH';
+export SS_LINK_TBL where
+   PNLGRPNAME = 'WC_JCR_LAUNCH_HR';
+export SS_LINK_TBL where
+   PNLGRPNAME = 'HR_COMPETENCIES';
+export SS_LINK_TBL where
+   PNLGRPNAME = 'HR_EDUCATION';
+export SS_LINK_TBL where
+   PNLGRPNAME = 'HR_HONORS_AWARDS';
+export SS_LINK_TBL where
+   PNLGRPNAME = 'HR_LANGUAGES';
+export SS_LINK_TBL where
+   PNLGRPNAME = 'HR_LIC_CERT';
+export SS_LINK_TBL where
+   PNLGRPNAME = 'HR_MEMBERSHIPS';
+export SS_LINK_TBL where
+   PNLGRPNAME = 'HR_PROF_TRAINING';
+export SS_LINK_TBL where
+   PNLGRPNAME = 'GP_ABS_SSMGR_BAL_L';
+export SS_LINK_TBL where
+   PNLGRPNAME = 'GP_ABS_SSMGR_HIS_L';
+export SS_LINK_TBL where
+   PNLGRPNAME = 'UX_DIRECTS_PLT';
+export TL_ACTIONS where
+   ACTION_ID like 'TMPLT%';
+export TL_ACTION_DTL where
+   ACTION_ID like 'TMPLT%';
+export TL_AE_SECTION where
+   AE_APPLID like 'TL%';
+export TL_CAL_VAL_COMB where
+   COMB_ID >= 1 AND
+   COMB_ID <= 171;
+export TL_CONDITIONS where
+   CONDITION_ID like 'TMPL%';
+export TL_METASQL_TBL where
+   META_SQL = '%CurrentDateIn';
+export TL_METASQL_TBL where
+   META_SQL = '%CurrentDateOut';
+export TL_METASQL_TBL where
+   META_SQL = '%CurrentDateTimeIn';
+export TL_METASQL_TBL where
+   META_SQL = '%CurrentDateTimeOut';
+export TL_METASQL_TBL where
+   META_SQL = '%DateAdd';
+export TL_METASQL_TBL where
+   META_SQL = '%DateDiff';
+export TL_METASQL_TBL where
+   META_SQL = '%DateIn';
+export TL_METASQL_TBL where
+   META_SQL = '%DateOut';
+export TL_METASQL_TBL where
+   META_SQL = '%DateTimeDiff';
+export TL_METASQL_TBL where
+   META_SQL = '%DateTimeIn';
+export TL_METASQL_TBL where
+   META_SQL = '%DateTimeOut';
+export TL_METASQL_TBL where
+   META_SQL = '%DecDiv';
+export TL_METASQL_TBL where
+   META_SQL = '%DecMult';
+export TL_METASQL_TBL where
+   META_SQL = '%Round';
+export TL_METASQL_TBL where
+   META_SQL = '%Substring';
+export TL_METASQL_TBL where
+   META_SQL = '%TimeAdd';
+export TL_METASQL_TBL where
+   META_SQL = '%TimeIn';
+export TL_METASQL_TBL where
+   META_SQL = '%TrimSubstr';
+export TL_METASQL_TBL where
+   META_SQL = '%Truncate';
+export TL_METASQL_TBL where
+   META_SQL = '%Values';
+export TL_PAYSYS_TBL where
+   PAY_SYSTEM = 'GP';
+export TL_PAYSYS_TBL where
+   PAY_SYSTEM = 'NA';
+export TL_RPTD_TMPLT where
+   TIME_RPTG_TMPLT = 'PSELP_NONE';
+export TL_RPTD_TMPLT where
+   TIME_RPTG_TMPLT = 'PSPCH_NONE';
+export TL_RULE_CONDS where
+   TL_RULE_ID like 'ST_%';
+export TL_RULE_CONDS where
+   TL_RULE_ID like 'TEMPLATE%';
+export TL_RULE_CONDS where
+   TL_RULE_ID like 'TL_%';
+export TL_RULE_DEFN where
+   TL_RULE_ID like 'ST_%';
+export TL_RULE_DEFN where
+   TL_RULE_ID like 'TEMPLATE%';
+export TL_RULE_DEFN where
+   TL_RULE_ID like 'TL_%';
+export TL_RULE_DEFN where
+   TL_RULE_ID = 'OPARULES';
+export TL_RULE_OPA where
+   TL_RULE_ID = 'OPARULES';
+export TL_RULE_OPA_PD where
+   TL_RULE_ID = 'OPARULES';
+export TL_RULE_STEPS where
+   TL_RULE_ID like 'ST_%';
+export TL_RULE_STEPS where
+   TL_RULE_ID like 'TEMPLATE%';
+export TL_RULE_STEPS where
+   TL_RULE_ID like 'TL_%';
+export TL_SQL_BINDS where
+   SQL_ID like 'ST_%';
+export TL_SQL_BINDS where
+   SQL_ID like 'SUB%';
+export TL_SQL_BINDS where
+   SQL_ID like 'TL_%';
+export TL_SQL_BINDS where
+   SQL_ID like 'TMPL%';
+export TL_SQL_INSERT where
+   SQL_ID like 'ST_%';
+export TL_SQL_INSERT where
+   SQL_ID like 'SUB%';
+export TL_SQL_INSERT where
+   SQL_ID like 'TL_%';
+export TL_SQL_INSERT where
+   SQL_ID like 'TMPL%';
+export TL_SQL_JOIN where
+   SQL_ID like 'ST_%';
+export TL_SQL_JOIN where
+   SQL_ID like 'SUB%';
+export TL_SQL_JOIN where
+   SQL_ID like 'TL_%';
+export TL_SQL_JOIN where
+   SQL_ID like 'TMPL%';
+export TL_SQL_JOINFLDS where
+   SQL_ID like 'ST_%';
+export TL_SQL_JOINFLDS where
+   SQL_ID like 'SUB%';
+export TL_SQL_JOINFLDS where
+   SQL_ID like 'TL_%';
+export TL_SQL_JOINFLDS where
+   SQL_ID like 'TMPL%';
+export TL_SQL_SEL_FLDS where
+   SQL_ID like 'ST_%';
+export TL_SQL_SEL_FLDS where
+   SQL_ID like 'SUB%';
+export TL_SQL_SEL_FLDS where
+   SQL_ID like 'TL_%';
+export TL_SQL_SEL_FLDS where
+   SQL_ID like 'TMPL%';
+export TL_SQL_TABLES where
+   SQL_ID like 'ST_%';
+export TL_SQL_TABLES where
+   SQL_ID like 'SUB%';
+export TL_SQL_TABLES where
+   SQL_ID like 'TL_%';
+export TL_SQL_TABLES where
+   SQL_ID like 'TMPL%';
+export TL_SQL_UPDATE where
+   SQL_ID like 'ST_%';
+export TL_SQL_UPDATE where
+   SQL_ID like 'SUB%';
+export TL_SQL_UPDATE where
+   SQL_ID like 'TL_%';
+export TL_SQL_UPDATE where
+   SQL_ID like 'TMPL%';
+export TL_SQL_UPDBINDS where
+   SQL_ID like 'ST_%';
+export TL_SQL_UPDBINDS where
+   SQL_ID like 'SUB%';
+export TL_SQL_UPDBINDS where
+   SQL_ID like 'TL_%';
+export TL_SQL_UPDBINDS where
+   SQL_ID like 'TMPL%';
+export TL_SQL_WHERE where
+   SQL_ID like 'ST_%';
+export TL_SQL_WHERE where
+   SQL_ID like 'SUB%';
+export TL_SQL_WHERE where
+   SQL_ID like 'TL_%';
+export TL_SQL_WHERE where
+   SQL_ID like 'TMPL%';
+export TL_SQL_WHRBINDS where
+   SQL_ID like 'ST_%';
+export TL_SQL_WHRBINDS where
+   SQL_ID like 'SUB%';
+export TL_SQL_WHRBINDS where
+   SQL_ID like 'TL_%';
+export TL_SQL_WHRBINDS where
+   SQL_ID like 'TMPL%';
+export TL_TASKGRP_PRFL where
+   TASKGROUP = 'PSNONCATSK';
+export TL_TASKGRP_PRFL where
+   TASKGROUP = 'PSNONTASK';
+export TL_TASKGRP_TBL where
+   TASKGROUP = 'PSNONCATSK';
+export TL_TASKGRP_TBL where
+   TASKGROUP = 'PSNONTASK';
+export TL_TIME_PERIODS where
+   PERIOD_ID = 'PS17WEEK-R';
+export TL_TIME_PERIODS where
+   PERIOD_ID = 'PSBIWEEK';
+export TL_TIME_PERIODS where
+   PERIOD_ID = 'PSDAY';
+export TL_TIME_PERIODS where
+   PERIOD_ID = 'PSMONTH';
+export TL_TIME_PERIODS where
+   PERIOD_ID = 'PSSUNSAT';
+export TL_TIME_PERIODS where
+   PERIOD_ID = 'PSWEEK';
+export TL_TIME_PERIODS where
+   PERIOD_ID = 'PSYEAR';
+export TL_TIME_PERIODS where
+   PERIOD_ID = 'NONE';
+export TL_TMPLT_CONDS where
+   TEMPLATE_ID like 'TEMPLATE%';
+export TL_TMPLT_DEFN where
+   TEMPLATE_ID like 'TEMPLATE%';
+export TL_TMPLT_STEPS where
+   TEMPLATE_ID like 'TEMPLATE%';
+export TL_TR_PUNCH where
+   TIME_RPTG_TMPLT = 'PSELP_NONE';
+export TL_TR_PUNCH where
+   TIME_RPTG_TMPLT = 'PSPCH_NONE';
+export TL_TSKPRF where
+   TASK_PROFILE_ID = 'PSNONCATSK';
+export TL_TSKPRF where
+   TASK_PROFILE_ID = 'PSNONTASK';
+export TL_TSKPRF_DETL where
+   TASK_PROFILE_ID = 'PSNONCATSK';
+export TL_TSKPRF_DETL where
+   TASK_PROFILE_ID = 'PSNONTASK';
+export TL_TSKPRF_TMPLT where
+   TASK_PRFL_TMPLT_ID = 'PSNONCATSK';
+export TL_TSKPRF_TMPLT where
+   TASK_PRFL_TMPLT_ID = 'PSNONTASK';
+export TL_VALID_DEFN where
+   VALID_DEFN_ID like 'TLX%';
+export TL_VALID_ITEM where
+   VALID_DEFN_ID like 'TLX%';
+export TL_VALID_SET where
+   VALID_SET_ID like 'ST%';
+export TL_VALID_SET where
+   VALID_SET_ID = 'NONE';
+export TL_VAL_LIST_DTL where
+   LIST_ID = 'TL_ALL_EMPL';
+export TL_VAL_LIST_DTL where
+   LIST_ID = 'TL_BREAK_LST';
+export TL_VAL_LIST_DTL where
+   LIST_ID = 'TL_EMPL_STAT';
+export TL_VAL_LIST_DTL where
+   LIST_ID = 'TL_EXCPTN_H';
+export TL_VAL_LIST_DTL where
+   LIST_ID = 'TL_HOURLY';
+export TL_VAL_LIST_DTL where
+   LIST_ID = 'TL_HRLY&SAL';
+export TL_VAL_LIST_DTL where
+   LIST_ID = 'TL_H_S_EH';
+export TL_VAL_LIST_DTL where
+   LIST_ID = 'TL_INACTIVE';
+export TL_VAL_LIST_DTL where
+   LIST_ID = 'TL_IN_PUNCH';
+export TL_VAL_LIST_DTL where
+   LIST_ID = 'TL_PD_PUNCH';
+export TL_VAL_LIST_DTL where
+   LIST_ID = 'TL_SALARIED';
+export TL_VAL_LIST_DTL where
+   LIST_ID = 'TL_SHIFT';
+export TL_VAL_LIST_DTL where
+   LIST_ID = 'TL_STATUS1';
+export TL_VAL_LIST_DTL where
+   LIST_ID = 'TL_TERM_STAT';
+export TL_VAL_LIST_TBL where
+   LIST_ID = 'TL_ALL_EMPL';
+export TL_VAL_LIST_TBL where
+   LIST_ID = 'TL_BREAK_LST';
+export TL_VAL_LIST_TBL where
+   LIST_ID = 'TL_EMPL_STAT';
+export TL_VAL_LIST_TBL where
+   LIST_ID = 'TL_EXCPTN_H';
+export TL_VAL_LIST_TBL where
+   LIST_ID = 'TL_HOURLY';
+export TL_VAL_LIST_TBL where
+   LIST_ID = 'TL_HRLY&SAL';
+export TL_VAL_LIST_TBL where
+   LIST_ID = 'TL_H_S_EH';
+export TL_VAL_LIST_TBL where
+   LIST_ID = 'TL_INACTIVE';
+export TL_VAL_LIST_TBL where
+   LIST_ID = 'TL_IN_PUNCH';
+export TL_VAL_LIST_TBL where
+   LIST_ID = 'TL_PD_PUNCH';
+export TL_VAL_LIST_TBL where
+   LIST_ID = 'TL_SALARIED';
+export TL_VAL_LIST_TBL where
+   LIST_ID = 'TL_SHIFT';
+export TL_VAL_LIST_TBL where
+   LIST_ID = 'TL_STATUS1';
+export TL_VAL_LIST_TBL where
+   LIST_ID = 'TL_TERM_STAT';
+export WCS_LK_DATA where
+   LOOKUP_ID = 'TRW_STOCK_MTX';
+export WCS_LK_DEFN where
+   LOOKUP_ID = 'MARKET_PAY';
+export WCS_LK_DEFN where
+   LOOKUP_ID = 'WFR_SURVEY_DATA';
+export WCS_LK_DEFN where
+   LOOKUP_ID = 'TRW_STOCK_MTX';
+export WCS_LK_INPT_SRC where
+   LOOKUP_ID = 'MARKET_PAY';
+export WCS_LK_INPT_SRC where
+   LOOKUP_ID = 'WFR_SURVEY_DATA';
+export WCS_LK_INPT_SRC where
+   LOOKUP_ID = 'TRW_STOCK_MTX';
+export WCS_LK_INPUT where
+   LOOKUP_ID = 'MARKET_PAY';
+export WCS_LK_INPUT where
+   LOOKUP_ID = 'WFR_SURVEY_DATA';
+export WCS_LK_INPUT where
+   LOOKUP_ID = 'TRW_STOCK_MTX';
+export WCS_LK_KEYS where
+   LOOKUP_ID = 'TRW_STOCK_MTX';
+export WCS_LK_ORNTN where
+   LOOKUP_ID = 'MARKET_PAY';
+export WCS_LK_ORNTN where
+   LOOKUP_ID = 'WFR_SURVEY_DATA';
+export WCS_LK_ORNTN where
+   LOOKUP_ID = 'TRW_STOCK_MTX';
+export WCS_LK_OUTPUT where
+   LOOKUP_ID = 'MARKET_PAY';
+export WCS_LK_OUTPUT where
+   LOOKUP_ID = 'WFR_SURVEY_DATA';
+export WCS_LK_OUTPUT where
+   LOOKUP_ID = 'TRW_STOCK_MTX';
+export WCS_LK_OUT_EXT where
+   LOOKUP_ID = 'MARKET_PAY';
+export WCS_LK_OUT_EXT where
+   LOOKUP_ID = 'WFR_SURVEY_DATA';
+export WCS_LK_OUT_EXT where
+   LOOKUP_ID = 'TRW_STOCK_MTX';
+export WCS_LK_RS_BASE where
+   RESULT_ID = '10_PERC';
+export WCS_LK_RS_BASE where
+   RESULT_ID = '100_PERC';
+export WCS_LK_RS_BASE where
+   RESULT_ID = '15_PERC';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'EMPL_GRD_MAXHRLY';
+export WCS_LK_RS_BASE where
+   RESULT_ID = '16_6PERC';
+export WCS_LK_RS_BASE where
+   RESULT_ID = '20_PERC';
+export WCS_LK_RS_BASE where
+   RESULT_ID = '25_PERC';
+export WCS_LK_RS_BASE where
+   RESULT_ID = '30_PERC';
+export WCS_LK_RS_BASE where
+   RESULT_ID = '33_3PERC';
+export WCS_LK_RS_BASE where
+   RESULT_ID = '35_PERC';
+export WCS_LK_RS_BASE where
+   RESULT_ID = '40_PERC';
+export WCS_LK_RS_BASE where
+   RESULT_ID = '45_PERC';
+export WCS_LK_RS_BASE where
+   RESULT_ID = '5_PERC';
+export WCS_LK_RS_BASE where
+   RESULT_ID = '50_PERC';
+export WCS_LK_RS_BASE where
+   RESULT_ID = '55_PERC';
+export WCS_LK_RS_BASE where
+   RESULT_ID = '60_PERC';
+export WCS_LK_RS_BASE where
+   RESULT_ID = '65_PERC';
+export WCS_LK_RS_BASE where
+   RESULT_ID = '66_6PERC';
+export WCS_LK_RS_BASE where
+   RESULT_ID = '70_PERC';
+export WCS_LK_RS_BASE where
+   RESULT_ID = '75_PERC';
+export WCS_LK_RS_BASE where
+   RESULT_ID = '80_PERC';
+export WCS_LK_RS_BASE where
+   RESULT_ID = '83_3PERC';
+export WCS_LK_RS_BASE where
+   RESULT_ID = '85_PERC';
+export WCS_LK_RS_BASE where
+   RESULT_ID = '90_PERC';
+export WCS_LK_RS_BASE where
+   RESULT_ID = '95_PERC';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'AMOUNT';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'ANNUAL_RATE_SOURCE';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'AWARD';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'BASE';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'BASE_MAXIMUM';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'BASE_MEAN';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'BASE_MEDIAN';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'BASE_MINIMUM';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'BASE_MKT_REFERENCE';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'BONUS_PERCENT';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'CURRENCY';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'DEFAULT_AMOUNT';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'DEFAULT_PERCENTAGE';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'DEFAULT_POINTS';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'INCREMENT_AMOUNT';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'INCREMENT_PERCENT';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'MAXIMUM_AMOUNT';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'MAXIMUM_PERCENTAGE';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'MAXIMUM_POINTS';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'MEAN_BASE_RATE';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'MEAN_TOTAL_COMPENSATION';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'MEDIAN_BASE_RATE';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'MEDIAN_TOTAL_COMPENSATION';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'MIDPOINT_RATE';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'MINIMUM_AMOUNT';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'MINIMUM_PERCENTAGE';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'MINIMUM_POINTS';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'MKT_SOURCE_REFERENCE';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'NEW_AMOUNT';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'NEW_POINTS';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'PERCENT_TO_APPLY';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'PERCENTAGE';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'PROVIDER';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'PROVIDER_DESCRIPTION';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'ROUNDING_THRESHOLD';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'SALARY_SURVEY_DEFAULT';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'SOURCE_REFERENCE';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'SURVEY_DATE';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'SURVEY_JOBCODE';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'SURVEY_SALARY';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'THRESHOLD';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'TOTAL_COMPENSATION';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'TOTAL_COMPENSATION_REF';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'VARIABLE_MARKET_REFERENCE';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'VARIABLE_MAXIMUM';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'VARIABLE_MEAN';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'VARIABLE_MEDIAN';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'VARIABLE_MINIMUM';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'VARIABLE_TARGET_PCT_REFERENCE';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'VARIABLE_TARGET_PERCENT';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'BASELINE_AMOUNT';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'BASELINE_PERCENTAGE';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'FUNDING_AMOUNT';
+export WCS_LK_RS_BASE where
+   RESULT_ID = 'FUNDING_PERCENTAGE';
+export WCS_LK_RS_SRC where
+   RESULT_ID = 'ANNUAL_RATE_SOURCE';
+export WCS_LK_RS_SRC where
+   RESULT_ID = 'EMPL_GRD_MAXHRLY';
+export WCS_LK_RS_USG where
+   RESULT_ID = '10_PERC';
+export WCS_LK_RS_USG where
+   RESULT_ID = '100_PERC';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'EMPL_GRD_MAXHRLY';
+export WCS_LK_RS_USG where
+   RESULT_ID = '15_PERC';
+export WCS_LK_RS_USG where
+   RESULT_ID = '16_6PERC';
+export WCS_LK_RS_USG where
+   RESULT_ID = '20_PERC';
+export WCS_LK_RS_USG where
+   RESULT_ID = '25_PERC';
+export WCS_LK_RS_USG where
+   RESULT_ID = '30_PERC';
+export WCS_LK_RS_USG where
+   RESULT_ID = '33_3PERC';
+export WCS_LK_RS_USG where
+   RESULT_ID = '35_PERC';
+export WCS_LK_RS_USG where
+   RESULT_ID = '40_PERC';
+export WCS_LK_RS_USG where
+   RESULT_ID = '45_PERC';
+export WCS_LK_RS_USG where
+   RESULT_ID = '5_PERC';
+export WCS_LK_RS_USG where
+   RESULT_ID = '50_PERC';
+export WCS_LK_RS_USG where
+   RESULT_ID = '55_PERC';
+export WCS_LK_RS_USG where
+   RESULT_ID = '60_PERC';
+export WCS_LK_RS_USG where
+   RESULT_ID = '65_PERC';
+export WCS_LK_RS_USG where
+   RESULT_ID = '66_6PERC';
+export WCS_LK_RS_USG where
+   RESULT_ID = '70_PERC';
+export WCS_LK_RS_USG where
+   RESULT_ID = '75_PERC';
+export WCS_LK_RS_USG where
+   RESULT_ID = '80_PERC';
+export WCS_LK_RS_USG where
+   RESULT_ID = '83_3PERC';
+export WCS_LK_RS_USG where
+   RESULT_ID = '85_PERC';
+export WCS_LK_RS_USG where
+   RESULT_ID = '90_PERC';
+export WCS_LK_RS_USG where
+   RESULT_ID = '95_PERC';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'AMOUNT';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'ANNUAL_RATE_SOURCE';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'AWARD';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'BASE';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'BASE_MAXIMUM';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'BASE_MEAN';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'BASE_MEDIAN';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'BASE_MINIMUM';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'BASE_MKT_REFERENCE';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'BONUS_PERCENT';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'CURRENCY';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'DEFAULT_AMOUNT';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'DEFAULT_PERCENTAGE';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'DEFAULT_POINTS';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'INCREMENT_AMOUNT';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'INCREMENT_PERCENT';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'MAXIMUM_AMOUNT';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'MAXIMUM_PERCENTAGE';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'MAXIMUM_POINTS';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'MEAN_BASE_RATE';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'MEAN_TOTAL_COMPENSATION';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'MEDIAN_BASE_RATE';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'MEDIAN_TOTAL_COMPENSATION';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'MIDPOINT_RATE';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'MINIMUM_AMOUNT';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'MINIMUM_PERCENTAGE';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'MINIMUM_POINTS';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'MKT_SOURCE_REFERENCE';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'NEW_AMOUNT';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'NEW_POINTS';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'PERCENT_TO_APPLY';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'PERCENTAGE';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'PROVIDER';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'PROVIDER_DESCRIPTION';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'ROUNDING_THRESHOLD';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'SALARY_SURVEY_DEFAULT';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'SOURCE_REFERENCE';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'SURVEY_DATE';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'SURVEY_JOBCODE';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'SURVEY_SALARY';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'THRESHOLD';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'TOTAL_COMPENSATION';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'TOTAL_COMPENSATION_REF';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'VARIABLE_MARKET_REFERENCE';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'VARIABLE_MAXIMUM';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'VARIABLE_MEAN';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'VARIABLE_MEDIAN';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'VARIABLE_MINIMUM';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'VARIABLE_TARGET_PCT_REFERENCE';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'VARIABLE_TARGET_PERCENT';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'BASELINE_AMOUNT';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'BASELINE_PERCENTAGE';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'FUNDING_AMOUNT';
+export WCS_LK_RS_USG where
+   RESULT_ID = 'FUNDING_PERCENTAGE';
+export WCS_SO_ADDRESS where
+   SOURCE_ID = 'COUNTRY';
+export WCS_SO_DATES where
+   SOURCE_ID = 'SENIORITY_DATE';
+export WCS_SO_EMPL where
+   SOURCE_ID = 'ANNUAL_RATE';
+export WCS_SO_EMPL where
+   SOURCE_ID = 'APPOINTMENT_TYPE';
+export WCS_SO_EMPL where
+   SOURCE_ID = 'BARGAINING_UNIT';
+export WCS_SO_EMPL where
+   SOURCE_ID = 'BEN_STATUS';
+export WCS_SO_EMPL where
+   SOURCE_ID = 'BENEFIT_SYSTEM';
+export WCS_SO_EMPL where
+   SOURCE_ID = 'BUSINESS_UNIT';
+export WCS_SO_EMPL where
+   SOURCE_ID = 'COMPANY';
+export WCS_SO_EMPL where
+   SOURCE_ID = 'COMPRATE';
+export WCS_SO_EMPL where
+   SOURCE_ID = 'DEPARTMENT';
+export WCS_SO_EMPL where
+   SOURCE_ID = 'EEO_CLASS';
+export WCS_SO_EMPL where
+   SOURCE_ID = 'EMPL_CLASSIFICATION';
+export WCS_SO_EMPL where
+   SOURCE_ID = 'EMPL_CTG';
+export WCS_SO_EMPL where
+   SOURCE_ID = 'EMPL_STATUS';
+export WCS_SO_EMPL where
+   SOURCE_ID = 'EMPL_TYPE';
+export WCS_SO_EMPL where
+   SOURCE_ID = 'FLSA_STATUS';
+export WCS_SO_EMPL where
+   SOURCE_ID = 'GRADE';
+export WCS_SO_EMPL where
+   SOURCE_ID = 'JOBCODE';
+export WCS_SO_EMPL where
+   SOURCE_ID = 'LOCATION';
+export WCS_SO_EMPL where
+   SOURCE_ID = 'PERSON_NAME';
+export WCS_SO_EMPL where
+   SOURCE_ID = 'SAL_ADMIN_PLAN';
+export WCS_SO_EMPL where
+   SOURCE_ID = 'STEP';
+export WCS_SO_EMPL where
+   SOURCE_ID = 'UNION_CODE';
+export WCS_SO_EMPL where
+   SOURCE_ID = 'POS_SUPV_LVL';
+export WCS_SO_RATIO where
+   SOURCE_ID = 'COMPA-RATIO';
+export WCS_SO_RATIO where
+   SOURCE_ID = 'JOB-RATIO';
+export WCS_SO_RATIO where
+   SOURCE_ID = 'PERCENT-IN-RANGE';
+export WF_CNT_NAT_FRA where
+   SETID = 'FRA';
+
+
+-- Export tables that will be imported with the REPLACE_DATA option
+set log DLHCSYSE_R.LOG;
+set output DLHCSYS_R.DAT;
+export ACTION_DTL_FRA;
+export ACTION_GRP_FRA;
+export AMT_X_SAL_TYPE;
+export ANET_PROPERTIES;
+export CCU_INSTALL_OPT;
+export CNTRY_1042_TBL;
+export CNT_X_GRP_STS;
+export CNT_X_JOBCODE;
+export CNT_X_MIDPOINT;
+export CNT_X_RANGE;
+export COST_UNIT_TBL;
+export COUNTRY_TBL where
+   COUNTRY not like 'GX%';
+export COUNTRY_TBL_ITA;
+export COUNTYSTATE_ITA;
+export COUNTY_TBL_ITA;
+export DL_LINK_TBL;
+export ENCUMB_MSG_TBL;
+export EOCF_ACTN_TYPE;
+export EOCF_ACT_BUNDLE;
+export EOCF_ACT_EV_TYP;
+export EOCF_BUNDLE_DEF;
+export EOCF_DTYPEXT_SY;
+export EOCF_ELEM_HIER;
+export EOCF_INSTALL;
+export EOCF_OPER_DEFN;
+export EOCF_OPER_SET;
+export EOCF_OPRSET_SEQ;
+export EOCF_REMTD_PRMS;
+export EOCF_RES_DTYPES;
+export EOCF_RES_METHD;
+export EO_CCR_CNV_FLDS;
+export EO_CCR_EXCP;
+export EO_CCR_SEL_PATH;
+export EO_CC_WORKREC;
+export EO_CURRCNV_COMP;
+export EO_CURRCNV_EXCP;
+export EO_CURRCNV_RULE;
+export EO_PROCGRP_COMP;
+export EO_PROCGRP_EXCP;
+export EO_PROCGRP_PROD;
+export EO_PROC_GROUP;
+export EO_PS_PRODUCT;
+export EO_RECON_JOIN;
+export EO_SPATH_WH;
+export FE_SS_RECNAMES;
+export FE_TRANS_NBR;
+export FPMRECFIELD;
+export FSPC_WRKCNT_TMP;
+export GPCH_AUDT_SET;
+export GPCH_AUDT_SETDT;
+export GPDE_SI_RFND_GR;
+export GPDE_SI_STAT_CD;
+export GPDE_SI_STA_TYP;
+export GVT_ACTN_CFG;
+export GVT_ACTN_RS_CFG;
+export GVT_ACTVTY_ACTN;
+export GVT_ACTVTY_PGRP;
+export GVT_BAS_CLS_CFG;
+export GVT_CITIZEN_CFG;
+export GVT_CVGRULE_CFG;
+export GVT_CVRG_CD_CFG;
+export GVT_DATATBL_CFG;
+export GVT_ERN_PGM_CFG;
+export GVT_HANDICP_TBL;
+export GVT_INSTALL_CFG;
+export GVT_MAJOR_CFG;
+export GVT_OCC_SUFFIX;
+export GVT_STAT_CHG;
+export GVT_STAT_IN_SCH;
+export GVT_STAT_UNGRAY;
+export GVT_WIP_ACTVTY;
+export GVT_WIP_PROGRAM;
+export GVT_WIP_RECORD;
+export GVT_WIP_STATUS;
+export GVT_XLAT_CFG;
+export HCDL_INSTALL;
+export HCR_SCRTY_INSTL;
+export HCSC_TAB_DTL;
+export HCTS_SETUP_TBL;
+export HP_DIST_FLDS;
+export HRS_PSWD_CFG_R;
+export HR_NP_CONFIG;
+export HR_RCL_RSN_TBL;
+export INDIC_SHEET_FRA;
+export IPR_SRV_OPS_RLN where 1=0;
+export IPR_SRV_OPS_TBL;
+export JOB_CTG_FRA_TBL where
+   SYSTEM_DATA_FLG = 'Y';
+export KEY_A_TBL_CHE;
+export LOCAL_TAX_TBL;
+export LOCAL_TAX_TBL2;
+export MU_TP_SETUP_LNG where 1=0;
+export NAME_FORMAT_TBL;
+export NOTIFCATN_CNTR;
+export PA_CUSTOM3;
+export PA_CUSTOM_TEMP;
+export PA_FUNCTN;
+export PA_FUNCTN_FLD_1;
+export PERSON_DT_SETUP;
+export PY_RETROTBL_DEF;
+export PY_RETROTBL_USE;
+export PY_TAX_GL_CLASS;
+export RETRO_YES_NO;
+export SCRTY_FUT_ACTN;
+export SCRTY_SJT_UPD;
+export SCRTY_TYPE_SQL;
+export SETUP_BBAN_TBL;
+export SETUP_IBAN_TBL;
+export STATE_TBL;
+export SUM_X_EPRATING;
+export SUM_X_RVWPOINTS;
+export SUM_X_RVWRATING;
+export TYPE_CNTL_NAME;
+export UPG_DELETED_PIN;
+export UX_ALERT_SETUP;
+export UX_APPR_PLT_CFG;
+export VC_AWDSTT;
+export WCS_HCDL_ACCESS;
+export WCS_LK_RES_TYPE;
+export WCS_LK_TYPE_ORN;
+export WCS_LK_TYPE_TBL;
+export WCS_LK_USG_TBL;
+export WCS_SOURCE_TYPE;
+export WCS_SO_ORIENT;
+export WCS_SO_OR_CNTX;
+export WRK_EXP_FRA_TBL where
+   SYSTEM_DATA_FLG = 'Y';
+
+
+-- Export tables that will be imported with the UPDATE_DUPS option
+set log DLHCSYSE_U.LOG;
+set output DLHCSYS_U.DAT;
+export ACTION_COMM where
+   SYSTEM_DATA_FLG = 'Y';
+export ACTION_STAT_TBL where
+   SYSTEM_DATA_FLG = 'Y';
+export ACTION_TBL where
+   SYSTEM_DATA_FLG = 'Y';
+export ACTN_REASON_BRA;
+export ACT_RSN_TBL_ESP;
+export ADDRESS_TYP_TBL where
+   DATA_TYPE_CD = 'S';
+export ADDRESS_TYP_TBL where
+   DATA_TYPE_CD = 'Y';
+export AUTON_REG_S_ESP;
+export BN_834_MAP_TBL where
+   DATA_TYPE_CD = 'Y';
+export CHKLST_ITEM_TBL where
+   DATA_TYPE_CD = 'Y';
+export CNT_BNF_DTL_ESP;
+export CNT_BNF_ESP;
+export CNT_BY_TMPL_ESP;
+export CNT_TEMPLT_ESP;
+export CVD_POP_FRA_TBL;
+export EMPL_CLASS_TBL;
+export EOAWCRTA;
+export EOAWCRTA_REC;
+export EOAWCRTA_VAL;
+export EOAWEMC_LYT_HDR;
+export EOAWEMC_LYT_LIN;
+export EOAWEMC_MSGHDR;
+export EOAWFIELD_LIST;
+export EOAWFRMINPT_HDR;
+export EOAWFRMINPT_LIN;
+export EOAWNEM;
+export EOAWNEM_EMAIL;
+export EOAWNEM_EVENTS;
+export EOAWUSER_LIST;
+export EOAWXLAT_SYMBOL;
+export EOAW_ADMMON_CFG;
+export EOAW_AUTH;
+export EOAW_AUTH_DTL;
+export EOAW_MONDIS_DTL;
+export EOAW_MONDIS_HDR;
+export EOAW_NOTIFY;
+export EOAW_NOTIFYDEF;
+export EOAW_NOT_USER;
+export EOAW_NOT_USRDEF;
+export EOAW_PATH;
+export EOAW_PRCS;
+export EOAW_STAGE;
+export EOAW_STEP;
+export EOAW_TIMEOUT;
+export EOAW_TIMEOUTDEF;
+export EOAW_TXN;
+export EOAW_TXN_ATTR;
+export EOAW_TXN_CFG;
+export EOAW_TXN_LBL;
+export EOAW_TXN_LVL;
+export EOAW_USRMON_CFG;
+export EOEN_REG;
+export EOEN_REG_LNG where 1=0;
+export EO_TRANSACTIONS where
+   SYSTEM_DATA_FLG = 'Y';
+export FIN_MBL_TYPE;
+export FM_ATTACH_ESP;
+export GDP_BTN_LNG where 1=0;
+export GDP_CTX_LNG where 1=0;
+export GDP_ITEM_LNG where 1=0;
+export GDP_TMPL_BTN where
+   DATA_TYPE_CD = 'Y';
+export GDP_TMPL_CTX where
+   DATA_TYPE_CD = 'Y';
+export GDP_TMPL_ITEM where
+   DATA_TYPE_CD = 'Y';
+export GDP_TMPL_LNG where 1=0;
+export GDP_TMPL_PRIV where
+   DATA_TYPE_CD = 'Y';
+export GDP_TMPL_TBL where
+   DATA_TYPE_CD = 'Y';
+export GPCN_CONT_AREA;
+export GPCN_CONT_A_SAL;
+export GPCN_CONT_A_S_D;
+export GPCN_CONT_COUNT;
+export GPCN_CONT_CO_D;
+export GPCN_CONT_METHD;
+export GPCN_CONT_TYPE;
+export GPCN_CONT_T_S_D;
+export GPCN_TAX_A_SAL;
+export GPCN_TAX_A_S_D;
+export GPDE_CT_PSETUP;
+export GPDE_FM_DEF;
+export GPDE_FM_FLD;
+export GPDE_FM_FORM;
+export GPES_BANK_FILE;
+export GPES_PERCEP_KEY;
+export GPES_PERCP_SKEY;
+export GPES_RATES_DTL;
+export GPES_RATES_HDR;
+export GPES_SS_BNF_DEF;
+export GPES_SS_CNT_BSE;
+export GPES_STATUTORY;
+export GPES_STA_TERM;
+export GPES_SYS_CALEND;
+export GPES_SYS_WEEK;
+export GPES_S_INS_PCT;
+export GPES_TAX_ELEMNT;
+export GPES_TAX_LOCATN;
+export GPFR_AF_APPL where
+   COUNTRY = 'FRA' AND
+   GPFR_AF_OWNER = 'P';
+export GPFR_AF_APSERTY where
+   COUNTRY = 'FRA' AND
+   GPFR_AF_OWNER = 'P';
+export GPFR_AF_ATR_DON where
+   COUNTRY = 'FRA' AND
+   GPFR_AF_OWNER = 'P';
+export GPFR_AF_ATR_PRM where
+   COUNTRY = 'FRA' AND
+   GPFR_AF_OWNER = 'P';
+export GPFR_AF_ATTR where
+   COUNTRY = 'FRA' AND
+   GPFR_AF_OWNER = 'P';
+export GPFR_AF_COMMENT where
+   COUNTRY = 'FRA' AND
+   GPFR_AF_OWNER = 'P';
+export GPFR_AF_DON_PRM where
+   COUNTRY = 'FRA' AND
+   GPFR_AF_OWNER = 'P';
+export GPFR_AF_DON_REC where
+   COUNTRY = 'FRA' AND
+   GPFR_AF_OWNER = 'P';
+export GPFR_AF_DON_SQL where
+   COUNTRY = 'FRA' AND
+   GPFR_AF_OWNER = 'P';
+export GPFR_AF_MAPCODE where
+   COUNTRY = 'FRA' AND
+   GPFR_AF_OWNER = 'P';
+export GPFR_AF_MAP_REC where
+   COUNTRY = 'FRA' AND
+   GPFR_AF_OWNER = 'P';
+export GPFR_AF_NDSET_A where
+   COUNTRY = 'FRA' AND
+   GPFR_AF_OWNER = 'P';
+export GPFR_AF_NDSET_N where
+   COUNTRY = 'FRA' AND
+   GPFR_AF_OWNER = 'P';
+export GPFR_AF_NODE where
+   COUNTRY = 'FRA' AND
+   GPFR_AF_OWNER = 'P';
+export GPFR_AF_NODSET where
+   COUNTRY = 'FRA' AND
+   GPFR_AF_OWNER = 'P';
+export GPFR_AF_PRMSEC where
+   COUNTRY = 'FRA' AND
+   GPFR_AF_OWNER = 'P';
+export GPFR_AF_PRMTMPT where
+   COUNTRY = 'FRA' AND
+   GPFR_AF_OWNER = 'P';
+export GPFR_AF_SQLENTY where
+   COUNTRY = 'FRA' AND
+   GPFR_AF_OWNER = 'P';
+export GPFR_AF_SQL_FLD where
+   COUNTRY = 'FRA' AND
+   GPFR_AF_OWNER = 'P';
+export GPFR_AF_WHR_REC where
+   COUNTRY = 'FRA' AND
+   GPFR_AF_OWNER = 'P';
+export GPGB_SET_EVNTL0;
+export GPGB_SET_EVNTL1;
+export GPGB_SUBREF_LST;
+export GPTH_PREFIX_TBL;
+export GPUS_SWT_MAR_ST where 1=0;
+export GP_PKG_CRIT2 where
+   GP_PKG_ID = 'GPCERUL';
+export GP_PKG_DFN where
+   GP_PKG_ID = 'GPCERUL' and
+   language_cd = 'ENG' or language_cd = ' ';
+export GVT_CPDF_DEF;
+export GVT_CPDF_EDIT;
+export GVT_CPDF_EFFDT;
+export GVT_CPDF_FLDTBL;
+export GVT_CPDF_MSTR;
+export GVT_CPDF_PREFIX;
+export GVT_NFC_DOC_TYP where
+   DATA_TYPE_CD = 'Y';
+export GVT_PAM_SYS_CTL;
+export HCMD_META_TBL;
+export HCMD_OATT_TBL;
+export HCR_SM_RFLD_TBL where
+   SM_SYSDATA = 'Y';
+export HP_STATS_CIP_CD;
+export HP_XLAT_EG_VAL;
+export HRCD_SETUP_MAP where
+   SYSTEM_DATA_FLG = 'Y';
+export HRS_RCRT_TMPL where
+   HRS_RCRT_TMPL_ID >= 1000 AND
+   HRS_RCRT_TMPL_ID < 1100;
+export HRS_SCR_LVL where
+   HRS_SCR_TMPL_ID >= 1000 AND
+   HRS_SCR_TMPL_ID < 1100;
+export HRS_SCT_PROPS;
+export HRS_SOA_SRV;
+export HRS_STS_TBL;
+export HR_JOBTREE_META;
+export HR_MO_CL1_TBL;
+export HR_MO_CL2_TBL;
+export HR_MO_FLDNM_TBL;
+export HR_OC_DISP_TBL;
+export HR_RFW_VARIABLE where
+   DATA_TYPE_CD = 'Y';
+export HR_SSTEXT_CFG where
+   SYSTEM_DATA_FLG = 'Y';
+export HR_SSTEXT_EFFDT where
+   SYSTEM_DATA_FLG = 'Y';
+export HR_SSTEXT_MSGID where
+   SYSTEM_DATA_FLG = 'Y';
+export HR_SSTEXT_TEXT where
+   SYSTEM_DATA_FLG = 'Y';
+export HR_TBH_SECDTL;
+export HR_TBH_TXN_CMP;
+export HR_TBH_TXN_SEC;
+export HR_TBH_TXN_TBL;
+export JPM_C_LIST_DEFN where
+   SYSTEM_DATA_FLG = 'Y';
+export JPM_C_LIST_ITEM where
+   SYSTEM_DATA_FLG = 'Y';
+export JPM_SRCH_CFG where
+   SYSTEM_DATA_FLG = 'Y';
+export JPM_SRCH_ROLE where
+   SYSTEM_DATA_FLG = 'Y';
+export LRM_OPA_INT_DEF;
+export LRM_OPA_INT_DTL;
+export LRM_OPA_INT_HDR;
+export NAME_TYPE_TBL where
+   DATA_TYPE_CD = 'S';
+export NAME_TYPE_TBL where
+   DATA_TYPE_CD = 'Y';
+export PAY_MESSAGE_TBL;
+export PERS_CNTRCT_TYP where
+   SETID = 'CAN';
+export PERS_CNTRCT_TYP where
+   SETID = 'ITA';
+export PERS_CNTRCT_TYP where
+   SETID = 'FRA';
+export PERS_CNTRCT_TYP where
+   SETID = 'DEU';
+export PERS_CNTRCT_TYP where
+   SETID = 'NLD';
+export PERS_CNTRCT_TYP where
+   SETID = 'USA';
+export PERS_CNTRCT_TYP where
+   SETID = 'BEL';
+export PERS_CNTRCT_TYP where
+   SETID = 'ESP';
+export PHOTO_SIZEDEFN where
+   SYSTEM_DATA_FLG = 'Y';
+export PY_NAV_PAGE_FL;
+export PY_ROE_MAP_CD;
+export PY_ROE_MAP_CD2;
+export REG_TRX_REGION where
+   SYSTEM_DATA_FLG = 'Y';
+export REVW_RATING_TBL where
+   SYSTEM_DATA_FLG = 'Y';
+export SCRTY_SET_TBL where
+   SYSTEM_DATA_FLG = 'Y';
+export SOCS_CNTRY_ESP;
+export SOCS_OCUPTN_ESP;
+export TEMPLT_FLD_ESP;
+export TL_SQL_EXPRESSN where
+   SQL_ID like 'ST_%';
+export TL_SQL_EXPRESSN where
+   SQL_ID like 'SUB%';
+export TL_SQL_EXPRESSN where
+   SQL_ID like 'TL_%';
+export TL_SQL_EXPRESSN where
+   SQL_ID like 'TMPL%';
+export TL_SQL_OBJECT where
+   SQL_ID like 'ST_%';
+export TL_SQL_OBJECT where
+   SQL_ID like 'SUB%';
+export TL_SQL_OBJECT where
+   SQL_ID like 'TL_%';
+export TL_SQL_OBJECT where
+   SQL_ID like 'TMPL%';
+export TL_TMPLT_PARMS where
+   TEMPLATE_ID like 'TEMPLATE%';
+export TL_TMPLT_PARMT where
+   TEMPLATE_ID like 'TEMPLATE%';
+export TL_TMPLT_RULEP where
+   TEMPLATE_ID like 'TEMPLATE%';
+export TRN_T_BONS_ESP;
+export TRN_T_CONTR_ESP;
+export TRN_T_DATA_ESP;
+export TRN_T_RDPCT_ESP;
+export XML_ATTRIBUTES where
+   DATA_TYPE_CD = 'Y';
+export XML_MAPPING;
+export XML_MEMBRS;
+export XML_NODE_TBL;
+export XML_SET_RECORDS;
+export XML_SET_TBL;
+export XML_TEMPLT_BRK;
+export XML_TEMPLT_SQL;
+export XML_TEMPLT_TBL;
+export XML_XLATDEFN;
+export XML_XLATITEM where
+   DATA_TYPE_CD = 'Y';
+
+
+-- Export tables that will be imported with the INSERT_DATA_ONCE option
+set log DLHCSYSE_1.LOG;
+set output DLHCSYS_1.DAT;
+export GPSINSTALLATION;

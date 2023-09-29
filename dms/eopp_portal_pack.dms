@@ -1,0 +1,53 @@
+-- ****************************************************************** 
+--                                                                    
+--                                                                    
+--   This software and related documentation are provided under a     
+--   license agreement containing restrictions on use and             
+--   disclosure and are protected by intellectual property            
+--   laws. Except as expressly permitted in your license agreement    
+--   or allowed by law, you may not use, copy, reproduce,             
+--   translate, broadcast, modify, license, transmit, distribute,     
+--   exhibit, perform, publish or display any part, in any form or    
+--   by any means. Reverse engineering, disassembly, or               
+--   decompilation of this software, unless required by law for       
+--   interoperability, is prohibited.                                 
+--   The information contained herein is subject to change without    
+--   notice and is not warranted to be error-free. If you find any    
+--   errors, please report them to us in writing.                     
+--                                                                    
+--   Copyright (C)  2013, Oracle and/or its affiliates.               
+--   All Rights Reserved.                                             
+-- ****************************************************************** 
+--                                                                     
+--    EOPP_PORTAL_PACK.DMS   Portal Pack 8.4x   10/22/03
+--
+-- ******************************************************************
+--
+--  IMPORTANT!!!!
+--      ONLY run this script if you have licensed an application
+--      Portal Pack or licensed the Enterprise Portal.
+--
+-- ******************************************************************
+--
+--
+--  Target:
+--      Application Databases on 8.4x PeopleTools, that can be accessed
+--      from the Enterprise Portal, and/or are licensed for a Portal Pack.
+--
+--  Use:
+--     This script sets the Navigation Pagelet as a publishing option in 
+--     the Navigation Collections.  It enables Navigation Collections to 
+--     be published or unpublished and viewed as Homepage pagelets.
+
+--  Instructions:
+--      Run this script using Data Mover.
+--
+
+SET LOG EOPP_PORTAL_PACK.LOG;
+
+UPDATE PS_EOPP_PUB_OPT SET EOPP_ATTRVAL = 'Y'
+WHERE EOPP_ATTRNAME = 'ENABLED'
+AND EOPP_PUB_TYPE IN ('NPGE','NPGT');
+
+
+

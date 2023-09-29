@@ -1,0 +1,60 @@
+-- ******************************************************************
+--
+--                                                                 
+--   This software and related documentation are provided under a  
+--   license agreement containing restrictions on use and          
+--   disclosure and are protected by intellectual property         
+--   laws. Except as expressly permitted in your license agreement 
+--   or allowed by law, you may not use, copy, reproduce,          
+--   translate, broadcast, modify, license, transmit, distribute,  
+--   exhibit, perform, publish or display any part, in any form or 
+--   by any means. Reverse engineering, disassembly, or            
+--   decompilation of this software, unless required by law for    
+--   interoperability, is prohibited.                              
+--   The information contained herein is subject to change without 
+--   notice and is not warranted to be error-free. If you find any 
+--   errors, please report them to us in writing.                  
+--                                                                 
+--   Copyright (C) 1988, 2013, Oracle and/or its affiliates.       
+--   All Rights Reserved.                                          
+-- ******************************************************************
+--
+--     $Release:  HRMS900 
+--    $Revision:  1 
+--  $Version-ID:  1
+--
+-- ******************************************************************
+-- This script is for upgrades starting at 89
+-- ******************************************************************
+-- It will export the data entered during the 
+-- Make Functional Decisions Task
+
+SET LOG    MVHC89EXP.LOG;
+SET OUTPUT MVHC89EXP.DAT;      
+
+-- HCM Default records         
+EXPORT UPG_HR_DFLT;
+EXPORT UPG_PM_OPTIONS;
+
+-- Garn Payee Data & Garn Rule Data conversion
+EXPORT UPG_GARN_SPEC;
+EXPORT UPG_GARN_RULE;
+
+-- Retro Pay Trigger Program conversion
+EXPORT UPG_PYGRP_RETRO;
+
+-- CS Default records
+EXPORT UPG_CS_SF801;
+EXPORT UPG_IMP_INST;
+EXPORT UPG_OPTNS_SR;
+EXPORT UPG_SCC_OLD_CD;
+EXPORT UPG_SPL_CD;
+EXPORT UPG_SPL_IMP;
+EXPORT UPG_SRVC_CD_INS;
+EXPORT UPG_SRVC_CODE;
+EXPORT UPG_SRVC_IMPACT;
+
+ 
+
+
+

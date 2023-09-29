@@ -1,0 +1,107 @@
+-- ******************************************************************
+--
+--                                                                 
+--  This software and related documentation are provided under a   
+--  license agreement containing restrictions on use and           
+--  disclosure and are protected by intellectual property          
+--  laws. Except as expressly permitted in your license agreement  
+--  or allowed by law, you may not use, copy, reproduce,           
+--  translate, broadcast, modify, license, transmit, distribute,   
+--  exhibit, perform, publish or display any part, in any form or  
+--  by any means. Reverse engineering, disassembly, or             
+--  decompilation of this software, unless required by law for     
+--  interoperability, is prohibited.                               
+--  The information contained herein is subject to change without  
+--  notice and is not warranted to be error-free. If you find any  
+--  errors, please report them to us in writing.                   
+--                                                                 
+--  Copyright (C) 1988, 2013, Oracle and/or its affiliates.        
+--  All Rights Reserved.                                           
+-- ******************************************************************
+--
+-- UPGRADE MOVE TO PRODUCTION (AND TEST MOVE) PHASE ONLY.
+--
+-- USE THIS SCRIPT TO MOVE DATA FROM 
+-- THE ORIGINAL UPGRADE TARGET TO NEW COPY OF PRODUCTION.
+-- ******************************************************************
+
+SET LOG MVAPPIMP.LOG;
+SET INPUT MVAPPEXP.DAT;
+
+-- **************
+-- Uncomment and Edit <things in the brackets> for DB2
+-- **************
+-- set ddl table space   * input STOGROUP  as <TABLESPACE STOGROUP>;
+-- set ddl index         * input STOGROUP  as <INDEXSPACE STOGROUP>;
+-- set ddl unique index  * input STOGROUP  as <INDEXSPACE STOGROUP>;
+-- set ddl record        * input OWNER     as <NEW OWNER>;
+-- set ddl index         * input OWNER     as <NEW OWNER>;
+-- set ddl unique index  * input OWNER     as <NEW OWNER>;
+-- set ddl index         * input OWNER2    as <NEW OWNER>;
+-- set ddl unique index  * input OWNER2    as <NEW OWNER>;
+-- set DBSPACE <Old_dbname>.<Old_tablespacename>  as <New_dbname>.<New_tablespacename>;  
+-- set no view;
+-- set no space;
+-- set no trace;
+
+REPLACE_DATA *;
+
+COMMIT;
+
+-- *********** Rebuild the Set Control Tables *******************************
+SET LOG MVRGIMP_A.LOG;
+SET OUTPUT  MVRGIMP_A.DAT;
+EXPORT PS_SET_CNTRL_GROUP;
+
+SET LOG MVRGIMP_B.LOG;
+SET INPUT MVRGIMP_A.DAT;
+
+-- **************
+-- Uncomment and Edit <things in the brackets> for DB2
+-- **************
+-- set ddl table space   * input STOGROUP  as <TABLESPACE STOGROUP>;
+-- set ddl index         * input STOGROUP  as <INDEXSPACE STOGROUP>;
+-- set ddl unique index  * input STOGROUP  as <INDEXSPACE STOGROUP>;
+-- set ddl record        * input OWNER     as <NEW OWNER>;
+-- set ddl index         * input OWNER     as <NEW OWNER>;
+-- set ddl unique index  * input OWNER     as <NEW OWNER>;
+-- set ddl index         * input OWNER2    as <NEW OWNER>;
+-- set ddl unique index  * input OWNER2    as <NEW OWNER>;
+-- set DBSPACE <Old_dbname>.<Old_tablespacename>  as <New_dbname>.<New_tablespacename>;  
+-- set no view;
+-- set no space;
+-- set no trace;
+
+SET NO INDEX;
+IMPORT SET_CNTRL_GROUP AS PS_SET_CNTRL_TMP;
+INSERT INTO PS_SET_CNTRL_GROUP (SETCNTRLVALUE, REC_GROUP_ID, SETID) SELECT A.SETCNTRLVALUE,B.REC_GROUP_ID, A.SETID FROM PS_SET_CNTRL_TBL A, PS_REC_GROUP_TBL B WHERE B.REC_GROUP_ID NOT IN (SELECT REC_GROUP_ID FROM PS_SET_CNTRL_TMP);
+DELETE FROM PS_SET_CNTRL_GROUP WHERE REC_GROUP_ID NOT IN (SELECT REC_GROUP_ID FROM PS_REC_GROUP_TBL);
+DELETE FROM PS_SET_CNTRL_REC;
+INSERT INTO PS_SET_CNTRL_REC (SETCNTRLVALUE, REC_GROUP_ID, RECNAME, SETID) SELECT A.SETCNTRLVALUE, A.REC_GROUP_ID, B.RECNAME, A.SETID FROM PS_SET_CNTRL_GROUP A, PS_REC_GROUP_REC B WHERE A.REC_GROUP_ID = B.REC_GROUP_ID;
+DROP TABLE PS_SET_CNTRL_TMP;
+
+-- *********** Import Enterprise Portal Content Registry Project Definition  ********
+SET LOG MVAPPIMP_PA.LOG;
+SET INPUT MVAPPEXP_PA.DAT;
+
+DELETE FROM  PSPROJECTDEFN WHERE PROJECTNAME LIKE 'PORTAL%';
+DELETE FROM  PSPROJECTITEM WHERE PROJECTNAME  LIKE 'PORTAL%';
+DELETE FROM  PSPROJDEFNLANG WHERE PROJECTNAME  LIKE 'PORTAL%';
+DELETE FROM  PSPROJECTDEP WHERE PROJECTNAME  LIKE 'PORTAL%';
+DELETE FROM  PSPROJECTINC WHERE PROJECTNAME  LIKE 'PORTAL%';
+DELETE FROM  PSPROJECTMSG WHERE PROJECTNAME  LIKE 'PORTAL%';
+DELETE FROM  PSPROJECTSEC WHERE PROJECTNAME  LIKE 'PORTAL%';
+IMPORT *;
+
+-- *********** Import Customization Project Definition  ********
+SET LOG MVAPPIMP_CUST.LOG;
+SET INPUT MVAPPEXP_CUST.DAT;
+
+DELETE FROM  PSPROJECTDEFN WHERE PROJECTNAME = 'UPGCUST';
+DELETE FROM  PSPROJECTITEM WHERE PROJECTNAME = 'UPGCUST';
+DELETE FROM  PSPROJDEFNLANG WHERE PROJECTNAME = 'UPGCUST';
+DELETE FROM  PSPROJECTDEP WHERE PROJECTNAME = 'UPGCUST';
+DELETE FROM  PSPROJECTINC WHERE PROJECTNAME = 'UPGCUST';
+DELETE FROM  PSPROJECTMSG WHERE PROJECTNAME = 'UPGCUST';
+DELETE FROM  PSPROJECTSEC WHERE PROJECTNAME = 'UPGCUST';
+IMPORT *;

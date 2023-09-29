@@ -1,0 +1,11 @@
+ColumnUpdate "TC_TIME" CLASS Date Format YMD
+DimDelete "TC_TIME"
+CreateColumns
+DimMake "TC_TIME" DimType Date EarliestDate 19000101 LatestDate 99991231 Association "TC_TIME" ManualPeriods False DaysInWeek 127 NewCatsLock False
+RootCatMake "Time" Dimension "TC_TIME"  Inclusion Generate Lastuse 19980625 Date 0 Filtered False Suppressed False Sign False IsKeyOrphanage False IsTruncated False Blanks False
+DrillCatMake "By Time" Root "Time" Inclusion Suppress Filtered False Suppressed True PrimaryDrill True YearBegins 19980101 PartialWeek Split ExtraWeek None WeekBegins Sunday
+LevelMake "Year" Drill "By Time" Parent 0 Blanks "( blank )" Source "TC_TIME" Inclusion Generate DateFunction Year Generate Need RefreshLabel False RefreshDescription False RefreshShortName False NewCatsLock False CatLabFormat "YYYY" Timerank 10 UniqueCategories True UniqueMove False OrderBy Drill "By Time" Column "Time" SortOrder Default SortAs Ascending
+LevelMake "Quarter" Drill "By Time" Parent "Year" Blanks "( blank )" Source "TC_TIME" Inclusion Generate DateFunction Quarter Generate All RefreshLabel False RefreshDescription False RefreshShortName False NewCatsLock False CatLabFormat '"Q"Q YYYY' Timerank 20 UniqueCategories True UniqueMove False OrderBy Drill "By Time" Column "Time" SortOrder Default SortAs Ascending
+LevelMake "Month" Drill "By Time" Parent "Quarter" Blanks "( blank )" Source "TC_TIME" Inclusion Generate DateFunction Month Generate All RefreshLabel False RefreshDescription False RefreshShortName False NewCatsLock False CatLabFormat "MMM YYYY" Timerank 30 UniqueCategories True UniqueMove False OrderBy Drill "By Time" Column "Time" SortOrder Default SortAs Ascending
+DimensionListUpdate "TC_TIME" Endlist
+

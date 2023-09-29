@@ -1,0 +1,86 @@
+-- ******************************************************************
+--                CONFIDENTIALITY INFORMATION:
+--
+-- THIS MODULE IS THE CONFIDENTIAL AND PROPRIETARY INFORMATION OF
+-- PEOPLESOFT, INC. IT IS NOT TO BE COPIED, REPRODUCED, OR
+-- TRANSMITTED IN ANY FORM, BY ANY MEANS, IN WHOLE OR IN PART,
+-- NOR IS IT TO BE USED FOR ANY PURPOSE OTHER THAN THAT FOR WHICH
+-- IT IS EXPRESSLY PROVIDED WITHOUT THE WRITTEN PERMISSION OF
+-- PEOPLESOFT, INC.
+--
+-- COPYRIGHT (C) 1988-1998 PEOPLESOFT, INC. ALL RIGHTS RESERVED
+-- ******************************************************************
+-- SOURCESAFE INFORMATION:
+--
+--      $Date:: 1/14/98 11:30a   $
+--  $Revision:: 6                $
+--  $Workfile:: BASYSDAT.DMS     $
+-- ******************************************************************
+-- PYSYSDAT.GEN
+--
+-- CREATE PAYROLL SYSTEM DATA.
+--
+-- USE THIS SCRIPT TO CREATE PAYROLL SYSTEM DATA.
+
+-- ******************************************************************
+
+SET LOG PYSYSDTG.LOG;
+SET OUTPUT PYSYSDAT.DAT;
+
+-- ------------------------------------------------------------------
+-- Payroll System Base Tables
+-- ------------------------------------------------------------------
+
+EXPORT BOND_TBL                   ;
+EXPORT CAN_NOC_TBL                ;
+EXPORT CAN_SOC_TBL                ;
+EXPORT CAN_TAX_CITLUMP            ;
+EXPORT CAN_TAX_CITRATE            ;
+EXPORT CAN_TAX_PROV               ;
+EXPORT CAN_TAX_PROVNCT            ;
+EXPORT CAN_TAX_QITLUMP            ;
+EXPORT CAN_TAX_QITRATE            ;
+EXPORT CAN_TAX_TBL                ;
+EXPORT CHART_DIST_HR              ;
+EXPORT GARN_DE_DEFN               ;
+EXPORT GARN_EXEMPT_TBL            ;
+EXPORT GARN_OPERANDS              ;
+EXPORT GARN_PRORATE_DF            ;
+EXPORT GARN_PRORATE_RL            ;
+EXPORT GARN_RULE_TBL              ;
+EXPORT LCLWK_TXRCP_TBL            ;
+EXPORT LOCAL_TAX_TBL              ;
+EXPORT LOCTX_RECIP_TBL            ;
+EXPORT PAY_FORM_TBL   WHERE FORM_ID = '******'  ;
+EXPORT PAY_MESSAGE_TBL            ;
+EXPORT STATE_TAXRT_TBL            ;
+EXPORT STATE_TAX_TBL              ;
+EXPORT STTAX_RECIP_TBL            ;
+EXPORT ST_OTH_TAX_TBL             ;
+EXPORT SWT_MARSTAT_TBL            ;
+EXPORT TAXFORM_BOX                ;
+EXPORT TAXFORM_NOTES              ;
+EXPORT TAXFORM_TBL                ;
+EXPORT TAXGR_BASE_TBL             ;
+EXPORT TAXGR_CMPNT_TBL            ;
+EXPORT TAXGR_DEFN_TBL             ;
+
+-- ------------------------------------------------------------------
+-- Payroll System Related Language Tables
+-- ------------------------------------------------------------------
+
+EXPORT BOND_TBL_LANG              ;
+EXPORT CAN_NOC_LANG               ;
+EXPORT CAN_SOC_LANG               ;
+EXPORT GARN_DE_DEF_LNG            ;
+EXPORT GARN_RULE_LANG             ;
+EXPORT PAY_FORM_LANG   WHERE FORM_ID = '******'  ;
+EXPORT PAY_MESSAGE_LNG            ;
+EXPORT STATE_TAX_LANG             ;
+EXPORT SWT_MARSTA_LANG           ;
+EXPORT TAXFORM_BX_LANG            ;
+EXPORT TAXFORM_NT_LANG            ;
+
+
+
+-- --------------------- END OF PYSYSDAT.GEN ------------------------

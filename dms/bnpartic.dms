@@ -1,0 +1,227 @@
+-- ******************************************************************
+--
+--                                                                 
+--  This software and related documentation are provided under a   
+--  license agreement containing restrictions on use and           
+--  disclosure and are protected by intellectual property          
+--  laws. Except as expressly permitted in your license agreement  
+--  or allowed by law, you may not use, copy, reproduce,           
+--  translate, broadcast, modify, license, transmit, distribute,   
+--  exhibit, perform, publish or display any part, in any form or  
+--  by any means. Reverse engineering, disassembly, or             
+--  decompilation of this software, unless required by law for     
+--  interoperability, is prohibited.                               
+--  The information contained herein is subject to change without  
+--  notice and is not warranted to be error-free. If you find any  
+--  errors, please report them to us in writing.                   
+--                                                                 
+--  Copyright (C) 1988, 2013, Oracle and/or its affiliates.        
+--  All Rights Reserved.                                           
+-- ******************************************************************
+--
+--     $Release:  HRMS830 
+--    $Revision:  1 
+--  $Version-ID:  1
+--
+-- ******************************************************************
+-- BNPARTIC.DMS  (Base Benefits and Benefits Administration)
+--
+-- Use this script to refresh the BENEFIT_PARTIC table from current
+-- enrollments if benefit enrollments have been inserted into the
+-- database using an import process.
+-- ******************************************************************
+
+SET LOG C:\TEMP\BNPARTIC.LOG;
+
+DELETE FROM PS_BENEFIT_PARTIC;
+COMMIT;
+
+INSERT 
+INTO PS_BENEFIT_PARTIC
+(EMPLID,
+EMPL_RCD,
+COBRA_EVENT_ID,
+PLAN_TYPE,
+BENEFIT_NBR) 
+SELECT DISTINCT
+EMPLID,
+EMPL_RCD,
+COBRA_EVENT_ID,
+PLAN_TYPE,
+BENEFIT_NBR
+FROM PS_HEALTH_BENEFIT
+;
+COMMIT;
+
+INSERT 
+INTO PS_BENEFIT_PARTIC
+(EMPLID,
+EMPL_RCD,
+COBRA_EVENT_ID,
+PLAN_TYPE,
+BENEFIT_NBR) 
+SELECT DISTINCT
+EMPLID,
+EMPL_RCD,
+0,
+PLAN_TYPE,
+BENEFIT_NBR
+FROM PS_LIFE_ADD_BEN
+;
+COMMIT;
+
+INSERT 
+INTO PS_BENEFIT_PARTIC
+(EMPLID,
+EMPL_RCD,
+COBRA_EVENT_ID,
+PLAN_TYPE,
+BENEFIT_NBR) 
+SELECT DISTINCT
+EMPLID,
+EMPL_RCD,
+0,
+PLAN_TYPE,
+BENEFIT_NBR
+FROM PS_DISABILITY_BEN
+;
+COMMIT;
+
+INSERT 
+INTO PS_BENEFIT_PARTIC
+(EMPLID,
+EMPL_RCD,
+COBRA_EVENT_ID,
+PLAN_TYPE,
+BENEFIT_NBR) 
+SELECT DISTINCT
+EMPLID,
+EMPL_RCD,
+0,
+PLAN_TYPE,
+BENEFIT_NBR
+FROM PS_SAVINGS_PLAN
+;
+COMMIT;
+
+INSERT 
+INTO PS_BENEFIT_PARTIC
+(EMPLID,
+EMPL_RCD,
+COBRA_EVENT_ID,
+PLAN_TYPE,
+BENEFIT_NBR) 
+SELECT DISTINCT
+EMPLID,
+EMPL_RCD,
+0,
+PLAN_TYPE,
+BENEFIT_NBR
+FROM PS_LEAVE_PLAN
+;
+COMMIT;
+
+INSERT 
+INTO PS_BENEFIT_PARTIC
+(EMPLID,
+EMPL_RCD,
+COBRA_EVENT_ID,
+PLAN_TYPE,
+BENEFIT_NBR) 
+SELECT DISTINCT
+EMPLID,
+EMPL_RCD,
+COBRA_EVENT_ID,
+PLAN_TYPE,
+BENEFIT_NBR
+FROM PS_FSA_BENEFIT
+;
+COMMIT;
+
+INSERT 
+INTO PS_BENEFIT_PARTIC
+(EMPLID,
+EMPL_RCD,
+COBRA_EVENT_ID,
+PLAN_TYPE,
+BENEFIT_NBR) 
+SELECT DISTINCT
+EMPLID,
+EMPL_RCD,
+0,
+PLAN_TYPE,
+BENEFIT_NBR
+FROM PS_RTRMNT_PLAN
+;
+COMMIT;
+
+INSERT 
+INTO PS_BENEFIT_PARTIC
+(EMPLID,
+EMPL_RCD,
+COBRA_EVENT_ID,
+PLAN_TYPE,
+BENEFIT_NBR) 
+SELECT DISTINCT
+EMPLID,
+EMPL_RCD,
+0,
+PLAN_TYPE,
+BENEFIT_NBR
+FROM PS_PENSION_PLAN
+;
+COMMIT;
+
+INSERT 
+INTO PS_BENEFIT_PARTIC
+(EMPLID,
+EMPL_RCD,
+COBRA_EVENT_ID,
+PLAN_TYPE,
+BENEFIT_NBR) 
+SELECT DISTINCT
+EMPLID,
+EMPL_RCD,
+0,
+PLAN_TYPE,
+BENEFIT_NBR
+FROM PS_VACATION_BEN
+;
+COMMIT;
+
+INSERT 
+INTO PS_BENEFIT_PARTIC
+(EMPLID,
+EMPL_RCD,
+COBRA_EVENT_ID,
+PLAN_TYPE,
+BENEFIT_NBR) 
+SELECT DISTINCT
+EMPLID,
+EMPL_RCD,
+0,
+PLAN_TYPE,
+BENEFIT_NBR
+FROM PS_SIMPLE_BENEFIT
+;
+COMMIT;
+
+INSERT 
+INTO PS_BENEFIT_PARTIC
+(EMPLID,
+EMPL_RCD,
+COBRA_EVENT_ID,
+PLAN_TYPE,
+BENEFIT_NBR) 
+SELECT DISTINCT
+EMPLID,
+EMPL_RCD,
+0,
+PLAN_TYPE,
+BENEFIT_NBR
+FROM PS_CAR_PLAN
+;
+COMMIT;
+
+-- ********************** End of PARTIC.DMS *************************
+

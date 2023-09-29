@@ -1,0 +1,33 @@
+-- ******************************************************************
+--                CONFIDENTIALITY INFORMATION:
+--
+-- THIS MODULE IS THE CONFIDENTIAL AND PROPRIETARY INFORMATION OF
+-- PEOPLESOFT, INC. IT IS NOT TO BE COPIED, REPRODUCED, OR
+-- TRANSMITTED IN ANY FORM, BY ANY MEANS, IN WHOLE OR IN PART,
+-- NOR IS IT TO BE USED FOR ANY PURPOSE OTHER THAN THAT FOR WHICH
+-- IT IS EXPRESSLY PROVIDED WITHOUT THE WRITTEN PERMISSION OF
+-- PEOPLESOFT, INC.
+--
+-- COPYRIGHT (C) 1988-1998 PEOPLESOFT, INC. ALL RIGHTS RESERVED
+-- ******************************************************************
+-- SOURCESAFE INFORMATION:
+--
+--      $Date:: 4/28/98 2:38p   $
+--  $Revision:: 1                $
+--  $Workfile:: ZPY7514.GEN     $
+-- ******************************************************************
+-- ZPY7514.GEN
+--
+-- CREATE GARNISHMENT PRORATION DEFINITIONS DATA
+--
+-- USE THIS SCRIPT TO CREATE GARNISHMENT PRORATION DEFINITIONS DATA.
+
+-- ******************************************************************
+
+SET LOG CPY7514G.LOG;
+SET OUTPUT CPY7514.DAT;
+
+EXPORT  GARN_PRORATE_DF;
+
+
+-- --------------------- END OF ZPY7514.GEN------------------------

@@ -1,0 +1,40 @@
+-- ***************************************************************
+--                                                                
+--                                                                
+--  This software and related documentation are provided under a  
+--  license agreement containing restrictions on use and          
+--  disclosure and are protected by intellectual property         
+--  laws. Except as expressly permitted in your license agreement 
+--  or allowed by law, you may not use, copy, reproduce,          
+--  translate, broadcast, modify, license, transmit, distribute,  
+--  exhibit, perform, publish or display any part, in any form or 
+--  by any means. Reverse engineering, disassembly, or            
+--  decompilation of this software, unless required by law for    
+--  interoperability, is prohibited.                              
+--  The information contained herein is subject to change without 
+--  notice and is not warranted to be error-free. If you find any 
+--  errors, please report them to us in writing.                  
+--                                                                
+--  Copyright (C) 1988, 2015, Oracle and/or its affiliates.       
+--  All Rights Reserved.                                          
+-- ***************************************************************
+--  This script is to enable SWAN look and feel and new grid defaults
+--  ******************************************************************
+
+SET LOG DLUPX25_01.LOG;
+
+
+
+-- fix it to be new stylesheetname for 9.2 
+-- fix psoptions to also set the alignment flags 
+
+UPDATE PSOPTIONS SET PTBRANDTHEME='DEFAULT_THEME_FLUID';
+
+UPDATE PSOPTIONS SET STYLESHEETNAME = 'PSSTYLEDEF_TANGERINE', SCROLLABLEGRID = 'Y', PT_ALIGN_RT = 'Y';
+
+UPDATE PS_PTPP_OPTIONS SET PT_PORTAL_PROFILE = 'PT_PORTAL_PROFILE_APPS91'
+WHERE PT_PORTAL_PROFILE = 'PT_PORTAL_PROFILE';
+
+UPDATE PS_PTPP_OPTIONS SET PTPP_STYLESHEET = 'PSSTYLEDEF_TANGERINE', PTPP_SCSHOWBC = 'N';
+
+UPDATE PS_PTPP_SITE_OPT SET PTPP_STYLESHEET = 'PSSTYLEDEF_TANGERINE';

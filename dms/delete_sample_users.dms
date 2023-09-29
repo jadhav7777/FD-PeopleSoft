@@ -1,0 +1,239 @@
+--
+--
+--                                                                  
+-- This software and related documentation are provided under a     
+-- license agreement containing restrictions on use and             
+-- disclosure and are protected by intellectual property            
+-- laws. Except as expressly permitted in your license agreement    
+-- or allowed by law, you may not use, copy, reproduce,             
+-- translate, broadcast, modify, license, transmit, distribute,     
+-- exhibit, perform, publish or display any part, in any form or    
+-- by any means. Reverse engineering, disassembly, or               
+-- decompilation of this software, unless required by law for       
+-- interoperability, is prohibited.                                 
+-- The information contained herein is subject to change without    
+-- notice and is not warranted to be error-free. If you find any    
+-- errors, please report them to us in writing.                     
+--                                                                  
+--
+-- Copyright (C) 1988, 2013, Oracle and/or its affiliates.          
+-- All Rights Reserved.                                             
+-- ******************************************************************
+--
+--     $Release:  HRMS92 
+--    $Revision:  1 
+--  $Version-ID:  1
+--
+-- ******************************************************************
+-- delete_sample_users.DMS  (Human Resources)
+--
+-- 
+-- This script will remove Sample Users supplied by PeopleSoft
+-- You may want to run this against the SYS database if you do not want these
+-- ids to exist there.
+--
+--    The User information is deleted from these tables:
+--      PSOPRDEFN         - User Profile
+--      PSROLEUSER        - User Profiles/Roles
+--      PSOPRCLS          - User Profiles/Classes
+--      PSUSERATTR        - Password Hints
+--      PSOPRALIAS        - Operator Aliases
+--      PS_ROLEXLATOPR    - Role User Table
+--      PSUSEREMAIL       - User Email
+--      PSUSERPRSNLOPTN   - User Personalizations
+--      PS_RTE_CNTL_RUSER - User Route Control
+-- ***************************************************************************
+Set log DeleteSampleUsers.log;
+
+set output usersetupbackup.dat;
+
+export PSOPRDEFN;
+export PSROLEUSER;
+export PSOPRCLS;
+export PSUSERATTR;
+export PSOPRALIAS;
+export PS_ROLEXLATOPR;
+export PSUSEREMAIL;
+export PSUSERPRSNLOPTN;
+export PS_RTE_CNTL_RUSER;
+
+-- ****************************
+-- Delete the KU Sample Users *
+-- ****************************
+
+Delete from PSOPRDEFN       where OPRID like ('KU%');
+Delete from PSROLEUSER      where ROLEUSER like ('KU%');
+Delete from PSUSERATTR      where OPRID like ('KU%');
+Delete from PSOPRALIAS      where OPRID like ('KU%');
+Delete from PS_ROLEXLATOPR  where OPRID like ('KU%');
+Delete from PSUSEREMAIL     where OPRID like ('KU%');
+Delete from PSUSERPRSNLOPTN where OPRID like ('KU%');
+Delete from PS_RTE_CNTL_RUSER Where ROLEUSER like ('KU%');
+
+-- ****************************
+-- Delete the LM Sample Users *
+-- ****************************
+
+Delete from PSOPRDEFN      where OPRID like ('LM%');
+Delete from PSROLEUSER     where ROLEUSER like ('LM%');
+Delete from PSUSERATTR     where OPRID like ('LM%');
+Delete from PSOPRALIAS     where OPRID like ('LM%');
+Delete from PS_ROLEXLATOPR where OPRID like ('LM%');
+Delete from PSUSEREMAIL     where OPRID like ('LM%');
+Delete from PSUSERPRSNLOPTN where OPRID like ('LM%');
+Delete from PS_RTE_CNTL_RUSER Where ROLEUSER like ('LM%');
+
+-- ****************************
+-- Delete the KC Sample Users *
+-- ****************************
+
+Delete from PSOPRDEFN      where OPRID like ('KC%');
+Delete from PSROLEUSER     where ROLEUSER like ('KC%');
+Delete from PSUSERATTR     where OPRID like ('KC%');
+Delete from PSOPRALIAS     where OPRID like ('KC%');
+Delete from PS_ROLEXLATOPR where OPRID like ('KC%');
+Delete from PSUSEREMAIL     where OPRID like ('KC%');
+Delete from PSUSERPRSNLOPTN where OPRID like ('KC%');
+Delete from PS_RTE_CNTL_RUSER Where ROLEUSER like ('KC%');
+
+-- ****************************
+-- Delete the HAM Sample Users *
+-- ****************************
+
+Delete from PSOPRDEFN      where OPRID like ('HAM%');
+Delete from PSROLEUSER     where ROLEUSER like ('HAM%');
+Delete from PSUSERATTR     where OPRID like ('HAM%');
+Delete from PSOPRALIAS     where OPRID like ('HAM%');
+Delete from PS_ROLEXLATOPR where OPRID like ('HAM%');
+Delete from PSUSEREMAIL     where OPRID like ('HAM%');
+Delete from PSUSERPRSNLOPTN where OPRID like ('HAM%');
+Delete from PS_RTE_CNTL_RUSER Where ROLEUSER like ('HAM%');
+
+-- ****************************
+-- Delete the HCR Sample Users *
+-- ****************************
+
+Delete from PSOPRDEFN      where OPRID like ('HCR%');
+Delete from PSROLEUSER     where ROLEUSER like ('HCR%');
+Delete from PSUSERATTR     where OPRID like ('HCR%');
+Delete from PSOPRALIAS     where OPRID like ('HCR%');
+Delete from PS_ROLEXLATOPR where OPRID like ('HCR%');
+Delete from PSUSEREMAIL     where OPRID like ('HCR%');
+Delete from PSUSERPRSNLOPTN where OPRID like ('HCR%');
+Delete from PS_RTE_CNTL_RUSER Where ROLEUSER like ('HCR%');
+
+-- ****************************
+-- Delete the HFG Sample Users *
+-- ****************************
+
+Delete from PSOPRDEFN      where OPRID like ('HFG%');
+Delete from PSROLEUSER     where ROLEUSER like ('HFG%');
+Delete from PSUSERATTR     where OPRID like ('HFG%');
+Delete from PSOPRALIAS     where OPRID like ('HFG%');
+Delete from PS_ROLEXLATOPR where OPRID like ('HFG%');
+Delete from PSUSEREMAIL     where OPRID like ('HFG%');
+Delete from PSUSERPRSNLOPTN where OPRID like ('HFG%');
+Delete from PS_RTE_CNTL_RUSER Where ROLEUSER like ('HFG%');
+
+-- ****************************
+-- Delete the HG Sample Users *
+-- ****************************
+
+Delete from PSOPRDEFN      where OPRID like ('HG%');
+Delete from PSROLEUSER     where ROLEUSER like ('HG%');
+Delete from PSUSERATTR     where OPRID like ('HG%');
+Delete from PSOPRALIAS     where OPRID like ('HG');
+Delete from PS_ROLEXLATOPR where OPRID like ('HG%');
+Delete from PSUSEREMAIL     where OPRID like ('HG%');
+Delete from PSUSERPRSNLOPTN where OPRID like ('HG%');
+Delete from PS_RTE_CNTL_RUSER Where ROLEUSER like ('HG%');
+
+-- ****************************
+-- Delete the HHD Sample Users *
+-- ****************************
+
+Delete from PSOPRDEFN      where OPRID like ('HHD%');
+Delete from PSROLEUSER     where ROLEUSER like ('HHD%');
+Delete from PSUSERATTR     where OPRID like ('HHD%');
+Delete from PSOPRALIAS     where OPRID like ('HHD%');
+Delete from PS_ROLEXLATOPR where OPRID like ('HHD%');
+Delete from PSUSEREMAIL     where OPRID like ('HHD%');
+Delete from PSUSERPRSNLOPTN where OPRID like ('HHD%');
+Delete from PS_RTE_CNTL_RUSER Where ROLEUSER like ('HHD%');
+
+-- ****************************
+-- Delete the HHR Sample Users *
+-- ****************************
+
+Delete from PSOPRDEFN      where OPRID like ('HHR%');
+Delete from PSROLEUSER     where ROLEUSER like ('HHR%');
+Delete from PSUSERATTR     where OPRID like ('HHR%');
+Delete from PSOPRALIAS     where OPRID like ('HHR%');
+Delete from PS_ROLEXLATOPR where OPRID like ('HHR%');
+Delete from PSUSEREMAIL     where OPRID like ('HHR%');
+Delete from PSUSERPRSNLOPTN where OPRID like ('HHR%');
+Delete from PS_RTE_CNTL_RUSER Where ROLEUSER like ('HHR%');
+
+
+-- ****************************
+-- Delete the FED Sample Users *
+-- ****************************
+
+Delete from PSOPRDEFN      where OPRID like ('FED%');
+Delete from PSROLEUSER     where ROLEUSER like ('FED%');
+Delete from PSUSERATTR     where OPRID like ('FED%');
+Delete from PSOPRALIAS     where OPRID like ('FED%');
+Delete from PS_ROLEXLATOPR where OPRID like ('FED%');
+Delete from PSUSEREMAIL     where OPRID like ('FED%');
+Delete from PSUSERPRSNLOPTN where OPRID like ('FED%');
+Delete from PS_RTE_CNTL_RUSER Where ROLEUSER like ('FED%');
+
+-- ****************************
+-- Delete the HX Sample Users *
+-- ****************************
+
+Delete from PSOPRDEFN      where OPRID like ('HX%');
+Delete from PSROLEUSER     where ROLEUSER like ('HX%');
+Delete from PSUSERATTR     where OPRID like ('HX%');
+Delete from PSOPRALIAS     where OPRID like ('HX%');
+Delete from PS_ROLEXLATOPR where OPRID like ('HX%');
+Delete from PSUSEREMAIL     where OPRID like ('HX%');
+Delete from PSUSERPRSNLOPTN where OPRID like ('HX%');
+Delete from PS_RTE_CNTL_RUSER Where ROLEUSER like ('HX%');
+
+-- ********************************
+-- Delete the PS** Sample Users   *
+-- Note: the PS id is not deleted *
+-- ********************************
+
+Delete from PSOPRDEFN       where OPRID in ('PS508','PSAPPS','PSEM','PSPY');   
+Delete from PSROLEUSER      where ROLEUSER in ('PS508','PSAPPS','PSEM','PSPY'); 
+Delete from PSOPRALIAS      where OPRID in ('PS508','PSAPPS','PSEM','PSPY'); 
+Delete from PS_ROLEXLATOPR  where OPRID in ('PS508','PSAPPS','PSEM','PSPY'); 
+Delete from PSUSERATTR      where OPRID in ('PS508','PSAPPS','PSEM','PSPY'); 
+Delete from PSUSEREMAIL     where OPRID in ('PS508','PSAPPS','PSEM','PSPY'); 
+Delete from PSUSERPRSNLOPTN where OPRID in ('PS508','PSAPPS','PSEM','PSPY'); 
+Delete from PS_RTE_CNTL_RUSER Where ROLEUSER in ('PS508','PSAPPS','PSEM','PSPY'); 
+
+-- ********************************
+-- Delete the Product Sample Users   *
+-- ********************************
+
+Delete from PSOPRDEFN       where OPRID in ('HPA','HPI','HPY','HST','HTL','HFPS');   
+Delete from PSROLEUSER      where ROLEUSER in ('HPA','HPI','HPY','HST','HTL','HFPS');   
+Delete from PSOPRALIAS      where OPRID in ('HPA','HPI','HPY','HST','HTL','HFPS');   
+Delete from PS_ROLEXLATOPR  where OPRID in ('HPA','HPI','HPY','HST','HTL','HFPS');   
+Delete from PSUSERATTR      where OPRID in ('HPA','HPI','HPY','HST','HTL','HFPS');  
+Delete from PSUSEREMAIL     where OPRID in ('HPA','HPI','HPY','HST','HTL','HFPS'); 
+Delete from PSUSERPRSNLOPTN where OPRID in ('HPA','HPI','HPY','HST','HTL','HFPS'); 
+Delete from PS_RTE_CNTL_RUSER Where ROLEUSER in ('HPA','HPI','HPY','HST','HTL','HFPS'); 
+ 
+
+-- ***********************************************************
+-- * Additional Notes:   PTWEBSERVER and VP1 are not deleted *
+-- ***********************************************************
+
+
+
+
+

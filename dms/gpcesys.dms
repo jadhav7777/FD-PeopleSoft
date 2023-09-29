@@ -1,0 +1,275 @@
+-- **************************************************************
+--                                                               
+--                                                               
+-- This software and related documentation are provided under a  
+-- license agreement containing restrictions on use and          
+-- disclosure and are protected by intellectual property         
+-- laws. Except as expressly permitted in your license agreement 
+-- or allowed by law, you may not use, copy, reproduce,          
+-- translate, broadcast, modify, license, transmit, distribute,  
+-- exhibit, perform, publish or display any part, in any form or 
+-- by any means. Reverse engineering, disassembly, or            
+-- decompilation of this software, unless required by law for    
+-- interoperability, is prohibited.                              
+-- The information contained herein is subject to change without 
+-- notice and is not warranted to be error-free. If you find any 
+-- errors, please report them to us in writing.                  
+--                                                               
+-- Copyright (C) 1988, 2013, Oracle and/or its affiliates.       
+-- All Rights Reserved.                                          
+-- **************************************************************
+
+-- **********************************************************************
+-- Global Payroll Country Extensions
+--   - This script will perform varies updates that are required to an
+--   HRSYS/HRDMO db for the individual Country Extensions.
+--   - All logic in this script is conditional based on which Country Extensions
+--   are installed (based on install flags on PS_INSTALLATION).
+-- **********************************************************************
+SET LOG gpcesys.log;
+
+
+-- ******************************************************************
+--   Global Payroll ARG (Argentina) Country Extension
+--      - Set Country Specific Triggers to Active
+-- ******************************************************************
+UPDATE PS_GP_TRGR_REC SET TRGR_ACTIVE_IND = 'Y' WHERE COUNTRY = 'ARG' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_ARG = 'Y');
+COMMIT;
+
+-- ******************************************************************
+--   Global Payroll AUS (Australia) Country Extension
+--      - Set Country Specific Triggers to Active
+--      - GP Core System Data Elements that need to be stored
+-- ******************************************************************
+UPDATE PS_GP_TRGR_REC SET TRGR_ACTIVE_IND = 'Y' WHERE COUNTRY = 'AUS' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_AUS = 'Y');
+
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'COMPANY ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_AUS = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'COUNTRY ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_AUS = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'DEPTID ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_AUS = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'EMPLID ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_AUS = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'EMPL CTG ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_AUS = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'EMPLOYEE SUBCAT1 ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_AUS = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'EMPLOYEE SUBCAT2 ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_AUS = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'ESTABID ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_AUS = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'FUNCTION CD DEU ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_AUS = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'GL PAY TYPE ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_AUS = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'GP PAYGROUP ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_AUS = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'JOBCODE ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_AUS = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'LABOR AGREEMENT ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_AUS = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'LOCATION ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_AUS = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'POSITION NBR ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_AUS = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'REG REGION ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_AUS = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'STATE ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_AUS = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'COMPRATE ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_AUS = 'Y');
+
+COMMIT;
+
+
+-- ******************************************************************
+--   Global Payroll BRA (Brazil) Country Extension
+--      - Set Country Specific Triggers to Active
+-- ******************************************************************
+UPDATE PS_GP_TRGR_REC SET TRGR_ACTIVE_IND = 'Y' WHERE COUNTRY = 'BRA' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_BRA = 'Y');
+COMMIT;
+
+
+-- ******************************************************************
+--   Global Payroll CHE (Switzerland) Country Extension
+--      - Set Country Specific Triggers to Active
+-- ******************************************************************
+UPDATE PS_GP_TRGR_REC SET TRGR_ACTIVE_IND = 'Y' WHERE COUNTRY = 'CHE' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_CHE = 'Y');
+COMMIT;
+
+
+
+-- ******************************************************************
+--   Global Payroll CHN (China) Country Extension
+--      - Set Country Specific Triggers to Active
+-- ******************************************************************
+UPDATE PS_GP_TRGR_REC SET TRGR_ACTIVE_IND = 'Y' WHERE COUNTRY = 'CHN' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_CHN = 'Y');
+COMMIT;
+
+
+
+-- ******************************************************************
+--   Global Payroll DEU (Germany) Country Extension
+--      - Set Country Specific Triggers to Active
+-- ******************************************************************
+UPDATE PS_GP_TRGR_REC SET TRGR_ACTIVE_IND = 'Y' WHERE COUNTRY = 'DEU' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_DEU = 'Y');
+COMMIT;
+ 
+
+-- ******************************************************************
+--   Global Payroll ESP (Spain) Country Extension
+--      - Set Country Specific Triggers to Active
+-- ******************************************************************
+UPDATE PS_GP_TRGR_REC SET TRGR_ACTIVE_IND = 'Y' WHERE COUNTRY = 'ESP' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_ESP = 'Y');
+COMMIT;
+
+
+-- ******************************************************************
+--   Global Payroll FRA (France) Country Extension
+--      - Set Country Specific Triggers to Active
+-- ******************************************************************
+UPDATE PS_GP_TRGR_REC SET TRGR_ACTIVE_IND = 'Y' WHERE COUNTRY = 'FRA' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_FRA = 'Y');
+COMMIT;
+
+
+-- ******************************************************************
+--   Global Payroll GBR (United Kingdom) Country Extension
+--      - Set Country Specific Triggers to Active
+--      - GP Core System Data Elements that need to be stored
+-- ******************************************************************
+UPDATE PS_GP_TRGR_REC SET TRGR_ACTIVE_IND = 'Y' WHERE COUNTRY = 'GBR' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_UK = 'Y');
+
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'PAYMENT DATE ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_UK = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'PRD FREQ NAME ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_UK = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'COMPANY ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_UK = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'PAY ENTITY ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_UK = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'GP PAYGROUP ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_UK = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'LAST ACT SEGMENT ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_UK = 'Y');
+
+COMMIT;
+
+
+-- ******************************************************************
+--   Global Payroll HKG (Hong Kong) Country Extension
+--      - Set Country Specific Triggers to Active
+--      - GP Core System Data Elements that need to be stored
+-- ******************************************************************
+UPDATE PS_GP_TRGR_REC SET TRGR_ACTIVE_IND = 'Y' WHERE COUNTRY = 'HKG' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_HKG = 'Y');
+
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'COMPANY ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_HKG = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'COUNTRY ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_HKG = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'DEPTID ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_HKG = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'EMPLID ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_HKG = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'EMPL CTG ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_HKG = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'EMPLOYEE SUBCAT1 ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_HKG = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'EMPLOYEE SUBCAT2 ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_HKG = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'ESTABID ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_HKG = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'FUNCTION CD DEU ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_HKG = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'GL PAY TYPE ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_HKG = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'GP PAYGROUP ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_HKG = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'JOBCODE ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_HKG = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'LABOR AGREEMENT ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_HKG = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'LOCATION ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_HKG = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'POSITION NBR ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_HKG = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'REG REGION ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_HKG = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'STATE ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_HKG = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'TARIFF AREA ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_HKG = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'TARIFF ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_HKG = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'COMPRATE ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_HKG = 'Y');
+
+COMMIT;
+
+
+-- ******************************************************************
+--   Global Payroll IND (India) Country Extension
+--      - Set Country Specific Triggers to Active
+-- ******************************************************************
+UPDATE PS_GP_TRGR_REC SET TRGR_ACTIVE_IND = 'Y' WHERE COUNTRY = 'IND' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_IND = 'Y');
+COMMIT;
+
+
+-- ******************************************************************
+--   Global Payroll ITA (Italy) Country Extension
+--      - Set Country Specific Triggers to Active
+-- ******************************************************************
+UPDATE PS_GP_TRGR_REC SET TRGR_ACTIVE_IND = 'Y' WHERE COUNTRY = 'ITA' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_ITA = 'Y');
+COMMIT;
+
+
+-- ******************************************************************
+--   Global Payroll JPN (Japan) Country Extension
+--      - Set Country Specific Triggers to Active
+-- ******************************************************************
+UPDATE PS_GP_TRGR_REC SET TRGR_ACTIVE_IND = 'Y' WHERE COUNTRY = 'JPN' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_JPN = 'Y');
+COMMIT;
+
+
+-- ******************************************************************
+--   Global Payroll MEX (Mexico) Country Extension
+--      - Set Country Specific Triggers to Active
+--      - GP Core System Data Elements that need to be stored
+-- ******************************************************************
+UPDATE PS_GP_TRGR_REC SET TRGR_ACTIVE_IND = 'Y' WHERE COUNTRY = 'MEX' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_MEX = 'Y');
+
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'COMPANY ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_MEX = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'DEPTID ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_MEX = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'EMPLID ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_MEX = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'ESTABID ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_MEX = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'GP PAYGROUP ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_MEX = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'JOBCODE ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_MEX = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'LOCATION ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_MEX = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'POSITION NBR ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_MEX = 'Y');
+
+COMMIT;
+
+
+-- ******************************************************************
+--   Global Payroll MYS (Malaysia) Country Extension
+--      - Set Country Specific Triggers to Active
+-- ******************************************************************
+UPDATE PS_GP_TRGR_REC SET TRGR_ACTIVE_IND = 'Y' WHERE COUNTRY = 'MYS' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_MYS = 'Y');
+COMMIT;
+
+
+-- ******************************************************************
+--   Global Payroll NLD (Netherlands) Country Extension
+--      - Set Country Specific Triggers to Active
+-- ******************************************************************
+UPDATE PS_GP_TRGR_REC SET TRGR_ACTIVE_IND = 'Y' WHERE COUNTRY = 'NLD' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_NLD = 'Y');
+COMMIT;
+
+
+-- ******************************************************************
+--   Global Payroll NZL (New Zealand) Country Extension
+--      - Set Country Specific Triggers to Active
+--      - GP Core System Data Elements that need to be stored
+-- ******************************************************************
+UPDATE PS_GP_TRGR_REC SET TRGR_ACTIVE_IND = 'Y' WHERE COUNTRY = 'NZL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_NZL = 'Y');
+
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'COMPANY ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_NZL = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'COUNTRY ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_NZL = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'DEPTID ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_NZL = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'EMPLID ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_NZL = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'EMPL CTG ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_NZL = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'EMPLOYEE SUBCAT1 ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_NZL = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'EMPLOYEE SUBCAT2 ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_NZL = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'ESTABID ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_NZL = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'FUNCTION CD DEU ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_NZL = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'GL PAY TYPE ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_NZL = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'GP PAYGROUP ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_NZL = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'JOBCODE ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_NZL = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'LABOR AGREEMENT ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_NZL = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'LOCATION ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_NZL = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'POSITION NBR ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_NZL = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'REG REGION ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_NZL = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'STATE ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_NZL = 'Y');
+UPDATE PS_GP_PIN SET STORE_RSLT = 'Y', STORE_RSLT_IF_ZERO = 'Y' WHERE PIN_TYPE = 'SY' AND PIN_CODE = 'COMPRATE ALL' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_NZL = 'Y');
+
+COMMIT;
+
+-- ******************************************************************
+--   Global Payroll THA (Thailand) Country Extension
+--      - Set Country Specific Triggers to Active
+-- ******************************************************************
+UPDATE PS_GP_TRGR_REC SET TRGR_ACTIVE_IND = 'Y' WHERE COUNTRY = 'THA' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_THA = 'Y');
+COMMIT;
+
+
+
+-- ******************************************************************
+--   Global Payroll SGP (Singapore) Country Extension
+--      - Set Country Specific Triggers to Active
+-- ******************************************************************
+UPDATE PS_GP_TRGR_REC SET TRGR_ACTIVE_IND = 'Y' WHERE COUNTRY = 'SGP' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_SGP = 'Y');
+COMMIT;
+
+
+-- ******************************************************************
+--   Global Payroll USA (United States) Country Extension
+--      - Set Country Specific Triggers to Active
+-- ******************************************************************
+UPDATE PS_GP_TRGR_REC SET TRGR_ACTIVE_IND = 'Y' WHERE COUNTRY = 'USA' AND EXISTS (SELECT 'X' FROM PS_INSTALLATION WHERE INSTALLED_GP_USA = 'Y');
+COMMIT;

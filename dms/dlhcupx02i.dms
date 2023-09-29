@@ -1,0 +1,45 @@
+-- ************************************************************  
+-- This software and related documentation are provided under a  
+-- license agreement containing restrictions on use and          
+-- disclosure and are protected by intellectual property         
+-- laws. Except as expressly permitted in your license agreement 
+-- or allowed by law, you may not use, copy, reproduce,          
+-- translate, broadcast, modify, license, transmit, distribute,  
+-- exhibit, perform, publish or display any part, in any form or 
+-- by any means. Reverse engineering, disassembly, or            
+-- decompilation of this software, unless required by law for    
+-- interoperability, is prohibited.                              
+-- The information contained herein is subject to change without 
+-- notice and is not warranted to be error-free. If you find any 
+-- errors, please report them to us in writing.                  
+--                                                               
+-- Copyright (C) 1988, 2014, Oracle and/or its affiliates.       
+-- All Rights Reserved.                                          
+-- ************************************************************  
+-- DB2/OS390 customers need to uncomment and modify the statements below
+-- set execute_sql set current sqlid = 'OwnerId In Upper Case';
+-- set ddl table space * input STOGROUP as <TABLESPACE STOGROUP>;
+-- set ddl index * input STOGROUP as <INDEXSPACE STOGROUP>;
+-- set ddl unique index * input STOGROUP as <INDEXSPACE STOGROUP>;
+-- set DBSPACE <Source DBname>.<Source TableSpace> as <Target DBname>.<Target TableSpace>;
+-- set ddl record * input OWNER as <NEW OWNER>;
+-- set ddl index * input OWNER as <NEW OWNER>;
+-- set ddl unique index * input OWNER as <NEW OWNER>;
+-- set ddl index * input OWNER2 as <NEW OWNER>;
+-- set ddl unique index * input OWNER2 as <NEW OWNER>;
+-- set no view;
+-- set no space;
+-- set unicode off;
+
+
+
+
+
+
+
+
+
+SET INPUT dlhcupx02.dat;
+SET LOG dlhcupx02i.log;
+SET IGNORE_DUPS;
+IMPORT *;

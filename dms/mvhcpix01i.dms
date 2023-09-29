@@ -1,0 +1,103 @@
+--  ******************************************************************
+--
+--
+--  This software and related documentation are provided under a  
+--  license agreement containing restrictions on use and          
+--  disclosure and are protected by intellectual property         
+--  laws. Except as expressly permitted in your license agreement 
+--  or allowed by law, you may not use, copy, reproduce,          
+--  translate, broadcast, modify, license, transmit, distribute,  
+--  exhibit, perform, publish or display any part, in any form or 
+--  by any means. Reverse engineering, disassembly, or            
+--  decompilation of this software, unless required by law for    
+--  interoperability, is prohibited.                              
+--  The information contained herein is subject to change without 
+--  notice and is not warranted to be error-free. If you find any 
+--  errors, please report them to us in writing.                  
+--                                                                
+--  Copyright (C) 1988, 2013, Oracle and/or its affiliates.       
+--  All Rights Reserved.                                          
+--  ******************************************************************
+--  Imports Payroll Interface Definitions - used during the move to
+--  production upgrade step
+--  ******************************************************************
+
+SET INPUT mvhcpix01e.dat;
+SET LOG mvhcpix01i.log;
+
+DELETE from PS_PI_SYSTEM_TBL;
+DELETE from PS_PI_SYSTEM_LANG;
+DELETE from PS_PI_SYSTEM_STAT;
+
+DELETE from PS_PI_PS_RECORD;
+DELETE from PS_PI_PS_REC_LANG;
+DELETE from PS_PI_PSREC_FLD;
+
+DELETE from PS_PI_FIELD_TBL;
+DELETE from PS_PI_FIELD_LANG;
+DELETE from PS_PI_FIELD_XLAT;
+
+DELETE from PS_PI_INSTANCE_TBL;
+DELETE from PS_PI_INSTANC_LANG;
+DELETE from PS_PI_INST_VALUE;
+
+DELETE from PS_PI_DEFN_FILE;
+DELETE from PS_PI_DEFN_F_LANG;
+DELETE from PS_PI_DEFN_RECORD;
+DELETE from PS_PI_DEFN_R_LANG;
+DELETE from PS_PI_DEFN_FIELD;
+
+DELETE from PS_PI_CONFIG_TBL;
+DELETE from PS_PI_CONFIG_LANG;
+DELETE from PS_PI_CONFIG_FILE;
+
+DELETE from PS_PI_PROCESS_TBL;
+DELETE from PS_PI_PROC_TB_LANG;
+DELETE from PS_PI_PROCESS_VAL;
+DELETE from PS_PI_PROC_VA_LANG;
+
+DELETE from PS_PI_GROUP_TBL;
+DELETE from PS_PI_GROUP_LANG;
+
+DELETE from PS_FILE_HANDLE_TBL;
+DELETE from PS_FILE_HANDLE_LNG;
+
+
+IMPORT PS_PI_SYSTEM_TBL;
+IMPORT PS_PI_SYSTEM_LANG;
+IMPORT PS_PI_SYSTEM_STAT;
+
+IMPORT PS_PI_PS_RECORD;
+IMPORT PS_PI_PS_REC_LANG;
+IMPORT PS_PI_PSREC_FLD;
+
+IMPORT PS_PI_FIELD_TBL;
+IMPORT PS_PI_FIELD_LANG;
+IMPORT PS_PI_FIELD_XLAT;
+
+IMPORT PS_PI_INSTANCE_TBL;
+IMPORT PS_PI_INSTANC_LANG;
+IMPORT PS_PI_INST_VALUE;
+
+IMPORT PS_PI_DEFN_FILE;
+IMPORT PS_PI_DEFN_F_LANG;
+IMPORT PS_PI_DEFN_RECORD;
+IMPORT PS_PI_DEFN_R_LANG;
+IMPORT PS_PI_DEFN_FIELD;
+
+IMPORT PS_PI_CONFIG_TBL;
+IMPORT PS_PI_CONFIG_LANG;
+IMPORT PS_PI_CONFIG_FILE;
+
+IMPORT PS_PI_PROCESS_TBL;
+IMPORT PS_PI_PROC_TB_LANG;
+IMPORT PS_PI_PROCESS_VAL;
+IMPORT PS_PI_PROC_VA_LANG;
+
+IMPORT PS_PI_GROUP_TBL;
+IMPORT PS_PI_GROUP_LANG;
+
+IMPORT PS_FILE_HANDLE_TBL;
+IMPORT PS_FILE_HANDLE_LNG;
+
+

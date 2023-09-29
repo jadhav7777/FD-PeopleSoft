@@ -1,0 +1,90 @@
+-- ****************************************************************
+--                                                                      
+--                                                                      
+--  This software and related documentation are provided under a        
+--  license agreement containing restrictions on use and                
+--  disclosure and are protected by intellectual property               
+--  laws. Except as expressly permitted in your license agreement       
+--  or allowed by law, you may not use, copy, reproduce,                
+--  translate, broadcast, modify, license, transmit, distribute,        
+--  exhibit, perform, publish or display any part, in any form or       
+--  by any means. Reverse engineering, disassembly, or                  
+--  decompilation of this software, unless required by law for          
+--  interoperability, is prohibited.                                    
+--  The information contained herein is subject to change without       
+--  notice and is not warranted to be error-free. If you find any       
+--  errors, please report them to us in writing.                        
+--                                                                      
+--  Copyright (C) 1988, 2013, Oracle and/or its affiliates.             
+--  All Rights Reserved.                                                
+-- ****************************************************************
+
+--  Load the Record Group Tables
+--  Remove references to groups that no longer exist, but keep
+--  customer added groups.  Also insert new groups.
+
+SET LOG DLUPX02I.log;
+SET INPUT DLUPX02.dat;
+
+-- **************
+-- Uncomment and Edit <things in the brackets> for DB2
+-- **************
+-- DB2/OS390 must uncomment and modify the statements below.
+-- set execute_sql set current sqlid = 'OwnerId In Upper Case';
+-- set ddl table space   * input STOGROUP  as <TABLESPACE STOGROUP>;
+-- set ddl index         * input STOGROUP  as <INDEXSPACE STOGROUP>;
+-- set ddl unique index  * input STOGROUP  as <INDEXSPACE STOGROUP>;
+-- set ddl record        * input OWNER     as <NEW OWNER>;
+-- set ddl index         * input OWNER     as <NEW OWNER>;
+-- set ddl unique index  * input OWNER     as <NEW OWNER>;
+-- set ddl index         * input OWNER2    as <NEW OWNER>;
+-- set ddl unique index  * input OWNER2    as <NEW OWNER>;
+-- set DBSPACE <Old_dbname>.<Old_tablespacename>  as <New_dbname>.<New_tablespacename>;  
+-- set no view;
+-- set no space;
+-- set no trace;
+
+IMPORT REC_GROUP_TBL AS PS_REC_GRP_TBL_SRC;
+IMPORT REC_GROUP_REC AS PS_REC_GRP_REC_SRC;
+
+COMMIT;
+
+DELETE FROM PS_REC_GROUP_REC 
+WHERE RECNAME NOT IN (SELECT RECNAME FROM PSRECDEFN);
+
+DELETE FROM PS_REC_GROUP_REC
+WHERE RECNAME IN (SELECT RECNAME FROM PS_REC_GRP_REC_SRC);
+
+DELETE FROM PS_REC_GROUP_TBL
+WHERE REC_GROUP_ID NOT IN (SELECT REC_GROUP_ID FROM PS_REC_GROUP_REC);
+
+DELETE FROM PS_REC_GROUP_TBL
+WHERE REC_GROUP_ID IN (SELECT REC_GROUP_ID FROM PS_REC_GRP_TBL_SRC);
+
+INSERT INTO PS_REC_GROUP_TBL(REC_GROUP_ID, DESCR, DESCRSHORT, PARTIAL_SHARING, FORCE_DEFAULT) 
+SELECT REC_GROUP_ID, DESCR, DESCRSHORT, PARTIAL_SHARING, FORCE_DEFAULT FROM PS_REC_GRP_TBL_SRC;
+
+INSERT INTO PS_REC_GROUP_REC(REC_GROUP_ID, RECNAME)
+SELECT REC_GROUP_ID, RECNAME FROM PS_REC_GRP_REC_SRC;
+
+--  insert rows for new Record Groups into SET_CNTRL_GROUP
+INSERT INTO PS_SET_CNTRL_GROUP (SETCNTRLVALUE, REC_GROUP_ID, SETID) SELECT A.SETCNTRLVALUE,B.REC_GROUP_ID, A.SETID FROM PS_SET_CNTRL_TBL A, PS_REC_GROUP_TBL B WHERE not exists (SELECT 'x' FROM PS_SET_CNTRL_GROUP C WHERE C.SETCNTRLVALUE = A.SETCNTRLVALUE AND C.REC_GROUP_ID = B.REC_GROUP_ID);
+
+--  Delete Record Groups that no longer exist
+DELETE FROM PS_SET_CNTRL_GROUP WHERE REC_GROUP_ID NOT IN (SELECT REC_GROUP_ID FROM PS_REC_GROUP_TBL);
+
+--  Delete all rows from SET_CNTRL_REC and rebuild the information
+DELETE FROM PS_SET_CNTRL_REC;
+
+INSERT INTO PS_SET_CNTRL_REC (SETCNTRLVALUE, REC_GROUP_ID, RECNAME, SETID) SELECT A.SETCNTRLVALUE, A.REC_GROUP_ID, B.RECNAME, A.SETID FROM PS_SET_CNTRL_GROUP A, PS_REC_GROUP_REC B WHERE A.REC_GROUP_ID = B.REC_GROUP_ID;
+
+--  Insert missing SetIDs into SetID Table; these are referenced in SET_CNTRL_REC
+INSERT INTO PS_SETID_TBL (SETID,DESCR,DESCRSHORT,PARTIAL_SHARING) SELECT DISTINCT A.SETID, A.SETID, A.SETID, 'N' FROM PS_SET_CNTRL_REC A WHERE NOT EXISTS (SELECT 'x' FROM PS_SETID_TBL B WHERE A.SETID = B.SETID);
+
+--Clean Up
+DROP TABLE PS_REC_GRP_REC_SRC;
+DROP TABLE PS_REC_GRP_TBL_SRC;
+
+
+
+

@@ -1,0 +1,98 @@
+-- ****************************************************************
+--                                                                      
+--                                                                      
+--  This software and related documentation are provided under a        
+--  license agreement containing restrictions on use and                
+--  disclosure and are protected by intellectual property               
+--  laws. Except as expressly permitted in your license agreement       
+--  or allowed by law, you may not use, copy, reproduce,                
+--  translate, broadcast, modify, license, transmit, distribute,        
+--  exhibit, perform, publish or display any part, in any form or       
+--  by any means. Reverse engineering, disassembly, or                  
+--  decompilation of this software, unless required by law for          
+--  interoperability, is prohibited.                                    
+--  The information contained herein is subject to change without       
+--  notice and is not warranted to be error-free. If you find any       
+--  errors, please report them to us in writing.                        
+--                                                                      
+--  Copyright (C) 1988, 2017, Oracle and/or its affiliates.             
+--  All Rights Reserved.                                                
+-- ****************************************************************
+--
+--  Use: 
+--     Use this script in conjunction with the dlupx14i.dms script.
+--     This script exports the application specific Pagelet Wizard 
+--     system data. The data objects include the following:
+--
+--     1) Pagelet Wizard pagelet definitions
+--     2) Pagelet Wizard headers, footers, categories
+--     3) Pagelet Wizard XSL Template prototypes
+--
+--  Instructions:
+--     1) Run this script during the Inital pass.
+--     2) Run this script BEFORE the data conversion program is run.
+--
+-- ******************************************************************
+SET LOG DLUPX14E_2.LOG;
+SET OUTPUT DLUPX14.DAT;
+
+--  Export Pagelet Wizard Definitions
+
+EXPORT PS_PTGPLT_PRMS_LAN;
+EXPORT PS_PTGP_DS_SETTGS;
+EXPORT PS_PTGP_PARM_VALS;
+EXPORT PS_PTGP_PVAL_LANG;
+EXPORT PS_PTPPB_ADMN_PRMS;
+EXPORT PS_PTPPB_DATADISP;
+EXPORT PS_PTPPB_DATATYPE;
+EXPORT PS_PTPPB_DFMT_LANG;
+EXPORT PS_PTPPB_DISP_FRMT;
+EXPORT PS_PTPPB_DISP_PRMS;
+EXPORT PS_PTPPB_DISP_VALS;
+EXPORT PS_PTPPB_DS_SETTGS;
+EXPORT PS_PTPPB_DTYP_LANG;
+EXPORT PS_PTPPB_GPLT_HTML;
+EXPORT PS_PTPPB_GPLT_LANG;
+EXPORT PS_PTPPB_GPLT_PRMS;
+EXPORT PS_PTPPB_GROUPLET;
+EXPORT PS_PTPPB_IBCON_DFT;
+EXPORT PS_PTPPB_IBCON_SEC;
+EXPORT PS_PTPPB_LINKPARMS;
+EXPORT PS_PTPPB_LINKPATHS;
+EXPORT PS_PTPPB_PAGELET;
+EXPORT PS_PTPPB_PARM_VALS;
+EXPORT PS_PTPPB_PGLT_HTML;
+EXPORT PS_PTPPB_PGLT_LANG;
+EXPORT PS_PTPPB_PGLT_PRMS;
+EXPORT PS_PTPPB_PGLT_URL;
+EXPORT PS_PTPPB_PRMS_LANG;
+EXPORT PS_PTPPB_PVAL_LANG;
+EXPORT PS_PTPPB_SECURITY;
+EXPORT PS_PTPPB_SOAP_REQ;
+EXPORT PS_PTPPB_THRESHOLD;
+EXPORT PS_PTPPB_TRSH_LANG;
+EXPORT PS_PTPPB_TRSH_VAL;
+EXPORT PS_PTPPB_TXFM_LANG;
+EXPORT PS_PTPPB_TXFRMTYPE;
+EXPORT PS_PTPPB_USER_PRMS;
+EXPORT PS_PTPPB_USR_THRSH;
+EXPORT PSPTPNCOLLEVTS;
+EXPORT PSPTPNADAPTER;
+EXPORT PSPTPNCOLL;
+
+
+-- Export Pagelet Wizard headers, footers, and categories
+
+EXPORT PS_PTPPB_FOOTER;
+EXPORT PS_PTPPB_FTR_LANG;
+EXPORT PS_PTPPB_HDR_LANG;
+EXPORT PS_PTPPB_HEADER;
+EXPORT PS_PTPPB_PGLT_CATG;
+EXPORT PS_PTPPB_PGLT_CLNG;
+
+-- Export Pagelet Wizard XSL Template prototypes
+
+EXPORT PS_PTPPB_XSL_LANG;
+EXPORT PS_PTPPB_XSLT_PROT;
+
+

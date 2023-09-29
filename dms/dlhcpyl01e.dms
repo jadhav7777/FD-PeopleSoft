@@ -1,0 +1,47 @@
+-- ***********************************************************************
+--                                                                       *
+--                                                                       *
+--                                                                       *
+--  This software and related documentation are provided under a         *
+--  license agreement containing restrictions on use and                 *
+--  disclosure and are protected by intellectual property                *
+--  laws. Except as expressly permitted in your license agreement        *
+--  or allowed by law, you may not use, copy, reproduce,                 *
+--  translate, broadcast, modify, license, transmit, distribute,         *
+--  exhibit, perform, publish or display any part, in any form or        *
+--  by any means. Reverse engineering, disassembly, or                   *
+--  decompilation of this software, unless required by law for           *
+--  interoperability, is prohibited.                                     *
+--  The information contained herein is subject to change without        *
+--  notice and is not warranted to be error-free. If you find any        *
+--  errors, please report them to us in writing.                         *
+--                                                                       *
+--                                                                       *
+--  Copyright (C) 1988, 2013, Oracle and/or its affiliates.              *
+--  All Rights Reserved.                                                 *
+-- ***********************************************************************
+--  Export the System Data Needed for Data Conversion
+-- ***********************************************************************
+
+SET LOG DLHCPYL01E.LOG;
+SET OUTPUT DLHCPYL01.DAT;
+
+EXPORT GARN_OPERANDS
+   WHERE EXISTS (SELECT 'X' FROM PS_GARN_RULE_TBL B
+                       WHERE PS_GARN_OPERANDS.STATE_GARN_LAW = B.STATE_GARN_LAW
+                           AND PS_GARN_OPERANDS.GARN_RULE_ID = B.GARN_RULE_ID
+                           AND PS_GARN_OPERANDS.EFFDT = B.EFFDT
+                           AND B.MAINT_RESPONSBLTY = 'P');
+EXPORT GARN_RULE_TBL  WHERE MAINT_RESPONSBLTY = 'P';
+EXPORT GARN_RULE_LANG
+   WHERE EXISTS (SELECT 'X' FROM PS_GARN_RULE_TBL B
+                       WHERE PS_GARN_RULE_LANG.STATE_GARN_LAW = B.STATE_GARN_LAW
+                           AND PS_GARN_RULE_LANG.GARN_RULE_ID = B.GARN_RULE_ID
+                           AND PS_GARN_RULE_LANG.EFFDT = B.EFFDT
+                           AND B.MAINT_RESPONSBLTY = 'P');
+EXPORT GARN_EXEMPT_TBL
+   WHERE EXISTS (SELECT 'X' FROM PS_GARN_RULE_TBL B
+                         WHERE PS_GARN_EXEMPT_TBL.STATE_GARN_LAW = B.STATE_GARN_LAW
+                            AND PS_GARN_EXEMPT_TBL.GARN_RULE_ID = B.GARN_RULE_ID
+                            AND PS_GARN_EXEMPT_TBL.EFFDT = B.EFFDT
+                            AND B.MAINT_RESPONSBLTY = 'P');

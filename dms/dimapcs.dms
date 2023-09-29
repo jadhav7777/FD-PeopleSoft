@@ -1,0 +1,196 @@
+-- ******************************************************************
+--
+--                                                                 
+--   This software and related documentation are provided under a  
+--   license agreement containing restrictions on use and          
+--   disclosure and are protected by intellectual property         
+--   laws. Except as expressly permitted in your license agreement 
+--   or allowed by law, you may not use, copy, reproduce,          
+--   translate, broadcast, modify, license, transmit, distribute,  
+--   exhibit, perform, publish or display any part, in any form or 
+--   by any means. Reverse engineering, disassembly, or            
+--   decompilation of this software, unless required by law for    
+--   interoperability, is prohibited.                              
+--   The information contained herein is subject to change without 
+--   notice and is not warranted to be error-free. If you find any 
+--   errors, please report them to us in writing.                  
+--                                                                 
+--   Copyright (C) 1988, 2013, Oracle and/or its affiliates.       
+--   All Rights Reserved.                                          
+-- ******************************************************************
+
+--   DIMAPCS.DMS
+--   -------------
+--
+--   This script is used to import data necessary
+--    to run PeopleSoft Directory Interface.
+-- ******************************************************************
+
+SET INPUT dimapcs.dat;
+SET LOG DIMAPCS.LOG;
+
+-- ******************************************************************
+-- From the DIRMAPOUT script
+-- ******************************************************************
+DELETE FROM PS_EO_DSMAP
+WHERE
+DSMAPNAME IN (
+'CS_ADVISOR_INSTR'
+,'CS_ADVISOR_INSTR_FLAT'
+,'CS_APPLICANT'
+,'CS_APPLICANT_FLAT'
+,'CS_PERSON'
+,'CS_PERSON_FLAT'
+,'CS_STUDENT'
+,'CS_STUDENT_FLAT'
+);
+
+DELETE FROM PS_EO_DSMAPSRVR
+WHERE
+DSMAPNAME IN (
+'CS_ADVISOR_INSTR'
+,'CS_ADVISOR_INSTR_FLAT'
+,'CS_APPLICANT'
+,'CS_APPLICANT_FLAT'
+,'CS_PERSON'
+,'CS_PERSON_FLAT'
+,'CS_STUDENT'
+,'CS_STUDENT_FLAT'
+);
+
+DELETE FROM PS_EO_DSMAPOBJCLS
+WHERE
+DSMAPNAME IN (
+'CS_ADVISOR_INSTR'
+,'CS_ADVISOR_INSTR_FLAT'
+,'CS_APPLICANT'
+,'CS_APPLICANT_FLAT'
+,'CS_PERSON'
+,'CS_PERSON_FLAT'
+,'CS_STUDENT'
+,'CS_STUDENT_FLAT'
+);
+
+DELETE FROM PS_EO_DSDNMAP
+WHERE
+DSMAPNAME IN (
+'CS_ADVISOR_INSTR'
+,'CS_ADVISOR_INSTR_FLAT'
+,'CS_APPLICANT'
+,'CS_APPLICANT_FLAT'
+,'CS_PERSON'
+,'CS_PERSON_FLAT'
+,'CS_STUDENT'
+,'CS_STUDENT_FLAT'
+);
+
+DELETE FROM PS_EO_DSREQATTRMAP
+WHERE
+DSMAPNAME IN (
+'CS_ADVISOR_INSTR'
+,'CS_ADVISOR_INSTR_FLAT'
+,'CS_APPLICANT'
+,'CS_APPLICANT_FLAT'
+,'CS_PERSON'
+,'CS_PERSON_FLAT'
+,'CS_STUDENT'
+,'CS_STUDENT_FLAT'
+);
+
+DELETE FROM PS_EO_DSOPTATTRMAP
+WHERE
+DSMAPNAME IN (
+'CS_ADVISOR_INSTR'
+,'CS_ADVISOR_INSTR_FLAT'
+,'CS_APPLICANT'
+,'CS_APPLICANT_FLAT'
+,'CS_PERSON'
+,'CS_PERSON_FLAT'
+,'CS_STUDENT'
+,'CS_STUDENT_FLAT'
+);
+
+DELETE FROM PS_EO_DSDNMAP_XLT
+WHERE
+DSMAPNAME IN (
+'CS_ADVISOR_INSTR'
+,'CS_ADVISOR_INSTR_FLAT'
+,'CS_APPLICANT'
+,'CS_APPLICANT_FLAT'
+,'CS_PERSON'
+,'CS_PERSON_FLAT'
+,'CS_STUDENT'
+,'CS_STUDENT_FLAT'
+);
+
+DELETE FROM PS_EO_DSOPTATT_XLT
+WHERE
+DSMAPNAME IN (
+'CS_ADVISOR_INSTR'
+,'CS_ADVISOR_INSTR_FLAT'
+,'CS_APPLICANT'
+,'CS_APPLICANT_FLAT'
+,'CS_PERSON'
+,'CS_PERSON_FLAT'
+,'CS_STUDENT'
+,'CS_STUDENT_FLAT'
+);
+
+DELETE FROM PS_EO_DSREQATT_XLT
+WHERE
+DSMAPNAME IN (
+'CS_ADVISOR_INSTR'
+,'CS_ADVISOR_INSTR_FLAT'
+,'CS_APPLICANT'
+,'CS_APPLICANT_FLAT'
+,'CS_PERSON'
+,'CS_PERSON_FLAT'
+,'CS_STUDENT'
+,'CS_STUDENT_FLAT'
+);
+
+-- ******************************************************************
+-- CS Specific Method Names table
+-- ******************************************************************
+DELETE FROM PS_EODS_DNDEFDEFN
+WHERE
+DSMAPNAME IN (
+'CS_ADVISOR_INSTR'
+,'CS_ADVISOR_INSTR_FLAT'
+,'CS_APPLICANT'
+,'CS_APPLICANT_FLAT'
+,'CS_PERSON'
+,'CS_PERSON_FLAT'
+,'CS_STUDENT'
+,'CS_STUDENT_FLAT'
+);
+
+DELETE FROM PS_EODS_DNDEFAULTS
+WHERE
+DSMAPNAME IN (
+'CS_ADVISOR_INSTR'
+,'CS_ADVISOR_INSTR_FLAT'
+,'CS_APPLICANT'
+,'CS_APPLICANT_FLAT'
+,'CS_PERSON'
+,'CS_PERSON_FLAT'
+,'CS_STUDENT'
+,'CS_STUDENT_FLAT'
+);
+
+COMMIT;
+
+IMPORT EO_DSMAP;
+IMPORT EO_DSMAPSRVR;
+IMPORT EO_DSMAPOBJCLS;
+IMPORT EO_DSDNMAP;
+IMPORT EO_DSREQATTRMAP;
+IMPORT EO_DSOPTATTRMAP;
+IMPORT EO_DSDNMAP_XLT;
+IMPORT EO_DSOPTATT_XLT;
+IMPORT EO_DSREQATT_XLT;
+-- ******************************************************************
+-- CS Specific Method Names table
+-- ******************************************************************
+IMPORT EODS_DNDEFDEFN;
+IMPORT EODS_DNDEFAULTS;

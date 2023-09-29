@@ -1,0 +1,99 @@
+-- ******************************************************************
+--
+--                                                                 
+--   This software and related documentation are provided under a  
+--   license agreement containing restrictions on use and          
+--   disclosure and are protected by intellectual property         
+--   laws. Except as expressly permitted in your license agreement 
+--   or allowed by law, you may not use, copy, reproduce,          
+--   translate, broadcast, modify, license, transmit, distribute,  
+--   exhibit, perform, publish or display any part, in any form or 
+--   by any means. Reverse engineering, disassembly, or            
+--   decompilation of this software, unless required by law for    
+--   interoperability, is prohibited.                              
+--   The information contained herein is subject to change without 
+--   notice and is not warranted to be error-free. If you find any 
+--   errors, please report them to us in writing.                  
+--                                                                 
+--   Copyright (C) 1988, 2013, Oracle and/or its affiliates.       
+--   All Rights Reserved.                                          
+-- ******************************************************************
+
+--   DIMAPHR.DMS
+--   -------------
+--
+--   This script is used to populate PDI records with all data necessary
+--   to run the HCM Template of PeopleSoft Directory Interface.
+--
+--   NOTE: Do not use this script for Upgrade purposes. First installs
+--   only.
+-- ******************************************************************
+
+SET INPUT dimaphr.dat;
+SET LOG dimaphr.log;
+
+delete from PS_EO_DSMAP where DSMAPNAME in ('HR_DEPARTMENT', 'HR_LOCATION', 'HR_PERSON');
+IMPORT PS_EO_DSMAP;
+
+delete from PS_EO_DSMAPSRVR where DSMAPNAME in ('HR_DEPARTMENT', 'HR_LOCATION', 'HR_PERSON');
+IMPORT PS_EO_DSMAPSRVR;
+
+delete from PS_EO_DSMAPOBJCLS where DSMAPNAME in ('HR_DEPARTMENT', 'HR_LOCATION', 'HR_PERSON');
+IMPORT PS_EO_DSMAPOBJCLS;
+
+delete from PS_EO_DSDNMAP where DSMAPNAME in ('HR_DEPARTMENT', 'HR_LOCATION', 'HR_PERSON');
+IMPORT PS_EO_DSDNMAP;
+
+delete from PS_EO_DSREQATTRMAP where DSMAPNAME in ('HR_DEPARTMENT', 'HR_LOCATION', 'HR_PERSON');
+IMPORT PS_EO_DSREQATTRMAP;
+
+delete from PS_EO_DSOPTATTRMAP where DSMAPNAME in ('HR_DEPARTMENT', 'HR_LOCATION', 'HR_PERSON');
+IMPORT PS_EO_DSOPTATTRMAP;
+
+delete from PS_EO_DSDNMAP_XLT where DSMAPNAME in ('HR_DEPARTMENT', 'HR_LOCATION', 'HR_PERSON');
+IMPORT PS_EO_DSDNMAP_XLT;
+
+delete from PS_EO_DSOPTATT_XLT where DSMAPNAME in ('HR_DEPARTMENT', 'HR_LOCATION', 'HR_PERSON');
+IMPORT PS_EO_DSOPTATT_XLT;
+
+delete from PS_EO_DSREQATT_XLT where DSMAPNAME in ('HR_DEPARTMENT', 'HR_LOCATION', 'HR_PERSON');
+IMPORT PS_EO_DSREQATT_XLT;
+
+delete from PS_EO_MSGRECMAP WHERE MSGNAME IN ('DSLOCATION_SYNC_EFF','DSDEPT_SYNC_EFF','DSWORKFORCE_SYNC_EFF','DSPERSON_BASIC_SYNC_EFF','DSMAPINPUT');
+IMPORT PS_EO_MSGRECMAP;
+
+delete from PS_EO_MSGPUBDEFN WHERE MSGNAME IN ('DSLOCATION_SYNC_EFF','DSDEPT_SYNC_EFF','DSWORKFORCE_SYNC_EFF','DSPERSON_BASIC_SYNC_EFF','DSMAPINPUT');
+IMPORT PS_EO_MSGPUBDEFN;
+
+UPDATE PS_EO_DSREQATTRMAP SET DSBUTTON = 'N';
+UPDATE PS_EO_DSOPTATTRMAP SET DSBUTTON = 'N';
+
+-- delete from PS_EO_DSINSTALL;
+-- IMPORT PS_EO_DSINSTALL;
+
+delete from PS_DSCONNECTID where DSDIRID in ('DEMO DIRECTORY');
+IMPORT PS_DSCONNECTID;
+
+delete from PSDSSCHEMA where DSDIRID in ('DEMO DIRECTORY');
+IMPORT PSDSSCHEMA;
+
+delete from PSDSSRVR where DSDIRID in ('DEMO DIRECTORY');
+IMPORT PSDSSRVR;
+
+delete from PSDSDIR where DSDIRID in ('DEMO DIRECTORY');
+IMPORT PSDSDIR;
+
+delete from PS_EODS_DNDEFDEFN where DSMAPNAME in ('HR_DEPARTMENT', 'HR_LOCATION', 'HR_PERSON');
+IMPORT PS_EODS_DNDEFDEFN;
+
+delete from PS_EODS_DNDEFAULTS where DSMAPNAME = 'HR_PERSON';
+IMPORT PS_EODS_DNDEFAULTS;
+
+UPDATE PSSTATUS SET LASTREFRESHDTTM=%CURRENTDATETIMEIN;
+
+-- Activate all HCM messages and Channels
+update PSMSGDEFN set MSGSTATUS = 1 where MSGNAME IN ('DSLOCATION_SYNC','DSDEPT_SYNC','DSWORKFORCE_SYNC','DSPERSON_BASIC_SYNC','DSLOCATION_SYNC_EFF','DSDEPT_SYNC_EFF','DSWORKFORCE_SYNC_EFF','DSPERSON_BASIC_SYNC_EFF','DSMAPINPUT','DSMAPINPUT_FULLSYNC');
+update PSSUBDEFN set SUBSTATUS = 1 where MSGNAME in (select MSGNAME from PSMSGDEFN where MSGNAME IN ('DSLOCATION_SYNC','DSDEPT_SYNC','DSWORKFORCE_SYNC','DSPERSON_BASIC_SYNC','DSLOCATION_SYNC_EFF','DSDEPT_SYNC_EFF','DSWORKFORCE_SYNC_EFF','DSPERSON_BASIC_SYNC_EFF','DSMAPINPUT','DSMAPINPUT_FULLSYNC'));
+update PSCHNLDEFN set CHNLSTATUS = 1 where CHNLNAME in ('DSCHNL','DSMANCHNL');
+update PSSUBDEFN set SUBSTATUS = 2 where MSGNAME = 'DSPERSON_BASIC_SYNC_EFF' and SUBNAME = 'DSMappingSub';
+

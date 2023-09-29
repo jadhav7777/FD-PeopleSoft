@@ -1,0 +1,57 @@
+-- ************************************************************  
+-- This software and related documentation are provided under a  
+-- license agreement containing restrictions on use and          
+-- disclosure and are protected by intellectual property         
+-- laws. Except as expressly permitted in your license agreement 
+-- or allowed by law, you may not use, copy, reproduce,          
+-- translate, broadcast, modify, license, transmit, distribute,  
+-- exhibit, perform, publish or display any part, in any form or 
+-- by any means. Reverse engineering, disassembly, or            
+-- decompilation of this software, unless required by law for    
+-- interoperability, is prohibited.                              
+-- The information contained herein is subject to change without 
+-- notice and is not warranted to be error-free. If you find any 
+-- errors, please report them to us in writing.                  
+--                                                               
+-- Copyright (C) 1988, 2013, Oracle and/or its affiliates.       
+-- All Rights Reserved.                                          
+-- ************************************************************  
+SET OUTPUT gpfrafdata.dat;
+SET LOG gpfr_af_export.log;
+
+----  Application Framework Related ----
+EXPORT PS_GPFR_AF_APPL WHERE COUNTRY = 'FRA' AND GPFR_AF_OWNER = 'P';
+EXPORT PS_GPFR_AF_PRMTMPT WHERE COUNTRY = 'FRA' AND GPFR_AF_OWNER = 'P';
+EXPORT PS_GPFR_AF_PRMSEC WHERE COUNTRY = 'FRA' AND GPFR_AF_OWNER = 'P';
+
+EXPORT PS_GPFR_AF_ATR_DON WHERE COUNTRY = 'FRA' AND GPFR_AF_OWNER = 'P';
+EXPORT PS_GPFR_AF_ATR_PRM WHERE COUNTRY = 'FRA' AND GPFR_AF_OWNER = 'P';
+EXPORT PS_GPFR_AF_DON_PRM WHERE COUNTRY = 'FRA' AND GPFR_AF_OWNER = 'P';
+
+EXPORT PS_GPFR_AF_DON_REC WHERE COUNTRY = 'FRA' AND GPFR_AF_OWNER = 'P';
+EXPORT PS_GPFR_AF_DON_SQL WHERE COUNTRY = 'FRA' AND GPFR_AF_OWNER = 'P';
+EXPORT PS_GPFR_AF_MAPCODE WHERE COUNTRY = 'FRA' AND GPFR_AF_OWNER = 'P';
+
+EXPORT PS_GPFR_AF_MAP_REC WHERE COUNTRY = 'FRA' AND GPFR_AF_OWNER = 'P';
+EXPORT PS_GPFR_AF_NODSET WHERE COUNTRY = 'FRA' AND GPFR_AF_OWNER = 'P';
+EXPORT PS_GPFR_AF_NDSET_A WHERE COUNTRY = 'FRA' AND GPFR_AF_OWNER = 'P';
+
+EXPORT PS_GPFR_AF_NDSET_N WHERE COUNTRY = 'FRA' AND GPFR_AF_OWNER = 'P';
+EXPORT PS_GPFR_AF_SQLENTY WHERE COUNTRY = 'FRA' AND GPFR_AF_OWNER = 'P';
+EXPORT PS_GPFR_AF_SQL_FLD WHERE COUNTRY = 'FRA' AND GPFR_AF_OWNER = 'P';
+
+EXPORT PS_GPFR_AF_WHR_REC WHERE COUNTRY = 'FRA' AND GPFR_AF_OWNER = 'P';
+EXPORT PS_GPFR_AF_COMMENT WHERE COUNTRY = 'FRA' AND GPFR_AF_OWNER = 'P';
+EXPORT PS_GPFR_AF_APSERTY WHERE COUNTRY = 'FRA' AND GPFR_AF_OWNER = 'P';
+
+EXPORT PS_GPFR_AF_ATTR WHERE COUNTRY = 'FRA' AND GPFR_AF_OWNER = 'P';
+EXPORT PS_GPFR_AF_NODE WHERE COUNTRY = 'FRA' AND GPFR_AF_OWNER = 'P';
+
+---- Extraction Id Related ----
+EXPORT PS_GPFR_AF_RUN_DFN WHERE GPFR_AF_EXTRACT_ID = 'AEDEMAT_TEMPLATE';
+EXPORT PS_GPFR_AF_PAYGRP  WHERE GPFR_AF_EXTRACT_ID = 'AEDEMAT_TEMPLATE';
+EXPORT PS_GPFR_AF_RUN_PRM WHERE GPFR_AF_EXTRACT_ID = 'AEDEMAT_TEMPLATE';
+
+EXPORT PS_GPFR_DA_DATTYP;
+EXPORT PS_GPFR_DA_CODE;
+EXPORT PS_GPFR_DA_XCODE;

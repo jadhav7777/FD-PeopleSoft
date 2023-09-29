@@ -1,0 +1,115 @@
+--
+--
+--                                                                  
+-- This software and related documentation are provided under a     
+-- license agreement containing restrictions on use and             
+-- disclosure and are protected by intellectual property            
+-- laws. Except as expressly permitted in your license agreement    
+-- or allowed by law, you may not use, copy, reproduce,             
+-- translate, broadcast, modify, license, transmit, distribute,     
+-- exhibit, perform, publish or display any part, in any form or    
+-- by any means. Reverse engineering, disassembly, or               
+-- decompilation of this software, unless required by law for       
+-- interoperability, is prohibited.                                 
+-- The information contained herein is subject to change without    
+-- notice and is not warranted to be error-free. If you find any    
+-- errors, please report them to us in writing.                     
+--                                                                  
+--
+-- Copyright (C) 1988, 2013, Oracle and/or its affiliates.          
+-- All Rights Reserved.                                             
+-- ******************************************************************
+--
+--     $Release:  HRMS830 
+--    $Revision:  1 
+--  $Version-ID:  1
+--
+-- ******************************************************************
+-- PYSYSDAT.DMS
+--
+-- RELOAD PAYROLL SYSTEM DATA.
+--
+-- USE THIS SCRIPT ONLY IF YOU NEED TO RELOAD ONE OF THE TABLES BELOW
+-- DUE TO LOSS OF ORIGINAL DATA. TO COMPLETELY REFRESH THE DATA,
+-- REMOVE THE 'REMARK' IN FRONT OF THE DELETE STATEMENTS.
+-- ******************************************************************
+
+SET LOG PYSYSDAT.LOG;
+SET INPUT PYSYSDAT.DAT;
+
+-- ------------------------------------------------------------------
+-- Payroll System Tables
+-- ------------------------------------------------------------------
+--
+-- The table GARN_EXEMPT_TBL is considered separately here because this
+-- table does not have a unique key. The DELETE statement therefore needs
+-- to be executed; otherwise there could be duplicate rows in the table.
+-- The DELETE statement for this table therefore does not have the
+-- REMARK statement.
+--
+
+DELETE FROM PS_GARN_EXEMPT_TBL;
+IMPORT GARN_EXEMPT_TBL  ;
+--
+-- ---------------------------------------------------------------------
+-- Other Payroll System Base Tables
+-- ---------------------------------------------------------------------
+
+REMARK DELETE FROM PS_BOND_TBL;
+REMARK DELETE FROM PS_CAN_NOC_TBL;
+REMARK DELETE FROM PS_CAN_SOC_TBL;
+REMARK DELETE FROM PS_CAN_TAX_CITLUMP;
+REMARK DELETE FROM PS_CAN_TAX_CITRATE;
+REMARK DELETE FROM PS_CAN_TAX_PROV;
+REMARK DELETE FROM PS_CAN_TAX_PROVNCT;
+REMARK DELETE FROM PS_CAN_TAX_QITLUMP;
+REMARK DELETE FROM PS_CAN_TAX_QITRATE;
+REMARK DELETE FROM PS_CAN_TAX_TBL;
+REMARK DELETE FROM PS_CHART_DIST_HR;
+REMARK DELETE FROM PS_GARN_DE_DEFN;
+REMARK DELETE FROM PS_GARN_OPERANDS;
+REMARK DELETE FROM PS_GARN_PRORATE_DF;
+REMARK DELETE FROM PS_GARN_PRORATE_RL;
+REMARK DELETE FROM PS_GARN_RULE_TBL;
+REMARK DELETE FROM PS_LCLWK_TXRCP_TBL;
+REMARK DELETE FROM PS_LOCAL_TAX_TBL;
+REMARK DELETE FROM PS_LOCTX_RECIP_TBL;
+REMARK DELETE FROM PS_PAY_FORM_TBL WHERE FORM_ID = '******';
+REMARK DELETE FROM PS_PAY_MESSAGE_TBL;
+REMARK DELETE FROM PS_STATE_TAXRT_TBL;
+REMARK DELETE FROM PS_STATE_TAX_TBL;
+REMARK DELETE FROM PS_STTAX_RECIP_TBL;
+REMARK DELETE FROM PS_ST_OTH_TAX_TBL;
+REMARK DELETE FROM PS_SWT_MARSTAT_TBL;
+REMARK DELETE FROM PS_TAXFORM_BOX;
+REMARK DELETE FROM PS_TAXFORM_NOTES;
+REMARK DELETE FROM PS_TAXFORM_TBL;
+REMARK DELETE FROM PS_TAXGR_BASE_TBL;
+REMARK DELETE FROM PS_TAXGR_CMPNT_TBL;
+REMARK DELETE FROM PS_TAXGR_DEFN_TBL;
+
+-- ---------------------------------------------------------------------
+-- Other Payroll System Related Language Tables
+-- ---------------------------------------------------------------------
+
+REMARK DELETE FROM PS_BOND_TBL_LANG;
+REMARK DELETE FROM PS_CAN_NOC_LANG;
+REMARK DELETE FROM PS_CAN_SOC_LANG;
+REMARK DELETE FROM PS_GARN_DE_DEF_LNG;
+REMARK DELETE FROM PS_GARN_RULE_LANG;
+REMARK DELETE FROM PS_PAY_FORM_LANG WHERE FORM_ID = '******';
+REMARK DELETE FROM PS_PAY_MESSAGE_LNG;
+REMARK DELETE FROM PS_STATE_TAX_LANG;
+REMARK DELETE FROM PS_SWT_MARSTA_LANG;
+REMARK DELETE FROM PS_TAXFORM_BX_LANG;
+REMARK DELETE FROM PS_TAXFORM_NT_LANG;
+
+
+-- ---------------------------------------------------------------------
+-- Import Other Payroll System Base and Related Language Tables
+-- ---------------------------------------------------------------------
+
+IMPORT * IGNORE_DUPS;
+
+COMMIT;
+-- --------------------- END OF PYSYSDAT.DMS ------------------------

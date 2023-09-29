@@ -1,0 +1,45 @@
+-- ***********************************************************************
+--                                                                       *
+--                                                                       *
+--                                                                       *
+--  This software and related documentation are provided under a         *
+--  license agreement containing restrictions on use and                 *
+--  disclosure and are protected by intellectual property                *
+--  laws. Except as expressly permitted in your license agreement        *
+--  or allowed by law, you may not use, copy, reproduce,                 *
+--  translate, broadcast, modify, license, transmit, distribute,         *
+--  exhibit, perform, publish or display any part, in any form or        *
+--  by any means. Reverse engineering, disassembly, or                   *
+--  decompilation of this software, unless required by law for           *
+--  interoperability, is prohibited.                                     *
+--  The information contained herein is subject to change without        *
+--  notice and is not warranted to be error-free. If you find any        *
+--  errors, please report them to us in writing.                         *
+--                                                                       *
+--                                                                       *
+--  Copyright (C) 1988, 2013, Oracle and/or its affiliates.              *
+--  All Rights Reserved.                                                 *
+-- ***********************************************************************
+
+--  DB2/OS390 must uncomment and modify the statement below.
+--  set execute_sql set current sqlid = 'OwnerId in Upper Case';
+
+SET LOG puupx98e.log;
+set output puupx98.dat;
+
+-- Export Rename Data
+
+EXPORT PS_UPG_SQL_RENAMES;
+EXPORT UPG_DMS_RENFLD;
+EXPORT UPG_DMS_RENREC;
+EXPORT UPG_DMS_RENRF;
+
+-- Export Rename Utility Messages
+
+EXPORT PSMSGCATDEFN WHERE
+  MESSAGE_SET_NBR = 18030
+AND MESSAGE_NBR IN (8,9);
+
+EXPORT PSMSGCATLANG WHERE
+  MESSAGE_SET_NBR = 18030
+AND MESSAGE_NBR IN (8,9);

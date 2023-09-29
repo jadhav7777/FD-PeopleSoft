@@ -1,0 +1,45 @@
+-- ****************************************************************** 
+--                                                                    
+--                                                                    
+--   This software and related documentation are provided under a     
+--   license agreement containing restrictions on use and             
+--   disclosure and are protected by intellectual property            
+--   laws. Except as expressly permitted in your license agreement    
+--   or allowed by law, you may not use, copy, reproduce,             
+--   translate, broadcast, modify, license, transmit, distribute,     
+--   exhibit, perform, publish or display any part, in any form or    
+--   by any means. Reverse engineering, disassembly, or               
+--   decompilation of this software, unless required by law for       
+--   interoperability, is prohibited.                                 
+--   The information contained herein is subject to change without    
+--   notice and is not warranted to be error-free. If you find any    
+--   errors, please report them to us in writing.                     
+--                                                                    
+--   Copyright (C)  2013, Oracle and/or its affiliates.               
+--   All Rights Reserved.                                             
+-- ****************************************************************** 
+--                                                                    
+--    EOPP_ADD_ROLE.DMS   PEOPLETOOLS 8.4x   10/22/03
+--
+-- ******************************************************************
+--
+--  Target:
+--      Application Databases on 8.4x PeopleTools.
+--
+--  Use:
+--      This script adds the role EOPP_USER to all User IDs, including
+--      the GUEST User ID. It enables access to the Common Portal functionality.
+
+--  Instructions:
+--      Run this script using Data Mover.
+--
+
+SET LOG EOPP_ADD_ROLE.LOG;
+
+INSERT INTO PSROLEUSER (ROLEUSER, ROLENAME, DYNAMIC_SW) 
+SELECT OPRID, 'EOPP_USER', 'N' FROM PSOPRDEFN 
+WHERE OPRID NOT IN (SELECT ROLEUSER FROM PSROLEUSER WHERE ROLENAME = 'EOPP_USER')
+AND EXISTS (SELECT ROLENAME FROM PSROLEDEFN WHERE ROLENAME = 'EOPP_USER');
+
+
+

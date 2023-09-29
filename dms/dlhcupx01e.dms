@@ -1,0 +1,47 @@
+-- ****************************************************************
+--
+--
+--  This software and related documentation are provided under a
+--  license agreement containing restrictions on use and
+--  disclosure and are protected by intellectual property
+--  laws. Except as expressly permitted in your license agreement
+--  or allowed by law, you may not use, copy, reproduce,
+--  translate, broadcast, modify, license, transmit, distribute,
+--  exhibit, perform, publish or display any part, in any form or
+--  by any means. Reverse engineering, disassembly, or
+--  decompilation of this software, unless required by law for
+--  interoperability, is prohibited.
+--  The information contained herein is subject to change without
+--  notice and is not warranted to be error-free. If you find any
+--  errors, please report them to us in writing.
+--
+--  Copyright (C) 1988, 2013, Oracle and/or its affiliates.       
+--  All Rights Reserved.                                          
+-- ****************************************************************
+
+--  Export the System Data Needed for Data Conversion
+
+SET LOG dlhcupx01e.LOG;
+SET OUTPUT DLHCUPX01.DAT;
+
+-- Equation application prompt conversion
+EXPORT NAME_FORMAT_TBL;
+
+EXPORT UPG_RENAMED_PIN;
+
+-- Global Payroll Core
+-- The entry type(s) are exported to update the description fields
+-- of these tables.  The description of these entry type(s) are changed
+-- on release 9.0
+
+SET LOG DLHCUPX01E_GP.LOG;
+SET OUTPUT DLHCUPX01_GP.DAT;
+
+EXPORT PS_GP_ENTRY_TYPE WHERE ENTRY_TYPE_ID IN ('RCA', 'RCR', 'RCU');
+EXPORT PS_GP_ENT_TYP_LANG WHERE ENTRY_TYPE_ID IN ('RCA', 'RCR', 'RCU');
+
+
+
+
+
+

@@ -1,0 +1,67 @@
+
+-- ****************************************************************
+--                                                                      
+--                                                                      
+--  This software and related documentation are provided under a        
+--  license agreement containing restrictions on use and                
+--  disclosure and are protected by intellectual property               
+--  laws. Except as expressly permitted in your license agreement       
+--  or allowed by law, you may not use, copy, reproduce,                
+--  translate, broadcast, modify, license, transmit, distribute,        
+--  exhibit, perform, publish or display any part, in any form or       
+--  by any means. Reverse engineering, disassembly, or                  
+--  decompilation of this software, unless required by law for          
+--  interoperability, is prohibited.                                    
+--  The information contained herein is subject to change without       
+--  notice and is not warranted to be error-free. If you find any       
+--  errors, please report them to us in writing.                        
+--                                                                      
+--  Copyright (C) 1988, 2013, Oracle and/or its affiliates.             
+--  All Rights Reserved.                                                
+-- ****************************************************************
+
+--  Export the Application Mass Change Tables
+
+SET LOG DLUPX06E.LOG;
+SET OUTPUT DLUPX06.DAT; 
+
+EXPORT MC_ARCHIVE_DEFN;
+EXPORT MC_DATA_TBL;    
+EXPORT MC_DEFN;      
+EXPORT MC_DEFN_CRIT;   
+EXPORT MC_DEFN_CRIT_VL;
+EXPORT MC_DEFN_DEFAULT; 
+EXPORT MC_DEFN_DESCR;   
+EXPORT MC_DEFN_HR;
+EXPORT MC_DEFN_LANG;    
+EXPORT MC_DEFN_PC; 
+EXPORT MC_DEFN_PT;      
+EXPORT MC_DEFN_SQL;     
+EXPORT MC_DEFN_SQL_LN;  
+EXPORT MC_DEFN_STMNT;   
+EXPORT MC_DTTM_PARMS;   
+EXPORT MC_GROUP;        
+EXPORT MC_GROUP_LN;     
+EXPORT MC_HIST_CRIT;    
+EXPORT MC_HIST_CRIT_VL; 
+EXPORT MC_HIST_DEFAULT; 
+EXPORT MC_HIST_STMNT;   
+EXPORT MC_OPRID;        
+EXPORT MC_OPR_SECURITY; 
+EXPORT MC_PROMPTS;      
+EXPORT MC_RUN_CNTL;     
+EXPORT MC_TEMPLATE;    
+EXPORT MC_TEM_CRITERIA; 
+EXPORT MC_TEM_DEFAULTS; 
+EXPORT MC_TEM_DESCR;    
+EXPORT MC_TEM_LANG;     
+EXPORT MC_TEM_STMNT;    
+EXPORT MC_TYPE;         
+EXPORT MC_TYPE_DESCR;   
+EXPORT MC_TYPE_FIELD;   
+EXPORT MC_TYPE_JOIN;    
+EXPORT MC_TYPE_LANG;    
+EXPORT MC_TYPE_RECORD;  
+EXPORT MC_TYPE_SQL;     
+EXPORT MC_TYPE_STMNT;   
+EXPORT MC_TYPE_WHERE;   

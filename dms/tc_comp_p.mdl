@@ -1,0 +1,8 @@
+Measureupdate "COMPENSATION_AMT" Label "COMPENSATION_AMT" Association "COMPENSATION_AMT" Storage Default
+Scale 0 Decimals 2 Sign True Format "#,##0~2" IsCurrency True  MeasureInfo "COMPENSATION_AMT"
+DrillThrough True "C:\TEMP\TC_HD.MDC""" EndList
+Measureupdate "PAYROLL_AMT" Label "PAYROLL_AMT" Association "PAYROLL_AMT" Storage Float64 
+Scale 0 Decimals 2 Sign True Format "#,##0~2" IsCurrency True  MeasureInfo "PAYROLL_AMT"
+DrillThrough True "C:\TEMP\TC_HD.MDC""" EndList
+OpenMDL "c:\hr751\script\Time_M.mdl"
+OpenMDL "c:\hr751\script\currency.mdl"

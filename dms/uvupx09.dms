@@ -1,0 +1,73 @@
+-- ******************************************************************
+--                                                                   
+--                                                                   
+--   This software and related documentation are provided under a    
+--   license agreement containing restrictions on use and            
+--   disclosure and are protected by intellectual property           
+--   laws. Except as expressly permitted in your license agreement   
+--   or allowed by law, you may not use, copy, reproduce,            
+--   translate, broadcast, modify, license, transmit, distribute,    
+--   exhibit, perform, publish or display any part, in any form or   
+--   by any means. Reverse engineering, disassembly, or              
+--   decompilation of this software, unless required by law for      
+--   interoperability, is prohibited.                                
+--   The information contained herein is subject to change without   
+--   notice and is not warranted to be error-free. If you find any   
+--   errors, please report them to us in writing.                    
+--                                                                   
+--   Copyright (C) 1988, 2013, Oracle and/or its affiliates.         
+--   All Rights Reserved.                                            
+-- ******************************************************************
+--               
+--   UVUPX09.DMS                    1/09/03    
+--
+-- ******************************************************************
+--  Target: Enterprise Portal database on PeopleTools 8.4x 
+--
+--  Use:    Clean the Enterprise Portal project definition BEFORE 
+--          copying it into the Copy of Production database.
+--
+-- ******************************************************************
+--
+-- Remove Incorrect object types
+DELETE FROM PSPROJECTITEM 
+WHERE PROJECTNAME = 'PORTAL_PA84X_REGISTRY'
+AND OBJECTTYPE <> 55;
+
+-- Remove Non-Content-Reference Registry Structures
+DELETE FROM PSPROJECTITEM 
+WHERE PROJECTNAME = 'PORTAL_PA84X_REGISTRY'
+AND OBJECTTYPE = 55 
+AND OBJECTVALUE2 <> 'C' 
+
+-- Remove Non-Application-Registry-Definition Registry Structures
+DELETE FROM PSPROJECTITEM 
+WHERE PROJECTNAME = 'PORTAL_PA84X_REGISTRY'
+AND OBJECTTYPE = 55 
+AND OBJECTVALUE2 = 'C' 
+AND OBJECTVALUE1 NOT IN ('EMPLOYEE','CUSTOMER','SUPPLIER');
+
+-- Remove AppEnvironments, Common Components, Enterprise Portal, or PeopleTools Registry Structures
+DELETE FROM PSPROJECTITEM 
+WHERE PROJECTNAME = 'PORTAL_PA84X_REGISTRY'
+AND OBJECTTYPE = 55 
+AND OBJECTVALUE2 = 'C' 
+AND (OBJECTVALUE3 LIKE 'AE%' 
+OR OBJECTVALUE3 LIKE 'EO%'
+OR OBJECTVALUE3 LIKE 'PA%' 
+OR OBJECTVALUE3 LIKE 'PS%' 
+OR OBJECTVALUE3 LIKE 'PT%');
+
+-- Remove Portal Registry Structures also existing in PS_SITETEMPLATE
+DELETE FROM PSPROJECTITEM 
+WHERE PROJECTNAME = 'PORTAL_PA84X_REGISTRY'
+AND OBJECTTYPE = 55 
+AND OBJECTVALUE2 = 'C' 
+AND OBJECTVALUE3 IN (SELECT PORTAL_OBJNAME FROM PSPRSMDEFN WHERE PORTAL_NAME = 'PS_SITETEMPLATE');
+
+-- Remove Non-Content-Provider-Node Registry Structures
+DELETE FROM PSPROJECTITEM 
+WHERE PROJECTNAME = 'PORTAL_PA84X_REGISTRY'
+AND OBJECTTYPE = 55 
+AND OBJECTVALUE2 = 'C' 
+AND OBJECTVALUE3 IN (SELECT PORTAL_OBJNAME FROM PSPRSMDEFN WHERE PORTAL_CNTPRV_NAM <> 'HRMS');

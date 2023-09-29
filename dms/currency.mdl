@@ -1,0 +1,24 @@
+QueryAdd "Exchange Rate (csv)" Separator "," SourceType FlatFile_ColNames CharacterSet Multibyte
+DecimalSep "." Thousandsep "," Columns True Timing PopYesCreateDefault
+Source "c:\temp\exchange.csv" Speed False SetCurrent True ServerQuery False Presummarized False EnableMultiProcess False
+ 
+OrgName "Date" Origin Generated Offset 0 Column "Date" Storage Default
+Scale 0 Size 1 Decimals 0 InputScale 0 TimeArray Off
+OrgName "Currency_Label" Origin Generated Offset 1 Column "Currency_Label"
+Storage Default Scale 0 Size 1 Decimals 0 InputScale 0 TimeArray Off
+OrgName "Currency_CD" Origin Generated Offset 2 Column "Currency_CD"
+Storage Default Scale 0 Size 1 Decimals 0 InputScale 0 TimeArray Off
+OrgName "Rate" Origin Generated Offset 3 Column "Rate" Storage Default
+Scale 0 Size 1 Decimals 0 InputScale 0 TimeArray Off
+ 
+CurrencyTableMake "CurrencyBaseTable" CurrencyTableType BaseTable
+CurrencyDateColumn "Date"
+CurrencyLabelColumn "Currency_Label"
+CurrencyCountryCodeColumn "Currency_CD"
+CurrencyRateColumn "Rate"
+ 
+CurrencyMake "<Base Default>"
+Dimension "TC_Time" Levels "Month" CountryCode "USA" CurrencyCountryLabel "US Dollar"
+CurrencyFormatOverride False CurrencySymbol "$" CurrencyDecimals 2 BaseCurrency
+CurrencyRateList 
+EndList

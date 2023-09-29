@@ -1,0 +1,54 @@
+-- ***********************************************************************
+--                                                                       *
+--                                                                       *
+--                                                                       *
+--  This software and related documentation are provided under a         *
+--  license agreement containing restrictions on use and                 *
+--  disclosure and are protected by intellectual property                *
+--  laws. Except as expressly permitted in your license agreement        *
+--  or allowed by law, you may not use, copy, reproduce,                 *
+--  translate, broadcast, modify, license, transmit, distribute,         *
+--  exhibit, perform, publish or display any part, in any form or        *
+--  by any means. Reverse engineering, disassembly, or                   *
+--  decompilation of this software, unless required by law for           *
+--  interoperability, is prohibited.                                     *
+--  The information contained herein is subject to change without        *
+--  notice and is not warranted to be error-free. If you find any        *
+--  errors, please report them to us in writing.                         *
+--                                                                       *
+--                                                                       *
+--  Copyright (C) 1988, 2013, Oracle and/or its affiliates.              *
+--  All Rights Reserved.                                                 *
+-- ***********************************************************************
+
+-- Save a copy of PSRECFIELD before the upgrade starts to be able to tell
+-- during data conversion if fields were already added by applying a fix.
+-- Needs to run as a Pre-Upgrade Script because it won't work elsewhere in
+-- the Move To Production Pass.
+--
+
+SET LOG PUUPX07E.LOG;
+SET OUTPUT PUUPX07.DAT;
+
+EXPORT PSRECFIELD; 
+
+SET LOG PUUPX07I.LOG;
+SET INPUT PUUPX07.DAT;
+
+-- DB2/OS390 customers need to uncomment and modify the statements below
+-- set execute_sql set current sqlid = 'OwnerId In Upper Case';
+-- set ddl table space   * input STOGROUP   as <TableSpace Stogroup>;
+-- set ddl index         * input STOGROUP   as <IndexSpace Stogroup>;
+-- set ddl unique index  * input STOGROUP   as <IndexSpace Stogroup>;
+-- set DBSPACE <Source Dbname>.<Source TableSpace> as <Target Dbname>.<Target TableSpace>;  
+-- set ddl record        * input OWNER      as <New Owner>;
+-- set ddl index         * input OWNER      as <New Owner>;
+-- set ddl unique index  * input OWNER      as <New Owner>;
+-- set ddl index         * input OWNER2     as <New Owner>;
+-- set ddl unique index  * input OWNER2     as <New Owner>;
+-- set no view;
+-- set no space;
+
+
+IMPORT PSRECFIELD AS PSRECFIELD_TMP;
+

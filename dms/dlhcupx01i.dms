@@ -1,0 +1,67 @@
+-- ****************************************************************
+--
+--
+--  This software and related documentation are provided under a
+--  license agreement containing restrictions on use and
+--  disclosure and are protected by intellectual property
+--  laws. Except as expressly permitted in your license agreement
+--  or allowed by law, you may not use, copy, reproduce,
+--  translate, broadcast, modify, license, transmit, distribute,
+--  exhibit, perform, publish or display any part, in any form or
+--  by any means. Reverse engineering, disassembly, or
+--  decompilation of this software, unless required by law for
+--  interoperability, is prohibited.
+--  The information contained herein is subject to change without
+--  notice and is not warranted to be error-free. If you find any
+--  errors, please report them to us in writing.
+--
+--  Copyright (C) 1988, 2013, Oracle and/or its affiliates.       
+--  All Rights Reserved.                                          
+-- ****************************************************************
+
+--  Import the System Data Needed for Data Conversion
+
+
+SET LOG dlhcupx01i.LOG;
+SET INPUT DLHCUPX01.DAT;
+
+-- DB2/OS390 customers need to uncomment and modify the statements below
+-- set execute_sql set current sqlid = 'OwnerId In Upper Case';
+-- set ddl table space   * input STOGROUP   as <TableSpace Stogroup>;
+-- set ddl index         * input STOGROUP   as <IndexSpace Stogroup>;
+-- set ddl unique index  * input STOGROUP   as <IndexSpace Stogroup>;
+-- set DBSPACE <Source Dbname>.<Source TableSpace> as <Target Dbname>.<Target TableSpace>;
+-- set ddl record        * input OWNER      as <New Owner>;
+-- set ddl index         * input OWNER      as <New Owner>;
+-- set ddl unique index  * input OWNER      as <New Owner>;
+-- set ddl index         * input OWNER2     as <New Owner>;
+-- set ddl unique index  * input OWNER2     as <New Owner>;
+-- set no view;
+-- set no space;
+
+DELETE FROM PS_UPG_RENAMED_PIN;
+
+IMPORT * IGNORE_DUPS;
+
+-- Global Payroll Core
+-- The entry type(s) are imported to update the description fields
+-- of these tables.  The description of these entry type(s) are changed
+-- on release 9.0.  The temporary tables will be used to update the
+-- description of the main tables.  These updates are done on the
+-- Global Payroll Core application engine (conversion scripts).
+
+SET LOG DLHCUPX01I_GP.LOG;
+SET INPUT DLHCUPX01_GP.DAT;
+
+DELETE FROM PS_UPG_GP_ENTTYP;
+DELETE FROM PS_UPG_GP_ENTLNG;
+
+IMPORT PS_GP_ENTRY_TYPE AS PS_UPG_GP_ENTTYP;
+IMPORT PS_GP_ENT_TYP_LANG AS PS_UPG_GP_ENTLNG;
+
+
+
+
+
+
+

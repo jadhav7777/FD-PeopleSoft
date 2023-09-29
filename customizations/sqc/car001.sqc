@@ -1,0 +1,345 @@
+!            *                                        *                *
+!            *    IMPLEMENTED NEW RULES FOR TAX YEAR  *                *
+!            *    STARTING 2003 upwards               *                *
+!            ******************************************                *
+!                                                                      *
+!***********************************************************************
+!***********************************************************************
+!                                                                      *
+!                                                                      *
+!                                                                      *
+!                                                                      *
+! This software and related documentation are provided under a         *
+! license agreement containing restrictions on use and                 *
+! disclosure and are protected by intellectual property                *
+! laws. Except as expressly permitted in your license agreement        *
+! or allowed by law, you may not use, copy, reproduce,                 *
+! translate, broadcast, modify, license, transmit, distribute,         *
+! exhibit, perform, publish or display any part, in any form or        *
+! by any means. Reverse engineering, disassembly, or                   *
+! decompilation of this software, unless required by law for           *
+! interoperability, is prohibited.                                     *
+! The information contained herein is subject to change without        *
+! notice and is not warranted to be error-free. If you find any        *
+! errors, please report them to us in writing.                         *
+!                                                                      *
+!                                                                      *
+! Copyright (C) 1988, 2013, Oracle and/or its affiliates.              *
+! All Rights Reserved.                                                 *
+!***********************************************************************
+!----------------------------------------------------------------------
+!
+!          $Date:  2013/01/17:13:23:51                                 !
+!       $Release:  HR92                                                !
+!      $Revision:  102                                                 !
+!                                                                      *
+!***********************************************************************
+!                                                                      *
+! Tables Referenced: None                                              *
+!                                                                      *
+! Related programs:  called by CAR001.SQR                              *
+!                                                                      *
+!***********************************************************************
+
+!-----------------------------------------------------------------------
+! Define constants
+!-----------------------------------------------------------------------
+begin-procedure Constants
+
+  !---------------------------------------------------------------------
+  ! Values for car list price calculation calculation
+  !---------------------------------------------------------------------
+  let #max_capital_cont   = 5000
+  let #upper_limit        = 80000
+
+  !---------------------------------------------------------------------
+  ! Tax Percentage values for Car registered before 01 Jan 1998
+  !---------------------------------------------------------------------
+
+  let #high_percent_pre98   = 32
+  let #medium_percent_pre98 = 22
+  let #low_percent_pre98    = 15
+
+  !---------------------------------------------------------------------------------------------
+  ! Tax Percentage values for Car without approved CO2 emission & registered after 01 Jan 1998
+  !-------------------------------------------------------------------------------------------
+
+  let #high_percent_nonc02   = 35
+  let #medium_percent_nonc02 = 25
+  let #low_percent_nonc02    = 15
+  !---------------------------------------------------------------------------------------------
+
+  let #appropriate_percent = 0
+  let #percentage         = 100
+  let #zero               = 0
+  let $check_year         = '1998-01-01'
+  let $euro_check_year    = '2006-01-01'
+  let #lowest_emission    = 120 ! value specified from year 2008-2009(gm/km)
+  let #lowest_percentage  = 10  ! value specified from year 2008-2009
+  let #highest_percentage = 35  ! upper limit for appropriate percentage
+  !---------------------------------------------------------------------
+  ! Values for fuel benefit calculation
+  !---------------------------------------------------------------------
+
+  let #fuel_benefit_multiplier_pre08  = 14440
+  let #fuel_benefit_multiplier_post08 = 16900
+  let #fuel_benefit_multiplier_2010   = 18000
+  
+end-procedure Constants
+
+!-----------------------------------------------------------------------
+! Calculate car benefit charge
+!-----------------------------------------------------------------------
+begin-procedure Car-Benefit-Charge
+
+  do Constants
+
+  let #work_amount           = 0
+  let #percentage_discount   = 0
+  let #additional_discount   = 0
+  let #overall_percentage    = 0
+  let #supplement_percentage = 0
+  let #mileage_percentage    = 0
+  let #age_amount            = 0
+
+
+  !---------------------------------------------------------------------
+  ! STEP 1 - Calculate value of car for tax purposes
+  !---------------------------------------------------------------------
+  if #list_price > #upper_limit
+    let #work_amount = #list_price
+  else
+    let #work_amount = #list_price + #accessories_price1 + #accessories_price2
+  end-if
+
+  let $p11d_note_dsc_uk = 'Calculated value: list_price = ' || to_char(#list_price)
+  do insert-note
+  let $p11d_note_dsc_uk = 'Calculated value: work amount (list_price + accessories) = ' || to_char(#work_amount)
+  do insert-note
+
+
+  !---------------------------------------------------------------------
+  ! STEP 2 - Employee contributions
+  !---------------------------------------------------------------------
+
+
+  !---------------------------------------------------------------------
+  ! Contributions towards capital cost of car
+  !---------------------------------------------------------------------
+  if #capital_cont < #max_capital_cont
+    let #work_amount = #work_amount - #capital_cont
+  else
+    let #work_amount = #work_amount - #max_capital_cont
+  end-if
+
+  let $p11d_note_dsc_uk = 'Calculated value: work amount (after capital contribution) = ' || to_char(#work_amount)
+  do insert-note
+
+
+  !---------------------------------------------------------------------
+  ! Check against upper limit
+  !---------------------------------------------------------------------
+  if #work_amount > #upper_limit
+    let #work_amount = #upper_limit
+  end-if
+
+  let $p11d_note_dsc_uk = 'Calculated value: work amount (after upper limit check) = ' || to_char(#work_amount)
+  do insert-note
+
+
+  !---------------------------------------------------------------------
+  !                             Calculate tax
+  !---------------------------------------------------------------------
+  !---------------------------------------------------------------------
+  ! If registration Date is less than Jan 01, 1998
+  !---------------------------------------------------------------------
+if $registration_dt_YMD < $check_year
+
+if (#engine_size > #zero and #engine_size < #engine_limit_1) or $engine_type = $electric
+    let #appropriate_percent = #low_percent_pre98
+else
+
+   if #engine_size > #engine_limit_1 and #engine_size < #engine_limit_2
+      let #appropriate_percent = #medium_percent_pre98
+   else
+      let #appropriate_percent = #high_percent_pre98
+   end-if
+end-if
+        let $p11d_note_dsc_uk = 'Category: Car registered before 1998 ' 
+        do insert-note
+
+        let $p11d_note_dsc_uk = 'Calculated value: Appropriate Percentage = ' || to_char(#appropriate_percent ) || '%'
+        do insert-note
+end-if
+  !-------------------------------------------------------------------------------------------
+  ! If registration Date is greater that Jan 01, 1998 and Car has approved CO2 emission value
+  !-------------------------------------------------------------------------------------------
+if $registration_dt_YMD >= $check_year and #c02_emissions > 0
+
+! If emission is less than lowest limit specified (valid from Tax year end 2009 onwards)
+
+if $tax_year_end_uk >= '2009' and #c02_emissions < #lowest_emission    
+   let #appropriate_percent = #lowest_percentage
+
+if $engine_type = $diesel or ($engine_type = $euro4 and $registration_dt_YMD > $euro_check_year )
+ do Get-Adjustments
+end-if
+
+else 
+let #appropriate_percent = #tax_percentage
+
+
+let $p11d_note_dsc_uk = 'Category: Car registered after 1998 with an approved CO2 emission figure ' 
+        do insert-note
+
+let $p11d_note_dsc_uk = 'Calculated value: Appropriate Percentage = ' || to_char(#appropriate_percent ) || '%'
+        do insert-note
+
+do Get-Adjustments
+end-if
+
+
+end-if
+
+  !-----------------------------------------------------------------------------------------------------
+  ! If registration Date is greater that Jan 01, 1998 and Car does not have approved CO2 emission value
+  !-----------------------------------------------------------------------------------------------------
+
+if $registration_dt_YMD >= $check_year and #c02_emissions = 0
+
+if (#engine_size > #zero and #engine_size < #engine_limit_1) or $engine_type = $electric
+let #appropriate_percent = #low_percent_nonc02 
+else
+
+if #engine_size > #engine_limit_1 and #engine_size < #engine_limit_2
+let #appropriate_percent = #medium_percent_nonc02
+else
+let #appropriate_percent = #high_percent_nonc02
+end-if
+end-if
+let $p11d_note_dsc_uk = 'Category: Car registered after 1998 without an approved CO2 emission figure ' 
+        do insert-note
+let $p11d_note_dsc_uk = 'Calculated value: Appropriate Percentage = ' || to_char(#appropriate_percent ) || '%'
+        do insert-note
+do Get-Adjustments
+
+end-if
+
+  
+  let #work_amount = (#work_amount * #appropriate_percent ) / #percentage
+  let #work_amount = trunc(#work_amount, 0)
+
+  let $p11d_note_dsc_uk = 'Calculated value: Car Benefit Charge(after applying net percentage) = ' || to_char(#work_amount)
+  do insert-note
+
+
+
+
+
+
+  !---------------------------------------------------------------------
+  ! STEP 5 - Car unavailable for part of year (old method)
+  !---------------------------------------------------------------------
+  
+        if #unavailable_days > #zero
+           let #work_amount = #work_amount - (#work_amount * (#unavailable_days / 365))
+           let #work_amount = round(#work_amount, 0)
+
+        let $p11d_note_dsc_uk = 'Calculated value: total unavailable days = ' || to_char(#unavailable_days)
+        do insert-note
+        let $p11d_note_dsc_uk = 'Calculated value: Car Benefit Charge(after unavailability adjustment) = ' || to_char(#work_amount)
+        do insert-note
+
+     end-if
+
+
+
+  !---------------------------------------------------------------------
+  ! STEP 6 - Payments for private use (old method)
+  !---------------------------------------------------------------------
+
+
+        if #payment_received > #zero
+           let #work_amount = #work_amount - #payment_received
+
+           if #work_amount < #zero
+              let #work_amount = #zero
+           end-if
+        let $p11d_note_dsc_uk = 'Deductions for payments made for private use = ' || to_char(#payment_received)
+        do insert-note
+
+        let $p11d_note_dsc_uk = 'Calculated value: Car Benefit Charge(after payments adjustment) = ' || to_char(#work_amount)
+        do insert-note
+
+end-if
+
+
+
+  !---------------------------------------------------------------------
+  ! Finished
+  !---------------------------------------------------------------------
+
+  let #car_benefit_charge = #work_amount
+
+
+end-procedure Car-Benefit-Charge
+ !------------------------------------------------------------------------------------------------------
+  ! Add supplements/discounts as applicable for Engine/Fuel Type
+  !-----------------------------------------------------------------------------------------------------
+begin-procedure Get-Adjustments
+
+if $engine_type = $euro4 
+   if $registration_dt_YMD > $euro_check_year
+      let #supplement = 3
+   else 
+      let #supplement = #zero
+   end-if
+end-if
+let #appropriate_percent = #appropriate_percent + #supplement - #discount
+
+! check against the upper limit of 35%
+
+if #appropriate_percent > #highest_percentage
+   
+  let #appropriate_percent = #highest_percentage
+
+end-if
+
+let $p11d_note_dsc_uk = 'Calculated value: Appropriate Percentage(after adjustments) = ' || to_char(#appropriate_percent ) || '%'
+        do insert-note
+ end-procedure Get-Adjustments
+
+
+!-----------------------------------------------------------------------
+! Calculate fuel benefit charge
+!-----------------------------------------------------------------------
+begin-procedure Fuel-Benefit-Charge
+
+  let #fuel_benefit_charge = #zero
+
+  if $fuel_provided = $true and $fuel_reimbursed = $false
+     
+     if $tax_year_end_uk >='2011'
+      let #fuel_benefit_charge = (#fuel_benefit_multiplier_2010 * #appropriate_percent)/ #percentage
+    else
+      if $tax_year_end_uk >= '2009'  OR   $tax_year_end_uk<='2010'
+
+        let #fuel_benefit_charge = (#fuel_benefit_multiplier_post08 * #appropriate_percent)/ #percentage
+     else
+        let #fuel_benefit_charge = (#fuel_benefit_multiplier_pre08 * #appropriate_percent)/ #percentage
+     end-if
+     end-if
+
+    ! Check if unavailability reduction applies
+
+    if #unavailable_days > #zero
+      let #fuel_benefit_charge =  #fuel_benefit_charge - (#fuel_benefit_charge  * (#unavailable_days / 365))
+    end-if
+
+  end-if
+
+
+
+end-procedure Fuel-Benefit-Charge
+
+

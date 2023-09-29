@@ -1,0 +1,63 @@
+-- **************************************************************
+--                                                               
+--                                                               
+-- This software and related documentation are provided under a  
+-- license agreement containing restrictions on use and          
+-- disclosure and are protected by intellectual property         
+-- laws. Except as expressly permitted in your license agreement 
+-- or allowed by law, you may not use, copy, reproduce,          
+-- translate, broadcast, modify, license, transmit, distribute,  
+-- exhibit, perform, publish or display any part, in any form or 
+-- by any means. Reverse engineering, disassembly, or            
+-- decompilation of this software, unless required by law for    
+-- interoperability, is prohibited.                              
+-- The information contained herein is subject to change without 
+-- notice and is not warranted to be error-free. If you find any 
+-- errors, please report them to us in writing.                  
+--                                                               
+-- Copyright (C) 1988, 2013, Oracle and/or its affiliates.       
+-- All Rights Reserved.                                          
+-- **************************************************************
+-- DLHCFOR22I.DMS
+-- *****************
+--
+-- From         : FO 8.8
+-- TO           : HCM
+-- Type         : Import
+-- Tables        : Non-Stable
+--
+--
+
+
+set input pufofox24.dat;
+set log puhcfor22i.log;
+set ignore_dups;
+SET SPACE * AS HRAPP;
+SET NO SPACE;
+
+IMPORT FO_DEGREE_LANG AS PS_FODEGREELAN_UPG;
+IMPORT FO_DEGREE_TBL AS PS_FODEGREETBL_UPG;
+IMPORT FO_EMP_EDUCATN AS PS_FOEMPEDUCAT_UPG;
+IMPORT FOEMPLDT_UVW_HR AS PS_FOEMPLDATA_UPG;
+IMPORT FOEMPLSKILL_UVW AS PS_FOEMPLSKILL_UPG;
+IMPORT FOORDER_UVW_HR AS PS_FOORDER_UPG;
+IMPORT FOSKILLSDET_UVW AS PS_FOSKILLSDET_UPG;
+IMPORT FOSKILLSHDR_UVW AS PS_FOSKILLSHDR_UPG;
+IMPORT FOTESTLN_VW_UPG AS PS_FOTESTLNG_UPG;
+IMPORT FOTSTRES_UVW_HR AS PS_FOTESTRESUL_UPG;
+IMPORT FOTESTSETUP_UVW AS PS_FOTESTSETUP_UPG;
+IMPORT MAJOR_TBL AS PS_MAJORTBL_UPG;
+IMPORT MAJOR_TBL_LANG AS PS_MAJORTBLLAN_UPG;
+IMPORT SCHOOL_TBL AS PS_SCHOOLTBL_UPG;
+IMPORT SCHOOL_TBL_LANG AS PS_SCHOOLTBLLA_UPG;
+
+--Pre-Upgrade Tables
+IMPORT COMP_SKLDTL_UPG;
+IMPORT COMP_SKLHDR_UPG;
+IMPORT USER_STATUS_UPG;
+IMPORT FO_BRNCH_FO_UPG;
+IMPORT ACCOMP_TST_UPG;
+IMPORT ACCOMP_DEG_UPG;
+IMPORT MAJOR_TBL_UPG;
+IMPORT SCHOOL_TBL_UPG;
+IMPORT FO_BRNCH_PB_UPG;

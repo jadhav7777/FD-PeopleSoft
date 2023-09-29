@@ -1,0 +1,36 @@
+-- ******************************************************************
+--
+--
+-- This software and related documentation are provided under a
+-- license agreement containing restrictions on use and
+-- disclosure and are protected by intellectual property
+-- laws. Except as expressly permitted in your license agreement
+-- or allowed by law, you may not use, copy, reproduce,
+-- translate, broadcast, modify, license, transmit, distribute,
+-- exhibit, perform, publish or display any part, in any form or
+-- by any means. Reverse engineering, disassembly, or
+-- decompilation of this software, unless required by law for
+-- interoperability, is prohibited.
+-- The information contained herein is subject to change without
+-- notice and is not warranted to be error-free. If you find any
+-- errors, please report them to us in writing.
+--
+-- Copyright (C) 1988, 2013, Oracle and/or its affiliates.       
+-- All Rights Reserved.                                          
+-- ******************************************************************
+--
+--     $Release:  HRMS90
+--    $Revision:  1
+--  $Version-ID:  1
+--
+-- ******************************************************************
+-- DLHCUPL02.DMS
+--
+-- SCRIPT APPLIES TO UPGRADES FROM 90
+-- ******************************************************************
+-- You will need to uncomment the next line, if you are running this script on DB2/OS390
+--  set execute_sql set current sqlid = 'OWNERID';
+
+SET LOG dlhcupl02.LOG;
+
+DROP TABLE PS_HR_SEC_AET;
